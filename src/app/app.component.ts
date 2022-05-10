@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Linkzipper-angular';
+  opciones = ["EXPLORE","REGISTER","LOGIN"];
+
+  presion(op: number) {
+    alert("Se informa que se presiono la opcion " + op);
+  }
 }

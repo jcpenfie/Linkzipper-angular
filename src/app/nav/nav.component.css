@@ -1,0 +1,14 @@
+input[type="search"] 
+{
+    background-color : #E9E6E1;
+    border: #E9E6E1;
+    width: 100px;
+}
+input::placeholder{
+    color: #3d3d3d;
+    text-align: center;
+}
+
+.boton{
+    color: #FFFFFB;
+}
