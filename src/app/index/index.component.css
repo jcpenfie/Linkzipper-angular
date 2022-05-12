@@ -3,6 +3,10 @@ li {
     text-align: left;
 }
 
+.lsita{
+    flex-direction: row;
+}
+
 header {
     text-align: center;
     background-color: #FFFFFB;
@@ -42,11 +46,25 @@ header {
 }
 
 .info>p{
-    font-size: 30px;
+    font-size: 20px;
 }
 
 
 @media screen and (max-width: 1024px) {
+    .info>p{
+        font-size: 15px;
+    }
+
+    .info{
+    font-size: 60px;
+    }
+}
+@media screen and (max-width: 991px) {
+.lista>li{
+    flex-direction: column;
+}
+}
+@media screen and (max-width: 768px) {
     .info>p{
         font-size: 20px;
     }
@@ -54,14 +72,9 @@ header {
     .info{
     font-size: 70px;
     }
-}
-@media screen and (max-width: 768px) {
-    .info>p{
-        font-size: 15px;
-    }
 
-    .info{
-    font-size: 50px;
+    .secInfo{
+    flex-direction: column;
     }
 }
 @media screen and (max-width: 425px) {
@@ -82,17 +95,5 @@ header {
     
     .div2 {
         grid-area: 2 / 2 / 2 / 1;
-    }
-
-    .info>p{
-        font-size: 20px;
-    }
-
-    .info{
-    font-size: 70px;
-    }
-
-    .secInfo{
-    flex-direction: column;
     }
 }

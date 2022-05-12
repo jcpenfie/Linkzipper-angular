@@ -16,6 +16,34 @@ const routes: Routes = [
     path: 'terms',
     component: TermsComponent
   },
+  {
+    path: 'explore',
+    component: TermsComponent
+  },
+  {
+    path: 'panel',
+    component: TermsComponent
+  },
+  {
+    path: 'links',
+    component: TermsComponent
+  },
+  {
+    path: 'preview',
+    component: TermsComponent
+  },
+  {
+    path: 'profile/:nro', //profile/idUsuario
+    component: TermsComponent
+  },
+  {
+    path: 'likes',
+    component: TermsComponent
+  },
+  {
+    path: 'search',
+    component: TermsComponent
+  }
 ];
 
 @NgModule({

@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { IndexComponent } from './index/index.component';
 import { TermsComponent } from './terms/terms.component';
 import { NavLoginComponent } from './nav-login/nav-login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,11 +17,12 @@ import { NavLoginComponent } from './nav-login/nav-login.component';
     FooterComponent,
     IndexComponent,
     TermsComponent,
-    NavLoginComponent
+    NavLoginComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

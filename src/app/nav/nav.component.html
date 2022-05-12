@@ -22,8 +22,43 @@
 
         <ul class="navbar-nav p-2">
             <li class="nav-item" *ngFor="let opcion of opciones;let i=index">
-                <a class="nav-link" routerLink="{{opcion}}">{{opcion}}</a>
+                <a class="nav-link" routerLink="{{opcion}}" id="{{opcion}}" data-toggle="" data-target="">{{opcion}}</a>
             </li>
         </ul>
     </div>
 </nav>
+
+<!-- Login Modal -->
+<div class="modal fade" id="LOGINModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                <button type="button" class="btn" data-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formularioContacto" (ngSubmit)="submit()">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" formControlName="user" class="form-control" id="username" aria-describedby="username input" placeholder="Username">
+                        <small *ngIf="this.formularioContacto.get('user')?.errors?.['required']" class="text-danger">
+                            Username must not be empty
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" formControlName="pass" class="form-control" id="password" aria-describedby="password input" placeholder="Password">
+                        <small *ngIf="this.formularioContacto.get('pass')?.errors?.['required']" class="text-danger">
+                            Password must not be empty
+                        </small>
+                    </div>
+                    <button type="submit" class="btn bg-black text-light my-2">Confirmar</button>
+                </form>
+                <div class="text-danger">{{resultado}}</div>
+            </div>
+        </div>
+    </div>
+</div>
