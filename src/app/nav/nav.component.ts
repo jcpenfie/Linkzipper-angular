@@ -28,13 +28,26 @@ export class NavComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
 
-  formularioContacto = this.fb.group({
+  loginForm = this.fb.group({
     user: ['', [Validators.required]],
     pass: ['', [Validators.required]],
   });
+  registerForm = this.fb.group({
+    user: ['', [Validators.required]],
+    pass: ['', [Validators.required]],
+    passConfirm: ['', [Validators.required]],
+    email: ['', [Validators.required]],
+    emailConfirm: ['', [Validators.required]],
+  });
 
   submit() {
-    if (this.formularioContacto.valid) {
+    if (this.loginForm.valid) {
+      //Redirect
+    } else {
+      this.resultado = "There is invalid data in the form";
+    }
+
+    if (this.registerForm.valid) {
       //Redirect
     } else {
       this.resultado = "There is invalid data in the form";
