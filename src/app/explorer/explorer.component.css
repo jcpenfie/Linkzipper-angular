@@ -1,0 +1,22 @@
+.imgRound{
+    border-radius: 30px !important;
+}
+
+.card{
+    border-radius: 30px;
+}
+
+.heart{
+    cursor: pointer;
+}
+
+@media screen and (max-width:767px) {
+    .imgRound{
+        width: 30%;
+    }
+
+    .imgFlex{
+        justify-content: space-around;
+
+    }
+}

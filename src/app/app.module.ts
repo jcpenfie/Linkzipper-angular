@@ -11,6 +11,7 @@ import { NavLoginComponent } from './nav-login/nav-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { ModalRegisterComponent } from './modal-register/modal-register.component';
+import { ExplorerComponent } from './explorer/explorer.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ModalRegisterComponent } from './modal-register/modal-register.componen
     NavLoginComponent,
     ModalLoginComponent,
     ModalRegisterComponent,
+    ExplorerComponent,
   ],
   imports: [
     BrowserModule,

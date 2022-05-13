@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ExplorerComponent } from './explorer/explorer.component';
 import { IndexComponent } from './index/index.component';
 import { TermsComponent } from './terms/terms.component';
 
@@ -17,23 +18,23 @@ const routes: Routes = [
     component: TermsComponent
   },
   {
-    path: 'explore',
-    component: TermsComponent
+    path: 'EXPLORE',
+    component: ExplorerComponent
   },
   {
     path: 'panel',
     component: TermsComponent
   },
   {
-    path: 'links',
+    path: 'panel/links',
     component: TermsComponent
   },
   {
-    path: 'preview',
+    path: 'panel/preview',
     component: TermsComponent
   },
   {
-    path: 'profile/:nro', //profile/idUsuario
+    path: 'panel/profile/:nro', //profile/idUsuario
     component: TermsComponent
   },
   {

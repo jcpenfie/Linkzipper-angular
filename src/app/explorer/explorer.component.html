@@ -1,0 +1,23 @@
+<div class="card-group justify-content-evenly">
+    <div *ngFor="let user of users;let i=index">
+        <div class="card m-2" style="max-width: 550px;">
+            <div class="row g-0">
+                <div class="imgFlex col-md-3 d-flex align-items-center">
+                    <img src="assets/img/{{user.img}}" class="img-fluid imgRound mx-2" alt="Profile img">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-end">
+                            <h5 class="card-title">@{{user.user}}</h5>
+                            <h5 class="card-title"><i class="heart fa-regular fa-heart" id="{{user.id}}like"
+                                    (click)="like(user.id)"></i><br><span
+                                    id="{{user.id}}likeCount">{{user.likes}}</span></h5>
+                        </div>
+                        <p class="card-text">"{{user.descr}}"</p>
+                        <a href="#" class="btn negro text-light w-100">View profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
