@@ -9,6 +9,8 @@ import { IndexComponent } from './index/index.component';
 import { TermsComponent } from './terms/terms.component';
 import { NavLoginComponent } from './nav-login/nav-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ModalLoginComponent } from './modal-login/modal-login.component';
+import { ModalRegisterComponent } from './modal-register/modal-register.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     IndexComponent,
     TermsComponent,
     NavLoginComponent,
+    ModalLoginComponent,
+    ModalRegisterComponent,
   ],
   imports: [
     BrowserModule,

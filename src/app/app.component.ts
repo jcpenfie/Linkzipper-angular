@@ -6,9 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  opciones = ["EXPLORE","REGISTER","LOGIN"];
-
-  presion(op: number) {
-    alert("Se informa que se presiono la opcion " + op);
+  title(title: any) {
+    throw new Error('Method not implemented.');
   }
+  opciones = ["EXPLORE","REGISTER","LOGIN"];
 }

@@ -1,0 +1,65 @@
+<!-- Register Modal -->
+<div class="modal fade" id="REGISTERModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="Register Form"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+                <button type="button" class="btn" data-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="navbar-brand p-2 text-black align-center d-flex justify-content-center"><span class="fw-800">Link</span>Zipper</div>
+
+            <div class="modal-body">
+                <form [formGroup]="registerForm" (ngSubmit)="submit()">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" formControlName="user" class="form-control" id="username"
+                            aria-describedby="username input" placeholder="Username">
+                        <small *ngIf="this.registerForm.get('user')?.errors?.['required']" class="text-danger">
+                            Username must not be empty
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" formControlName="pass" class="form-control" id="password"
+                            aria-describedby="password input" placeholder="Password">
+                        <small *ngIf="this.registerForm.get('pass')?.errors?.['passwordValid']" class="text-danger">
+                            Minimum eight characters, at least one uppercase letter, one lowercase letter and one number
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordConfirm">Confirm Password:</label>
+                        <input type="password" formControlName="passConfirm" class="form-control" id="passwordConfirm"
+                            aria-describedby="confirm password input" placeholder="Confirm Password">
+                        <small *ngIf="this.registerForm.errors?.['noMatchPass']" class="text-danger">
+                            Passwords must match
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" formControlName="email" class="form-control" id="email"
+                            aria-describedby="email input" placeholder="Email">
+                        <small *ngIf="this.registerForm.get('email')?.errors?.['required']" class="text-danger">
+                            Email must not be empty
+                        </small>
+                        <small *ngIf="this.registerForm.get('email')?.errors?.['email']" class="text-danger">
+                            Format no valid
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailConfirm">Confirm Email:</label>
+                        <input type="email" formControlName="emailConfirm" class="form-control" id="email"
+                            aria-describedby="confirm email input" placeholder="Confirm Email">
+                        <small *ngIf="this.registerForm.errors?.['noMatchEmail']" class="text-danger">
+                            Email must match
+                        </small>
+                    </div>
+                    <button type="submit" class="btn bg-black text-light w-100 my-2 rounded">Confirmar</button>
+                </form>
+                <div class="text-danger">{{resultado}}</div>
+            </div>
+        </div>
+    </div>
+</div>

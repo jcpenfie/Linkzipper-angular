@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'boot-nav',
@@ -23,35 +22,4 @@ export class NavComponent implements OnInit {
       register?.setAttribute("data-target", "#REGISTERModal")
     }
   }
-
-  resultado!: string;
-
-  constructor(private fb: FormBuilder) { }
-
-  loginForm = this.fb.group({
-    user: ['', [Validators.required]],
-    pass: ['', [Validators.required]],
-  });
-  registerForm = this.fb.group({
-    user: ['', [Validators.required]],
-    pass: ['', [Validators.required]],
-    passConfirm: ['', [Validators.required]],
-    email: ['', [Validators.required]],
-    emailConfirm: ['', [Validators.required]],
-  });
-
-  submit() {
-    if (this.loginForm.valid) {
-      //Redirect
-    } else {
-      this.resultado = "There is invalid data in the form";
-    }
-
-    if (this.registerForm.valid) {
-      //Redirect
-    } else {
-      this.resultado = "There is invalid data in the form";
-    }
-  }
-
 }
