@@ -3,7 +3,8 @@
 }
 
 .card{
-    border-radius: 30px;
+    border-radius: 20px;
+    border: 2px solid black;
 }
 
 .heart{
