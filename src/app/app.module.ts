@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { ModalRegisterComponent } from './modal-register/modal-register.component';
 import { ExplorerComponent } from './explorer/explorer.component';
+import { RouterModule, UrlSegment } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,28 @@ import { ExplorerComponent } from './explorer/explorer.component';
     NavLoginComponent,
     ModalLoginComponent,
     ModalRegisterComponent,
-    ExplorerComponent,
+    ExplorerComponent,  
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot([{
+      matcher: (url) => {
+        if (url.length === 1 && url[0].path.match(/^@[\w]+$/gm)) {
+          return {
+            consumed: url,
+            posParams: {
+              username: new UrlSegment(url[0].path.substr(1), {})
+            }
+          };
+        }
+    
+        return null;
+      },
+      component: TermsComponent
+    }]),
   ],
   providers: [],
   bootstrap: [AppComponent]

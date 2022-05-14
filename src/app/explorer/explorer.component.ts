@@ -15,28 +15,28 @@ export class ExplorerComponent implements OnInit {
   users = [
     {
       id: 1,
-      user: "user",
+      user: "user1",
       descr: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam",
       likes: 23,
       img: "profile.png"
     },
     {
       id: 2,
-      user: "user",
+      user: "user2",
       descr: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam",
       likes: 23,
       img: "profile.png"
     },
     {
       id: 3,
-      user: "user",
+      user: "user3",
       descr: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam",
       likes: 23,
       img: "profile.png"
     },
     {
       id: 4,
-      user: "user",
+      user: "user4",
       descr: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam",
       likes: 23,
       img: "profile.png"
