@@ -1,6 +1,6 @@
 <div class="container">
   <!-- Nav -->
-  <boot-nav [opciones]="opciones" colorfondo="blanco"></boot-nav>
+  <boot-nav *ngIf="showMenu" [opciones]="opciones" colorfondo="blanco"></boot-nav>
   
   <!-- Contenido -->
   <div style="background-color: #E9E6E1;">
@@ -9,5 +9,5 @@
   
 
   <!-- Footer -->
-  <boot-footer></boot-footer>
+  <boot-footer *ngIf="showMenu"></boot-footer>
 </div>
