@@ -13,6 +13,8 @@ import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { ModalRegisterComponent } from './modal-register/modal-register.component';
 import { ExplorerComponent } from './explorer/explorer.component';
 import { RouterModule, UrlSegment } from '@angular/router';
+import { ProfileComponent } from './profile/profile.component';
+import { CardProfileComponent } from './card-profile/card-profile.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { RouterModule, UrlSegment } from '@angular/router';
     NavLoginComponent,
     ModalLoginComponent,
     ModalRegisterComponent,
-    ExplorerComponent,  
+    ExplorerComponent,
+    ProfileComponent,
+    CardProfileComponent,  
     
   ],
   imports: [
@@ -44,7 +48,7 @@ import { RouterModule, UrlSegment } from '@angular/router';
     
         return null;
       },
-      component: TermsComponent
+      component: ProfileComponent
     }]),
   ],
   providers: [],

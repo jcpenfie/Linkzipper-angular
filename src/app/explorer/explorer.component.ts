@@ -44,29 +44,5 @@ export class ExplorerComponent implements OnInit {
   ]
 
 
-  like(id: any) {
-    let like = document.getElementById(id + "like");
-    let likeCount = document.getElementById(id+ "likeCount");
-
-
-    if (like?.getAttribute("class") == "heart fa-regular fa-heart") {
-      like?.setAttribute("class", "heart fa fa-heart text-danger");
-      let count = this.users[id-1].likes+1;
-      this.users[id-1].likes = count
-
-
-
-      likeCount!.textContent = count.toString()
-      
-    } else {
-
-      like?.setAttribute("class", "heart fa-regular fa-heart");
-    let count = this.users[id-1].likes-1;
-    this.users[id-1].likes = count
-      likeCount!.textContent = count.toString()
-
-    }
-
-
-  }
+  
 }

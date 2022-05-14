@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'boot-nav',
@@ -9,7 +9,6 @@ export class NavComponent implements OnInit {
 
   @Input() opciones!: string[];
   @Input() colorfondo!: string;
-  @Output() presionopcion = new EventEmitter();
 
   ngOnInit(): void {
     window.onload = function () {
