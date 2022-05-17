@@ -10,6 +10,9 @@ export class NavComponent implements OnInit {
   @Input() opciones!: string[];
   @Input() colorfondo!: string;
 
+
+
+
   ngOnInit(): void {
   }
 }

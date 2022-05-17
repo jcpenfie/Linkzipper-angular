@@ -14,5 +14,6 @@ export class PanelLinksComponent implements OnInit {
   }
 
   user = AppComponent.userLogin;
+  
 
 }

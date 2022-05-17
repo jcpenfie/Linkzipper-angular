@@ -15,8 +15,7 @@ export class AppComponent implements OnInit{
   
   opciones = ["EXPLORE"];
 
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) {  }
 
   public static userLogin: any = {
     id: 1,
