@@ -16,7 +16,7 @@
                     <div class="form-group">
                         <label for="username">Username:</label>
                         <input type="text" formControlName="user" class="form-control" id="username"
-                            aria-describedby="username input" placeholder="Username">
+                            aria-describedby="username input" placeholder="Username" (ngModelChange)="handleChange()">
                         <small *ngIf="this.loginForm.get('user')?.errors?.['required']" class="text-danger">
                             Username must not be empty
                         </small>
@@ -24,14 +24,14 @@
                     <div class="form-group">
                         <label for="password">Password:</label>
                         <input type="password" formControlName="pass" class="form-control" id="password"
-                            aria-describedby="password input" placeholder="Password">
+                            aria-describedby="password input" placeholder="Password" (ngModelChange)="handleChange()">
                         <small *ngIf="this.loginForm.get('pass')?.errors?.['required']" class="text-danger">
                             Password must not be empty
                         </small>
                     </div>
 
                     <a href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#REGISTERModal" class="link text-primary py-3">No account?</a>
-                    <button type="submit" class="btn bg-black text-light w-100 my-2 rounded">Confirmar</button>
+                    <button id="btnSubmit" type="submit" aria-label="Close" data-toggle="modal" class="btn bg-black text-light w-100 my-2 rounded">Confirmar</button>
                 </form>
                 <div class="text-danger">{{resultado}}</div>
             </div>

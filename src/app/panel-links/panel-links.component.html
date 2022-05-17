@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="d-flex flex-column align-items-center">
+        <div *ngFor="let link of user.links;let i=index">
+            <a href="{{link[1]}}" style="color: black;">
+                <div class="linkCard card d-flex flex-row align-items-center m-2 " style="max-width: 550px;">
+                    <img class="card-img-left m-2" src="assets/img/{{link[2]}}" alt="{{link[0]}} logo" width="10%">
+                    <div class="card-body">
+                        <h5 class="card-title display-6">{{link[0]}}</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
