@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ExplorerComponent } from './explorer/explorer.component';
 import { IndexComponent } from './index/index.component';
+import { PanelLinksComponent } from './panel-links/panel-links.component';
+import { PanelPreviewComponent } from './panel-preview/panel-preview.component';
+import { ProfileComponent } from './profile/profile.component';
 import { TermsComponent } from './terms/terms.component';
 
 const routes: Routes = [
@@ -23,19 +26,19 @@ const routes: Routes = [
   },
   {
     path: 'panel',
-    component: TermsComponent
+    component: PanelPreviewComponent
+  },
+  {
+    path: 'panel/profile',
+    component: ProfileComponent
   },
   {
     path: 'panel/links',
-    component: TermsComponent
+    component: PanelLinksComponent
   },
   {
     path: 'panel/preview',
-    component: TermsComponent
-  },
-  {
-    path: 'panel/profile/:nro', //profile/idUsuario
-    component: TermsComponent
+    component: PanelPreviewComponent
   },
   {
     path: 'likes',

@@ -32,4 +32,13 @@ export class ModalRegisterComponent implements OnInit {
     }
   }
 
+
+  handleChange() {
+    if (this.registerForm.valid) {
+      document.getElementById("btnSubmit")?.setAttribute("data-target", "#REGISTERModal")
+    } else {
+      document.getElementById("btnSubmit")?.setAttribute("data-target", "")
+    }
+  }
+
 }

@@ -16,7 +16,7 @@
                     <div class="form-group">
                         <label for="username">Username:</label>
                         <input type="text" formControlName="user" class="form-control" id="username"
-                            aria-describedby="username input" placeholder="Username">
+                            aria-describedby="username input" placeholder="Username" (ngModelChange)="handleChange()">
                         <small *ngIf="this.registerForm.get('user')?.errors?.['required']" class="text-danger">
                             Username must not be empty
                         </small>
@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <label for="password">Password:</label>
                         <input type="password" formControlName="pass" class="form-control" id="password"
-                            aria-describedby="password input" placeholder="Password">
+                            aria-describedby="password input" placeholder="Password" (ngModelChange)="handleChange()">
                         <small *ngIf="this.registerForm.get('pass')?.errors?.['passwordValid']" class="text-danger">
                             Minimum eight characters, at least one uppercase letter, one lowercase letter and one number
                         </small>
@@ -35,7 +35,7 @@
                     <div class="form-group">
                         <label for="passwordConfirm">Confirm Password:</label>
                         <input type="password" formControlName="passConfirm" class="form-control" id="passwordConfirm"
-                            aria-describedby="confirm password input" placeholder="Confirm Password">
+                            aria-describedby="confirm password input" placeholder="Confirm Password" (ngModelChange)="handleChange()">
                         <small *ngIf="this.registerForm.errors?.['noMatchPass']" class="text-danger">
                             Passwords must match
                         </small>
@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label for="email">Email:</label>
                         <input type="email" formControlName="email" class="form-control" id="email"
-                            aria-describedby="email input" placeholder="Email">
+                            aria-describedby="email input" placeholder="Email" (ngModelChange)="handleChange()">
                         <small *ngIf="this.registerForm.get('email')?.errors?.['required']" class="text-danger">
                             Email must not be empty
                         </small>
@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label for="emailConfirm">Confirm Email:</label>
                         <input type="email" formControlName="emailConfirm" class="form-control" id="email"
-                            aria-describedby="confirm email input" placeholder="Confirm Email">
+                            aria-describedby="confirm email input" placeholder="Confirm Email" (ngModelChange)="handleChange()">
                         <small *ngIf="this.registerForm.errors?.['noMatchEmail']" class="text-danger">
                             Email must match
                         </small>

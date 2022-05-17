@@ -15,6 +15,9 @@ import { ExplorerComponent } from './explorer/explorer.component';
 import { RouterModule, UrlSegment } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { CardProfileComponent } from './card-profile/card-profile.component';
+import { PanelPreviewComponent } from './panel-preview/panel-preview.component';
+import { PanelLinksComponent } from './panel-links/panel-links.component';
+import { PanelProfileComponent } from './panel-profile/panel-profile.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +31,10 @@ import { CardProfileComponent } from './card-profile/card-profile.component';
     ModalRegisterComponent,
     ExplorerComponent,
     ProfileComponent,
-    CardProfileComponent,  
-    
+    CardProfileComponent,
+    PanelPreviewComponent,
+    PanelLinksComponent,
+    PanelProfileComponent,    
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
+import { Router } from "@angular/router"
 
 @Component({
   selector: 'app-modal-login',
@@ -14,7 +15,7 @@ export class ModalLoginComponent implements OnInit {
 
   resultado!: string;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   loginForm = this.fb.group({
     user: ['', [Validators.required]],
@@ -24,9 +25,17 @@ export class ModalLoginComponent implements OnInit {
 
   submit() {
     if (this.loginForm.valid) {
-      //Redirect
+      this.router.navigate(['/panel'])
     } else {
       this.resultado = "There is invalid data in the form";
+    }
+  }
+
+  handleChange() {
+    if (this.loginForm.valid) {
+      document.getElementById("btnSubmit")?.setAttribute("data-target", "#LOGINModal")
+    } else {
+      document.getElementById("btnSubmit")?.setAttribute("data-target", "")
     }
   }
 }
