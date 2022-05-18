@@ -1,14 +1,82 @@
 <div class="container">
+    <a class="btn negro text-light m-3 px-5 py-2" id="profile" data-toggle="modal" data-target="#AddLinkModal">Add
+        Link</a>
     <div class="d-flex flex-column align-items-center">
         <div *ngFor="let link of user.links;let i=index">
-            <a href="{{link[1]}}" style="color: black;">
+            <div style="color: black;">
                 <div class="linkCard card d-flex flex-row align-items-center m-2 " style="max-width: 550px;">
-                    <img class="card-img-left m-2" src="assets/img/{{link[2]}}" alt="{{link[0]}} logo" width="10%">
+                    <i class="fa-solid fa-xmark m-2" id="{{link[0]}}" (click)="delete(link)"></i>
+
+                    <img class="card-img-left m-2" src="assets/img/logos/{{link[3]}}" alt="{{link[1]}} logo" width="10%">
                     <div class="card-body">
-                        <h5 class="card-title display-6">{{link[0]}}</h5>
+                        <h2>{{link[1]}}</h2>
+                        <p>{{link[2]}}</p>
+                    </div>
+                    <div class="card-body">
                     </div>
                 </div>
-            </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Add Link Modal -->
+<div class="modal fade" id="AddLinkModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+    aria-labelledby="Login Form" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Link</h5>
+                <button type="button" class="btn" data-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="navbar-brand p-2 text-black align-center d-flex justify-content-center"><span
+                    class="fw-800">Link</span>Zipper</div>
+
+            <div class="modal-body">
+                <form [formGroup]="loginForm" (ngSubmit)="submit()">
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" formControlName="title" class="form-control" id="title"
+                            aria-describedby="title input" placeholder="Title" (ngModelChange)="handleChange()">
+                        <small *ngIf="this.loginForm.get('title')?.errors?.['required']" class="text-danger">
+                            Title must not be empty
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="link">Link:</label>
+                        <input type="text" formControlName="link" class="form-control" id="link"
+                            aria-describedby="link input" placeholder="Link.com" (ngModelChange)="handleChange()">
+                        <small *ngIf="this.loginForm.get('link')?.errors?.['required']" class="text-danger">
+                            Link must not be empty
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="logo">Logo:</label>
+                        <select formControlName="logo" class="form-select form-select-sm"  aria-describedby="logo select" aria-label=".form-select-sm example" (ngModelChange)="handleChange()">
+                            <option value="w.png">Whatsapp</option>
+                            <option value="yt.png">Youtube</option>
+                            <option value="f.png">Facebook</option>
+                            <option value="i.png">Instagram</option>
+                            <option value="t.png">Twitter</option>
+                            <option value="fm.png">Facebook Messenger</option>
+                            <option value="l.png">LinkedIn</option>
+                            <option value="p.png">Pinterest</option>
+                            <option value="o.png">Other</option>
+                        </select>
+                        <small *ngIf="this.loginForm.get('logo')?.errors?.['required']" class="text-danger">
+                            Logo must not be empty
+                        </small>
+                    </div>
+                    <button id="btnSubmit" type="submit" aria-label="Close" data-toggle="modal"
+                        class="btn bg-black text-light w-100 my-2 rounded">Add</button>
+                </form>
+                <div class="text-danger">{{resultado}}</div>
+            </div>
         </div>
     </div>
 </div>

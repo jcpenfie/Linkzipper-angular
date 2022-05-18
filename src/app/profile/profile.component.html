@@ -3,11 +3,11 @@
     <div class="d-flex justify-content-center flex-column align-items-center">
         <app-card-profile [user]="user" color="white" btn="false"></app-card-profile>
     <div *ngFor="let link of user.links;let i=index">
-        <a href="{{link[1]}}" style="color: black;">
+        <a href="{{link[2]}}" style="color: black;">
             <div class="linkCard card d-flex flex-row align-items-center m-2 " style="max-width: 550px;">
-                <img class="card-img-left m-2" src="assets/img/{{link[2]}}" alt="{{link[0]}} logo" width="10%">
+                <img class="card-img-left m-2" src="assets/img/logos/{{link[3]}}" alt="{{link[1]}} logo" width="10%">
                 <div class="card-body">
-                    <h5 class="card-title display-6">{{link[0]}}</h5>
+                    <h5 class="card-title display-6">{{link[1]}}</h5>
                 </div>
             </div>
         </a>

@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
     theme: "white",
     img: "profile.png",
     bgImg: "bgimg.jpg",
-    links: [["Linkedin", "https://linkedin.es", "logLinkedin.png"], ["Linkedin", "https://linkedin.es", "logLinkedin.png"], ["Linkedin", "https://linkedin.es", "logLinkedin.png"], ["Linkedin", "https://linkedin.es", "logLinkedin.png"], ["Linkedin", "https://linkedin.es", "logLinkedin.png"]]
+    links: [["Instagram", "https://linkedin.es", "i.png"], ["Whatsapp", "https://linkedin.es", "w.png"], ["Youtube", "https://linkedin.es", "yt.png"], ["GitHub", "https://linkedin.es", "o.png"], ["Linkedin", "https://linkedin.es", "l.png"]]
   }: this.userInput
     
 
