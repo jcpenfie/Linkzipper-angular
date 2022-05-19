@@ -13,6 +13,9 @@ input::placeholder {
 .boton {
     color: #FFFFFB;
 }
+.nav-link{
+    cursor: pointer;
+}
 
 @media screen and (max-width: 991px) {
 

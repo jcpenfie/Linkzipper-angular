@@ -1,10 +1,10 @@
 <div class="container">
     <a class="btn negro text-light m-3 px-5 py-2" id="profile" data-toggle="modal" data-target="#AddLinkModal">Add
         Link</a>
-    <div class="d-flex flex-column align-items-center">
+    <div class="d-flex align-items-center card-group justify-content-around">
         <div *ngFor="let link of user.links;let i=index">
-            <div style="color: black;">
-                <div class="linkCard card d-flex flex-row align-items-center m-2 " style="max-width: 550px;">
+            <div class="p-2" style="color: black;">
+                <div class=" col-sm-12 card linkCard d-flex flex-row align-items-center round " style="max-width: 550px;">
                     <i class="fa-solid fa-xmark m-2" id="{{link[0]}}" (click)="delete(link)"></i>
 
                     <img class="card-img-left m-2" src="assets/img/logos/{{link[3]}}" alt="{{link[1]}} logo" width="10%">
