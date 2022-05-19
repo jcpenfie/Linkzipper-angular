@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { Validators, FormBuilder } from '@angular/forms';
+import { ValidacionesPropias } from '../validaciones-propias';
 
 @Component({
   selector: 'app-panel-links',
@@ -26,7 +27,7 @@ export class PanelLinksComponent implements OnInit {
 
   loginForm = this.fb.group({
     title: ['', [Validators.required]],
-    link: ['', [Validators.required]],
+    link: ['', [Validators.required, ValidacionesPropias.linkValid]],
     logo: ['',[Validators.required]],
   },{});
 

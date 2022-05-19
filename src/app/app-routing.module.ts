@@ -30,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'panel/profile',
-    component: ProfileComponent
+    component: PanelPreviewComponent
   },
   {
     path: 'panel/links',
@@ -38,7 +38,7 @@ const routes: Routes = [
   },
   {
     path: 'panel/preview',
-    component: PanelPreviewComponent
+    component: ProfileComponent
   },
   {
     path: 'likes',

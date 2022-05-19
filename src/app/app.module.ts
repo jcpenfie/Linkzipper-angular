@@ -18,6 +18,7 @@ import { CardProfileComponent } from './card-profile/card-profile.component';
 import { PanelPreviewComponent } from './panel-preview/panel-preview.component';
 import { PanelLinksComponent } from './panel-links/panel-links.component';
 import { PanelProfileComponent } from './panel-profile/panel-profile.component';
+import { UserLikesComponent } from './user-likes/user-likes.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PanelProfileComponent } from './panel-profile/panel-profile.component';
     CardProfileComponent,
     PanelPreviewComponent,
     PanelLinksComponent,
-    PanelProfileComponent,    
+    PanelProfileComponent,
+    UserLikesComponent,    
   ],
   imports: [
     BrowserModule,

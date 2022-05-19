@@ -8,6 +8,14 @@ export class ValidacionesPropias {
         else
             return { passwordValid: true }
     }
+    static linkValid(control: AbstractControl): ValidationErrors | null {
+
+        let valid = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/;
+        if (valid.test(control.value))
+            return null;
+        else
+            return { linkValid: true }
+    }
 
     static match(control: AbstractControl): ValidationErrors | null {
         const password = control.get("pass")!.value;
