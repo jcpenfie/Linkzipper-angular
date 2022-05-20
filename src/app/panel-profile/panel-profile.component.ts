@@ -15,6 +15,8 @@ export class PanelProfileComponent implements OnInit {
   themeSelect = ""
 
   routerU = this.router
+  
+  user = AppComponent.userLogin
 
   constructor(private fb: FormBuilder, private router: ActivatedRoute) { }
 

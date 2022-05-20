@@ -15,14 +15,16 @@
     </div>
 
     <form [formGroup]="profileForm" (ngSubmit)="submit()" class="gridForm cardInput">
-        <div class="profileImg">
-            <div class="form-group col-xxl-6 col-xl-6 col-lg-6 col-md-12">
-                <label for="displayName">Display Username:</label>
-                <input type="text" formControlName="displayName" class="form-control" id="displayName"
-                    aria-describedby="username input" placeholder="UserName">
-                <small *ngIf="this.profileForm.get('displayName')?.errors?.['required']" class="text-danger">
-                    Display Name must not be empty
-                </small>
+
+        <div class="infoButtons">
+            <p>@{{user.user}}Likes{{user.likes}}</p>
+            <a routerLink="/likes">See Likes</a>
+        </div>
+
+        <div class="profileImg p-2 ">
+            <label for="formFile" class="form-label">Profile Imagen:</label>
+            <div class="fileStyle">
+                <input class="form-control file" type="file" id="formFile" style="height: 90%;">
             </div>
         </div>
         <div class="data">
@@ -77,7 +79,15 @@
             </div>
         </div>
 
+        <div class="bgImg p-2 ">
+            <label for="formFile" class="form-label">Background Imagen:</label>
+            <div class="fileStyle">
+                <input class="form-control file" type="file" id="formFile" style="height: 90%;">
+            </div>
+        </div>
+
         <div class="desc m-2">
+            <label for="desc" class="form-label">Description:</label>
             <textarea class="form-control rounded" name="desc" id="desc"
                 style="height: 100px; background-color: #E9E6E1;" maxlength="200"></textarea>
         </div>
