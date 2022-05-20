@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ExplorerComponent } from './explorer/explorer.component';
 import { IndexComponent } from './index/index.component';
 import { PanelLinksComponent } from './panel-links/panel-links.component';
-import { PanelPreviewComponent } from './panel-preview/panel-preview.component';
+import { PanelProfileComponent } from './panel-profile/panel-profile.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TermsComponent } from './terms/terms.component';
 
@@ -26,11 +26,11 @@ const routes: Routes = [
   },
   {
     path: 'panel',
-    component: PanelPreviewComponent
+    component: PanelProfileComponent
   },
   {
     path: 'panel/profile',
-    component: PanelPreviewComponent
+    component: PanelProfileComponent
   },
   {
     path: 'panel/links',

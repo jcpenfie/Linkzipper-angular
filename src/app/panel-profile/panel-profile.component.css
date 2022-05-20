@@ -1,0 +1,71 @@
+/* grid formulario */
+.gridForm {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.profileImg {
+    grid-area: 1 / 1 / 4 / 2;
+}
+
+.data {
+    grid-area: 2 / 2 / 4 / 4;
+}
+
+.bgImg {
+    grid-area: 1 / 4 / 4 / 5;
+}
+
+.infoButtons {
+    grid-area: 1 / 2 / 2 / 4;
+}
+
+.desc {
+    grid-area: 4 / 1 / 5 / 4;
+}
+
+.buttons {
+    grid-area: 4 / 4 / 5 / 5;
+}
+
+.cardInput {
+    background-color: #fffffb;
+    border: 1px solid black;
+    border-radius: 27px;
+}
+
+/* grid link */
+
+.gridLink {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.div1 { grid-area: 1 / 1 / 2 / 4; 
+    font-size: 2rem;}
+    .div2 { grid-area: 1 / 4 / 2 / 6; }
+
+@media screen and (max-width:1024px){
+    .div1{
+        font-size: 1.5rem;
+        justify-content: start !important;
+    }
+}
+@media screen and (max-width:768px){
+    .div1{
+        font-size: 1.3rem;
+        justify-content: start !important;
+    }
+}
+@media screen and (max-width:576px){
+    .div1 { grid-area: 1 / 1 / 2 / 6; 
+    visibility: hidden;}
+    .div2 { grid-area: 1 / 1 / 2 / 6; 
+        justify-content: space-around;}
+}

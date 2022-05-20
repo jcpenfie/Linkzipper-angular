@@ -15,7 +15,6 @@ import { ExplorerComponent } from './explorer/explorer.component';
 import { RouterModule, UrlSegment } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { CardProfileComponent } from './card-profile/card-profile.component';
-import { PanelPreviewComponent } from './panel-preview/panel-preview.component';
 import { PanelLinksComponent } from './panel-links/panel-links.component';
 import { PanelProfileComponent } from './panel-profile/panel-profile.component';
 import { UserLikesComponent } from './user-likes/user-likes.component';
@@ -33,7 +32,6 @@ import { UserLikesComponent } from './user-likes/user-likes.component';
     ExplorerComponent,
     ProfileComponent,
     CardProfileComponent,
-    PanelPreviewComponent,
     PanelLinksComponent,
     PanelProfileComponent,
     UserLikesComponent,    
