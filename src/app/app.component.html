@@ -1,14 +1,14 @@
 <div class="container">
   <!-- Nav -->
-  <boot-nav *ngIf="showMenuHead" [opciones]="opciones" colorfondo="blanco"></boot-nav>
-  <app-nav-login *ngIf="showMenuLogin"></app-nav-login>
+  <boot-nav class="navApp" *ngIf="showMenuHead" [opciones]="opciones" colorfondo="blanco"></boot-nav>
+  <app-nav-login class="navApp" *ngIf="showMenuLogin"></app-nav-login>
   
   <!-- Contenido -->
-  <div style="background-color: #E9E6E1;">
+  <div class="content" style="background-color: #E9E6E1;">
     <router-outlet></router-outlet>
   </div>
   
 
   <!-- Footer -->
-  <boot-footer *ngIf="showMenuFoot"></boot-footer>
+  <boot-footer class="footer" *ngIf="showMenuFoot"></boot-footer>
 </div>
