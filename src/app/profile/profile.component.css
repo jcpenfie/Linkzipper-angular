@@ -1,15 +1,26 @@
-.container{
-    /* height: 100vh; */
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+.cont {
+  /* height: 100vh; */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin:0;
 }
 
-.linkCard{
-    border-radius: 20px;
-    border: 2px solid black;
+.linkCard {
+  border-radius: 20px;
+  border: 2px solid black;
 }
 
-a{
-    color: black;
+a {
+  color: black;
+}
+
+/* Trick */
+.cont{ 
+  display:flex; 
+  flex-direction:column; 
+}
+
+.linkZipper{
+  margin-top:auto; 
 }

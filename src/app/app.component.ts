@@ -25,6 +25,7 @@ export class AppComponent implements OnInit{
     theme: "white",
     img: "profile.png",
     bgImg: "bgimg.jpg",
+    public: false,
     links: [[1,"Linkedin1", "https://linkedin.es", "w.png"], [2,"Linkedin2", "https://linkedin.es", "l.png"], [3,"Linkedin3", "https://linkedin.es", "yt.png"], [4,"Linkedin4", "https://linkedin.es", "p.png"], [5,"Linkedin5", "https://linkedin.es", "o.png"]]
   };
 

@@ -1,9 +1,22 @@
-.navApp{
-    min-height: 10vh;
+.cont {
+    height: 100vh;
+    margin: 0;
 }
-.content{
-    min-height: 80vh;
+
+.navApp {
+    min-height: 50px;
 }
-.footer{
-    min-height: 10vh;
+
+.footer {
+    min-height: 50px;
+}
+
+/* Trick */
+.cont {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    margin-top: auto;
 }

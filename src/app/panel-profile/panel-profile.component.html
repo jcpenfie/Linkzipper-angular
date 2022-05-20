@@ -1,25 +1,35 @@
 <div class="container">
-    <div class="cardInput gridLink">
+    <div class="cardInput gridLink m-2">
         <div class="d-flex align-items-center justify-content-center div1 inline-flex">
-            <p class="col-xxl-9 col-xl-6 col-lg-7 col-md-6 m-2" type="text" placeholder="" id="url"></p>
+            <p class="text-fluid  m-2" id="url"></p>
         </div>
 
         <div class="d-flex div2">
             <button type="submit"
-                class="btn bg-black text-light col-xxl-6 col-xl-6 col-lg-5 col-md-5 col-sm-10 m-2 rounded"
+                class="btn bg-black text-light col-xxl-6 col-xl-6 col-lg-5 col-md-5 col-sm-5 m-2 rounded"
                 (click)="copy()">Copy Link</button>
-            <button type="reset" class="btn gris text-dark col-xxl-5 col-xl-6 col-lg-5 col-md-5 col-sm-10 m-2 rounded"
+            <button type="reset" class="btn gris text-dark col-xxl-5 col-xl-6 col-lg-5 col-md-5 col-sm-5 m-2 rounded"
                 routerLink="/panel/preview">Preview</button>
         </div>
 
     </div>
 
-    <form [formGroup]="profileForm" (ngSubmit)="submit()" class="gridForm cardInput">
+    <form [formGroup]="profileForm" (ngSubmit)="submit()" class="gridForm cardInput m-2">
 
-        <div class="infoButtons">
-            <p>@{{user.user}}Likes{{user.likes}}</p>
-            <a routerLink="/likes">See Likes</a>
+        <div class="infoButtons d-flex align-items-center justify-content-between mt-5">
+           
+                <div class="d-flex">
+                    <p class="text-fluid">@{{user.user}} <i class="fa fa-heart" style="color: red;" aria-hidden="true"></i> {{user.likes}}</p>
+                </div>
+                <p routerLink="/likes" class="see text-fluid m-2">See Likes</p>
+                <div class="toggle-switch d-flex">
+                    <i class="fa-solid fa-earth-americas mx-2" id="inconoSwitch"></i>
+                    <input type="checkbox" id="toggle-switch" (click)="checkSwitch()">
+                    <label for="toggle-switch" ></label>
+                </div>
+            
         </div>
+
 
         <div class="profileImg p-2 ">
             <label for="formFile" class="form-label">Profile Imagen:</label>

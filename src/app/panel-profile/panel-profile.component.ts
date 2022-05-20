@@ -23,6 +23,16 @@ export class PanelProfileComponent implements OnInit {
   ngOnInit(): void {
     let url: any = document.getElementById("url");
     url.innerHTML = `${window.location.origin}/@${AppComponent.userLogin.user}`;
+    
+    let icono = document.getElementById("inconoSwitch")
+    let check = document.getElementById("toggle-switch")
+    if(this.user.public){
+      icono?.setAttribute("class", "fa-solid fa-earth-americas mx-2")
+      check?.setAttribute("checked","checked")
+    }else{
+      icono?.setAttribute("class", "switchIconDes fa-solid fa-earth-americas mx-2")
+      check?.removeAttribute("checked")
+    }
   }
 
   profileForm = this.fb.group({
@@ -44,6 +54,23 @@ export class PanelProfileComponent implements OnInit {
     let url: any = document.getElementById("url");
     window.getSelection()!.selectAllChildren(url);
     document.execCommand("Copy")
+  }
+
+  checkSwitch(){
+    console.log(this.user.public);
+    
+    let icono = document.getElementById("inconoSwitch")
+    let check = document.getElementById("toggle-switch")
+    if(this.user.public){
+      icono?.setAttribute("class", "switchIconDes fa-solid fa-earth-americas mx-2")
+      check?.setAttribute("checked","checked")
+      this.user.public = false
+    }else{
+      icono?.setAttribute("class", "fa-solid fa-earth-americas mx-2")
+      check?.removeAttribute("checked")
+      this.user.public = true
+
+    }
   }
 
 }

@@ -1,6 +1,6 @@
-<div class="container"
-    style="background-image: url('assets/img/{{user.bgImg}}');">
-    <div class="d-flex justify-content-center flex-column align-items-center">
+<div class="cont"
+    style="background-image: url('assets/img/{{user.bgImg}}'); {{heigth}}">
+    <div class="d-flex justify-content-center flex-column align-items-center mt-auto">
         <app-card-profile [user]="user" color="white" btn="false"></app-card-profile>
     <div *ngFor="let link of user.links;let i=index">
         <a href="{{link[2]}}" style="color: black;">
@@ -13,5 +13,5 @@
         </a>
     </div>
     </div>
-    <a class="display-5 p-2 d-flex" routerLink="/index"><span class="fw-800">Link</span>Zipper</a>
+    <a class="linkZipper display-5 p-2 d-flex" routerLink="/index"><span class="fw-800">Link</span>Zipper</a>
 </div>

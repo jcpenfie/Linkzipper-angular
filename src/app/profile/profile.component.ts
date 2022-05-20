@@ -18,6 +18,9 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  heigth = this.username? "height: 100vh;"
+  : "height: 100vh;"
+
 
 
   user = this.username? {
@@ -28,6 +31,7 @@ export class ProfileComponent implements OnInit {
     theme: "white",
     img: "profile.png",
     bgImg: "bgimg.jpg",
+    public: true,
     links: [[1,"Instagram", "https://linkedin.es", "i.png"], [2,"Whatsapp", "https://linkedin.es", "w.png"], [3,"Youtube", "https://linkedin.es", "yt.png"], [4,"GitHub", "https://linkedin.es", "o.png"], [5,"Linkedin", "https://linkedin.es", "l.png"]]
   }: this.userInput
     
