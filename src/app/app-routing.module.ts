@@ -47,6 +47,10 @@ const routes: Routes = [
   {
     path: 'search',
     component: TermsComponent
+  },
+  {
+    path: 'help',
+    component: TermsComponent
   }
 ];
 
