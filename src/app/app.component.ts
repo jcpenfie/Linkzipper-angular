@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
 
   public static userLogin: any = {
     id: 1,
-    user: "userName",
+    user: "moi",
     descr: "DescLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam",
     likes: 23,
     theme: "white",
