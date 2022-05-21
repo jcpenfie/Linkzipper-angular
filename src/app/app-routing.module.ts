@@ -21,7 +21,7 @@ const routes: Routes = [
     component: TermsComponent
   },
   {
-    path: 'EXPLORE',
+    path: 'explore',
     component: ExplorerComponent
   },
   {

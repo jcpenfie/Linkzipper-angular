@@ -1,13 +1,15 @@
+<a class="btn negro text-light m-3 px-5 py-2 " id="profile" data-toggle="modal" data-target="#AddLinkModal">Add
+    Link</a>
 <div class="container">
-    <a class="btn negro text-light m-3 px-5 py-2" id="profile" data-toggle="modal" data-target="#AddLinkModal">Add
-        Link</a>
     <div class="d-flex align-items-center card-group justify-content-around">
         <div *ngFor="let link of user.links;let i=index">
             <div class="p-2" style="color: black;">
-                <div class=" col-sm-12 card linkCard d-flex flex-row align-items-center round " style="max-width: 550px;">
+                <div class="card linkCard d-flex flex-row align-items-center round "
+                    style="max-width: 550px;">
                     <i class="fa-solid fa-xmark m-2" id="{{link[0]}}" (click)="delete(link)"></i>
 
-                    <img class="card-img-left m-2" src="assets/img/logos/{{link[3]}}" alt="{{link[1]}} logo" width="10%">
+                    <img class="card-img-left m-2" src="assets/img/logos/{{link[3]}}" alt="{{link[1]}} logo"
+                        width="10%">
                     <div class="card-body">
                         <h2>{{link[1]}}</h2>
                         <p>{{link[2]}}</p>
@@ -60,7 +62,8 @@
 
                     <div class="form-group">
                         <label for="logo">Logo:</label>
-                        <select formControlName="logo" class="form-select form-select-sm"  aria-describedby="logo select" aria-label=".form-select-sm example" (ngModelChange)="handleChange()">
+                        <select formControlName="logo" class="form-select form-select-sm" aria-describedby="logo select"
+                            aria-label=".form-select-sm example" (ngModelChange)="handleChange()">
                             <option value="w.png">Whatsapp</option>
                             <option value="yt.png">Youtube</option>
                             <option value="f.png">Facebook</option>

@@ -12,8 +12,6 @@ export class AppComponent implements OnInit{
   showMenuHead: boolean = true
   showMenuFoot: boolean = true
   showMenuLogin: boolean = false
-  
-  opciones = ["EXPLORE"];
 
   constructor(private router: Router) {  }
 

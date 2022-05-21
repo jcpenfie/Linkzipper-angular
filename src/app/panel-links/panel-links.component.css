@@ -11,3 +11,9 @@ a{
     font-size: 30px;
     cursor: pointer;
 }
+
+@media screen and (max-width: 991px) {
+    .card-group{
+        flex-direction: column !important;
+    }
+}

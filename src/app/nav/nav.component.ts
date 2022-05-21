@@ -8,9 +8,6 @@ import { AppComponent } from '../app.component';
 })
 export class NavComponent implements OnInit {
 
-  @Input() opciones!: string[];
-  @Input() colorfondo!: string;
-
   login = false
 
   ngOnInit(): void {
