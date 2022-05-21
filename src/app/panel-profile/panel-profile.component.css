@@ -173,3 +173,9 @@ color: grey;
 .see{
   cursor:pointer;
 }
+
+.div1{
+  background-color: #E9E6E1;
+  border-radius: 27px;
+  margin: 10px;
+}

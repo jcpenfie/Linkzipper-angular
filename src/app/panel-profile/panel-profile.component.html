@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pt-5">
     <div class="cardInput gridLink m-2">
         <div class="d-flex align-items-center justify-content-center div1 inline-flex">
             <p class="text-fluid  m-2" id="url"></p>
@@ -6,7 +6,7 @@
 
         <div class="d-flex div2">
             <button type="submit"
-                class="btn bg-black text-light col-xxl-6 col-xl-6 col-lg-5 col-md-5 col-sm-5 m-2 rounded"
+                class="btn negro text-light col-xxl-6 col-xl-5 col-lg-5 col-md-5 col-sm-5 m-2 rounded"
                 (click)="copy()">Copy Link</button>
             <button type="reset" class="btn gris text-dark col-xxl-5 col-xl-6 col-lg-5 col-md-5 col-sm-5 m-2 rounded"
                 routerLink="/panel/preview">Preview</button>
@@ -102,8 +102,8 @@
                 style="height: 100px; background-color: #E9E6E1;" maxlength="200"></textarea>
         </div>
 
-        <div class="buttons m-2">
-            <button type="submit" class="btn bg-black text-light w-100 my-2 rounded">Save</button>
+        <div class="buttons m-2 d-flex flex-column justify-content-end">
+            <button type="submit" class="btn negro text-light w-100 my-2 rounded">Save</button>
             <button type="reset" class="btn bg-light text-dark w-100 my-2 rounded">Reset</button>
         </div>
     </form>

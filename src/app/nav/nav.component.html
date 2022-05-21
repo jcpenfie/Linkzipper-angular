@@ -24,8 +24,10 @@
             <li class="nav-item" *ngFor="let opcion of opciones;let i=index">
                 <a class="nav-link" routerLink="{{opcion}}" id="{{opcion}}" data-toggle="" data-target="">{{opcion}}</a>
             </li>
-            <a class="nav-link"  id="REGISTER" data-toggle="modal" data-target="#REGISTERModal">REGISTER</a>
-            <a class="nav-link"  id="LOGIN" data-toggle="modal" data-target="#LOGINModal">LOGIN</a>
+            <a class="nav-link" *ngIf="login" id="REGISTER" data-toggle="modal" data-target="#REGISTERModal">REGISTER</a>
+            <a class="nav-link" *ngIf="login" id="LOGIN" data-toggle="modal" data-target="#LOGINModal">LOGIN</a>
+            <a class="nav-link" *ngIf="!login" id="panelBtn" routerLink="panel">PANEL</a>
+            <a class="btn negro text-light" *ngIf="!login" id="profileBtn" routerLink="">LOGOUT</a>
 
         </ul>
     </div>

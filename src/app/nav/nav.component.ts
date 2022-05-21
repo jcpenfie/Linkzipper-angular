@@ -1,4 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'boot-nav',
@@ -10,9 +11,15 @@ export class NavComponent implements OnInit {
   @Input() opciones!: string[];
   @Input() colorfondo!: string;
 
-
-
+  login = false
 
   ngOnInit(): void {
+
+    if(Object.keys(AppComponent.userLogin).length === 0){
+      this.login = true
+    }else{
+      this.login = false
+    }
+    
   }
 }
