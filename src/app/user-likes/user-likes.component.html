@@ -1,0 +1,5 @@
+<div class="card-group justify-content-evenly pt-5">
+    <div *ngFor="let user of users;let i=index">
+        <app-card-profile [user]="user" [liked]=true (disLikeEmit)="disLike($event)"></app-card-profile>
+    </div>
+</div>
