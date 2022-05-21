@@ -1,7 +1,7 @@
 <div class="cont pt-5"
     style="background-image: url('assets/img/{{user.bgImg}}'); {{heigth}}">
     <div class="d-flex justify-content-center flex-column align-items-center mt-auto">
-        <app-card-profile [user]="user" color="white" btn="false"></app-card-profile>
+        <app-card-profile [user]="user" color="white" btn="false" [liked]="true"></app-card-profile>
     <div *ngFor="let link of user.links;let i=index">
         <a href="{{link[2]}}" style="color: black;">
             <div class="linkCard card d-flex flex-row align-items-center m-2 " style="max-width: 550px;">

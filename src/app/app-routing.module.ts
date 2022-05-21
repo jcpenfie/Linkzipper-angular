@@ -42,7 +42,7 @@ const routes: Routes = [
     component: ProfileComponent
   },
   {
-    path: 'likes',
+    path: 'panel/likes',
     component: UserLikesComponent
   },
   {
