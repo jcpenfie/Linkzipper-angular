@@ -1,19 +1,19 @@
-.nav-selected{
+.nav-selected {
     text-decoration: underline;
 }
 
-.navbar{
+.navbar {
     z-index: 2;
 }
 
 @media screen and (max-width: 991px) {
-    .navbar{
+    .navbar {
         align-items: center;
         font-size: 30px;
     }
 
-    .linksNav{
-        /* display: flex; bugggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg*/
+    .linksNav {
+        display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;

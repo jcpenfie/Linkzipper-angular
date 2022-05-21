@@ -6,6 +6,7 @@ import { PanelLinksComponent } from './panel-links/panel-links.component';
 import { PanelProfileComponent } from './panel-profile/panel-profile.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TermsComponent } from './terms/terms.component';
+import { UserLikesComponent } from './user-likes/user-likes.component';
 
 const routes: Routes = [
   {
@@ -42,7 +43,7 @@ const routes: Routes = [
   },
   {
     path: 'likes',
-    component: TermsComponent
+    component: UserLikesComponent
   },
   {
     path: 'search',
