@@ -18,6 +18,8 @@ import { CardProfileComponent } from './card-profile/card-profile.component';
 import { PanelLinksComponent } from './panel-links/panel-links.component';
 import { PanelProfileComponent } from './panel-profile/panel-profile.component';
 import { UserLikesComponent } from './user-likes/user-likes.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { UserLikesComponent } from './user-likes/user-likes.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot([{
       matcher: (url) => {
         if (url.length === 1 && url[0].path.match(/^@[\w]+$/gm)) {
