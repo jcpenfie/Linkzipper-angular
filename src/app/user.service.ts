@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -30,16 +29,17 @@ export class UserService {
   }
 
   token(token: any) {
-    console.log(token.access_token);
     
-    let body = new URLSearchParams();
+    let headers = new HttpHeaders().set('Authorization', `${token.token_type} ${token.access_token}`);
+    console.log(headers);
 
-    let options = {
-      headers: this.headers,
-      'Authorization': 'Bearer' + token.access_token
-    };
-
-    return this.http.post(`${this.url}/getUserLogin`, body.toString(), options)
+    return this.http.get(`${this.url}/getUserLogin`, { headers: headers })
   }
+  getUser(token: any) {
+    
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    console.log(headers);
 
+    return this.http.get(`${this.url}/getUserLogin`, { headers: headers })
+  }
 }

@@ -17,8 +17,10 @@ export class AppComponent implements OnInit{
   constructor(private router: Router) {  }
 
   public static userLogin: any = {};
+  
 
   ngOnInit(): void {
+    
     this.router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         if(!event.url.startsWith("/@")){

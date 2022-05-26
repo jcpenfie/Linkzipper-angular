@@ -11,6 +11,11 @@ export class NavLoginComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+
+    if(localStorage.getItem("token") == null){      
+      this.router.navigate(['/'])
+    }
+
     this.router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         if (event.url.startsWith("/panel")) {
@@ -39,5 +44,9 @@ export class NavLoginComponent implements OnInit {
         }
       }
     });
+  }
+
+  logout(){
+    localStorage.removeItem("token")
   }
 }

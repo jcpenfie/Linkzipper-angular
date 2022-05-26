@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../app.component';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-panel-profile',
@@ -12,27 +13,34 @@ export class PanelProfileComponent implements OnInit {
 
   resultado!: string;
 
-  themeSelect = ""
-
   routerU = this.router
-  
-  user = AppComponent.userLogin
 
-  constructor(private fb: FormBuilder, private router: ActivatedRoute) { }
+  user: any = {
+    backgroundImg: "",
+    description: "",
+    email: "",
+    email_verified_at: null,
+    id: null,
+    profileImg: "",
+    publicAccount: null,
+    showName: "",
+    theme: "",
+    totalLikes: "",
+    userName: "",
+  }
+
+  constructor(private fb: FormBuilder, private router: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit(): void {
-    let url: any = document.getElementById("url");
-    url.innerHTML = `${window.location.origin}/@${AppComponent.userLogin.user}`;
-    
-    let icono = document.getElementById("inconoSwitch")
-    let check = document.getElementById("toggle-switch")
-    if(this.user.public){
-      icono?.setAttribute("class", "fa-solid fa-earth-americas mx-2")
-      check?.setAttribute("checked","checked")
-    }else{
-      icono?.setAttribute("class", "switchIconDes fa-solid fa-earth-americas mx-2")
-      check?.removeAttribute("checked")
+    if (localStorage.getItem("token") != null) {
+      this.userService.getUser(localStorage.getItem("token")).subscribe(res => {
+        this.setUser(res)
+      })
     }
+
+    if (this.user != {}) {
+    }
+
   }
 
   profileForm = this.fb.group({
@@ -56,20 +64,36 @@ export class PanelProfileComponent implements OnInit {
     document.execCommand("Copy")
   }
 
-  checkSwitch(){
+  checkSwitch() {
     console.log(this.user.public);
-    
+
     let icono = document.getElementById("inconoSwitch")
     let check = document.getElementById("toggle-switch")
-    if(this.user.public){
+    if (this.user.public) {
       icono?.setAttribute("class", "switchIconDes fa-solid fa-earth-americas mx-2")
-      check?.setAttribute("checked","checked")
+      check?.setAttribute("checked", "checked")
       this.user.public = false
-    }else{
+    } else {
       icono?.setAttribute("class", "fa-solid fa-earth-americas mx-2")
       check?.removeAttribute("checked")
       this.user.public = true
 
+    }
+  }
+
+  setUser(data: any) {
+    this.user = data;
+    let url: any = document.getElementById("url");
+    url.innerHTML = `${window.location.origin}/@${this.user.userName}`;
+
+    let icono = document.getElementById("inconoSwitch")
+    let check = document.getElementById("toggle-switch")
+    if (this.user.publicAccount) {
+      icono?.setAttribute("class", "fa-solid fa-earth-americas mx-2")
+      check?.setAttribute("checked", "checked")
+    } else {
+      icono?.setAttribute("class", "switchIconDes fa-solid fa-earth-americas mx-2")
+      check?.removeAttribute("checked")
     }
   }
 

@@ -5,8 +5,7 @@
         </div>
 
         <div class="d-flex div2">
-            <button type="submit"
-                class="btn negro text-light col-xxl-6 col-xl-5 col-lg-5 col-md-5 col-sm-5 m-2 rounded"
+            <button type="submit" class="btn negro text-light col-xxl-6 col-xl-5 col-lg-5 col-md-5 col-sm-5 m-2 rounded"
                 (click)="copy()">Copy Link</button>
             <button type="reset" class="btn gris text-dark col-xxl-5 col-xl-6 col-lg-5 col-md-5 col-sm-5 m-2 rounded"
                 routerLink="/panel/preview">Preview</button>
@@ -17,24 +16,25 @@
     <form [formGroup]="profileForm" (ngSubmit)="submit()" class="gridForm cardInput m-2">
 
         <div class="infoButtons d-flex align-items-center justify-content-between mt-5">
-           
-                <div class="d-flex">
-                    <p class="text-fluid">@{{user.user}} <i class="fa fa-heart" style="color: red;" aria-hidden="true"></i> {{user.likes}}</p>
-                </div>
-                <p routerLink="likes" class="see text-fluid m-2">See Likes</p>
-                <div class="toggle-switch d-flex">
-                    <i class="fa-solid fa-earth-americas mx-2" id="inconoSwitch"></i>
-                    <input type="checkbox" id="toggle-switch" (click)="checkSwitch()">
-                    <label for="toggle-switch" ></label>
-                </div>
-            
+
+            <div class="d-flex">
+                <p class="text-fluid">@{{user.userName}} <i class="fa fa-heart" style="color: red;" aria-hidden="true"></i>
+                    {{user.totalLikes}}</p>
+            </div>
+            <p routerLink="likes" class="see text-fluid m-2">See Likes</p>
+            <div class="toggle-switch d-flex">
+                <i class="fa-solid fa-earth-americas mx-2" id="inconoSwitch"></i>
+                <input type="checkbox" id="toggle-switch" (click)="checkSwitch()">
+                <label for="toggle-switch"></label>
+            </div>
+
         </div>
 
 
         <div class="profileImg p-2 ">
             <label for="formFile" class="form-label">Profile Imagen:</label>
             <div class="fileStyle">
-                <input class="form-control file" type="file" id="formFile" style="height: 90%;">
+                <input class="form-control file" type="file" id="formFilePro" style="height: 90%;">
             </div>
         </div>
         <div class="data">
@@ -42,7 +42,7 @@
                 <div class="form-group col-xxl-6 col-xl-6 col-lg-6 col-md-12">
                     <label for="displayName">Display Username:</label>
                     <input type="text" formControlName="displayName" class="form-control" id="displayName"
-                        aria-describedby="username input" placeholder="UserName">
+                        aria-describedby="username input" placeholder="{{user.showName}}">
                     <small *ngIf="this.profileForm.get('displayName')?.errors?.['required']" class="text-danger">
                         Display Name must not be empty
                     </small>
@@ -50,7 +50,7 @@
                 <div class="form-group col-xxl-6 col-xl-6 col-lg-6 col-md-12">
                     <label for="email">Email:</label>
                     <input type="email" formControlName="email" class="form-control" id="email"
-                        aria-describedby="email input" placeholder="Email">
+                        aria-describedby="email input" placeholder="{{user.email}}">
                     <small *ngIf="this.profileForm.get('email')?.errors?.['required']" class="text-danger">
                         Email must not be empty
                     </small>
@@ -73,8 +73,8 @@
                 </div>
                 <div class="form-group col-xxl-6 col-xl-6 col-lg-6 col-md-12">
                     <label for="theme">Theme:</label>
-                    <select [(ngModel)]='themeSelect' formControlName="theme" class="form-select form-select-sm"
-                        aria-describedby="theme select" aria-label=".form-select-sm example">
+                    <select formControlName="theme" class="form-select form-select-sm" aria-describedby="theme select"
+                        aria-label=".form-select-sm example">
                         <option value=""></option>
                         <option value="white">White</option>
                         <option value="dark">Dark</option>
@@ -92,13 +92,13 @@
         <div class="bgImg p-2 ">
             <label for="formFile" class="form-label">Background Imagen:</label>
             <div class="fileStyle">
-                <input class="form-control file" type="file" id="formFile" style="height: 90%;">
+                <input class="form-control file" type="file" id="formFileBg" style="height: 90%;">
             </div>
         </div>
 
         <div class="desc m-2">
             <label for="desc" class="form-label">Description:</label>
-            <textarea class="form-control rounded" name="desc" id="desc"
+            <textarea class="form-control rounded" name="desc" id="desc" placeholder="{{user.description}}"
                 style="height: 100px; background-color: #E9E6E1;" maxlength="200"></textarea>
         </div>
 
