@@ -22,6 +22,7 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     
     this.router.events.forEach((event) => {
+      
       if (event instanceof NavigationStart) {
         if(!event.url.startsWith("/@")){
           this.showMenuHead = true
@@ -30,10 +31,8 @@ export class AppComponent implements OnInit{
             this.showMenuHead = false
             this.showMenuFoot = true
             this.showMenuLogin = true
-
           }else{
             this.showMenuLogin = false
-
           }
         }else{
           this.showMenuHead = false

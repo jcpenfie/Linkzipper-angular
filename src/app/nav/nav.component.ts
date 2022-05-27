@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { AppComponent } from '../app.component';
+import { Router } from "@angular/router"
 
 @Component({
   selector: 'boot-nav',
@@ -8,15 +8,20 @@ import { AppComponent } from '../app.component';
 })
 export class NavComponent implements OnInit {
 
+  constructor(private router: Router){}
   login = false
 
   ngOnInit(): void {
 
-    if(Object.keys(AppComponent.userLogin).length === 0){
+    if(localStorage.getItem("token") == null){
       this.login = true
     }else{
       this.login = false
     }
-    
+  }
+
+  logout() {
+    localStorage.removeItem("token")
+    location.reload()
   }
 }

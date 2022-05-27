@@ -12,7 +12,7 @@ import { UserService } from '../user.service';
 export class ModalLoginComponent implements OnInit {
 
   ngOnInit(): void {
-    localStorage.removeItem("token")
+    // localStorage.removeItem("token")
   }
   userInput!: any
 

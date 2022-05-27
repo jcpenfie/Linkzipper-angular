@@ -25,7 +25,7 @@
             <a class="nav-link" *ngIf="login" id="REGISTER" data-toggle="modal" data-target="#REGISTERModal">REGISTER</a>
             <a class="nav-link" *ngIf="login" id="LOGIN" data-toggle="modal" data-target="#LOGINModal">LOGIN</a>
             <a class="nav-link" *ngIf="!login" id="panelBtn" routerLink="panel">PANEL</a>
-            <a class="btn negro text-light" *ngIf="!login" id="profileBtn" routerLink="">LOGOUT</a>
+            <a class="btn negro text-light" *ngIf="!login" id="profileBtn" (click) = "logout()">LOGOUT</a>
 
         </ul>
     </div>
