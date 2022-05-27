@@ -36,7 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
     CardProfileComponent,
     PanelLinksComponent,
     PanelProfileComponent,
-    UserLikesComponent,    
+    UserLikesComponent,  
   ],
   imports: [
     BrowserModule,

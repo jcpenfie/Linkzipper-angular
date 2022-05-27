@@ -37,10 +37,6 @@ export class PanelProfileComponent implements OnInit {
         this.setUser(res)
       })
     }
-
-    if (this.user != {}) {
-    }
-
   }
 
   profileForm = this.fb.group({

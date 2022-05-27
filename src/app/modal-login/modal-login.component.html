@@ -10,13 +10,14 @@
                 </button>
             </div>
             <div class="navbar-brand p-2 text-black align-center d-flex justify-content-center"><span class="fw-800">Link</span>Zipper</div>
+            <div class="" role="alert" id="alert">{{resultado}}</div>
 
             <div class="modal-body">
                 <form [formGroup]="loginForm" (ngSubmit)="submit()">
                     <div class="form-group">
                         <label for="emailLogin">Email:</label>
                         <input type="email" formControlName="email" class="form-control" id="emailLogin"
-                            aria-describedby="email input" placeholder="Email" (ngModelChange)="handleChange()">
+                            aria-describedby="email input" placeholder="Email">
                         <small *ngIf="this.loginForm.get('email')?.errors?.['required']" class="text-danger">
                             Email must not be empty
                         </small>
@@ -27,7 +28,7 @@
                     <div class="form-group">
                         <label for="password">Password:</label>
                         <input type="password" formControlName="pass" class="form-control" id="password"
-                            aria-describedby="password input" placeholder="Password" (ngModelChange)="handleChange()">
+                            aria-describedby="password input" placeholder="Password">
                         <small *ngIf="this.loginForm.get('pass')?.errors?.['required']" class="text-danger">
                             Password must not be empty
                         </small>
@@ -36,7 +37,6 @@
                     <a href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#REGISTERModal" class="link text-primary py-3">No account?</a>
                     <button id="btnSubmit" type="submit" aria-label="Close" data-toggle="modal" class="btn bg-black text-light w-100 my-2 rounded">Confirm</button>
                 </form>
-                <div class="text-danger">{{resultado}}</div>
             </div>
         </div>
     </div>

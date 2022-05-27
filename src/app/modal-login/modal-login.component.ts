@@ -18,6 +18,9 @@ export class ModalLoginComponent implements OnInit {
 
   resultado!: string;
 
+  error!: any
+
+
   constructor(private fb: FormBuilder, private router: Router, private userService: UserService) { }
 
   loginForm = this.fb.group({
@@ -26,30 +29,35 @@ export class ModalLoginComponent implements OnInit {
   });
 
 
-  submit() {    
+  submit() {
     if (this.loginForm.valid) {
-      this.userService.login(this.loginForm.value).subscribe(res =>{ //recoge el token de usuario
-        this.setToken(res)
+      this.userService.login(this.loginForm.value).subscribe(res => { //recoge el token de usuario
+        this.error = res
+
+        if (this.error.message != 'Good') { // si el mensaje que devuelve no es 'Good' salta el error de validación
+          document.getElementById("btnSubmit")?.setAttribute("data-target", "")
+          document.getElementById("alert")?.setAttribute("class", "visible alert alert-danger mx-3")
+          this.resultado = this.error.message;
+        } else {
+          this.setToken(res)
+
+          document.getElementById("alert")?.setAttribute("class", "invisible alert alert-danger mx-3")
+          document.getElementById("btnSubmit")?.setAttribute("data-target", "#LOGINModal")
+          this.loginForm.reset()
+          document.getElementById("btnSubmit")?.click()
+        }
       })
     } else {
+      document.getElementById("alert")?.setAttribute("class", "visible alert alert-danger mx-3")
       this.resultado = "There is invalid data in the form";
     }
   }
 
-  handleChange() {
-    if (this.loginForm.valid) {
-      document.getElementById("btnSubmit")?.setAttribute("data-target", "#LOGINModal")
-    } else {
-      document.getElementById("btnSubmit")?.setAttribute("data-target", "")
-    }
-  }
-
-  setToken(token:any){ //guarda el token en el localStorage
+  setToken(token: any) { //guarda el token en el localStorage
     localStorage.setItem('token', token.access_token)
     console.log(localStorage.getItem("token"));
-    if(localStorage.getItem("token") != null){
+    if (localStorage.getItem("token") != null) {
       this.router.navigate(['/panel'])
-      
     }
   }
 }

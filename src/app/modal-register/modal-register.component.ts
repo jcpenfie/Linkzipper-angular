@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { ValidacionesPropias } from '../validaciones-propias';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-modal-register',
@@ -11,14 +12,19 @@ export class ModalRegisterComponent implements OnInit {
 
   resultado!: string;
 
-  constructor(private fb: FormBuilder) { }
+  error!: any
+
+  status!:boolean
+
+  constructor(private fb: FormBuilder, private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
   registerForm = this.fb.group({
-    user: ['', [Validators.required, Validators.maxLength(12)]],
-    pass: ['', [Validators.required,ValidacionesPropias.passwordValid]],
+    userName: ['', [Validators.required, Validators.maxLength(12)]],
+    // pass: ['', [Validators.required, ValidacionesPropias.passwordValid]],
+    pass: ['', [Validators.required]],
     passConfirm: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     emailConfirm: ['', [Validators.required, Validators.email]],
@@ -26,19 +32,35 @@ export class ModalRegisterComponent implements OnInit {
 
   submit() {
     if (this.registerForm.valid) {
-      //Redirect
+      this.userService.register(this.registerForm.value).subscribe(res => {
+        this.error = res
+        console.log(this.error.message);
+
+        if (this.error.message != 'Good') { // si el mensaje que devuelve no es 'Good' salta el error de validación
+          
+          if (this.status) {
+            document.getElementById("alertReg")?.setAttribute("class", "visible alert alert-danger mx-3")
+          document.getElementById("btnSubmitRegister")?.setAttribute("data-target", "")
+          this.resultado = "The user name or email has already been taken";
+          console.log("adfadsfsadfafasfasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+          }
+
+        } else {
+          console.log("adfadsfsadfafasfas");
+          document.getElementById("alertReg")?.setAttribute("class", "invisible alert alert-danger mx-3")
+          document.getElementById("btnSubmitRegister")?.setAttribute("data-target", "#REGISTERModal")
+          document.getElementById("btnSubmitRegister")?.click()
+          this.registerForm.reset()
+          this.resultado =""
+          this.status = false
+        }
+      })//registra al usuario
     } else {
+      document.getElementById("alertReg")?.setAttribute("class", "visible alert alert-danger mx-3")
+      console.log(document.getElementById("alert"));
+
       this.resultado = "There is invalid data in the form";
     }
+
   }
-
-
-  handleChange() {
-    if (this.registerForm.valid) {
-      document.getElementById("btnSubmit")?.setAttribute("data-target", "#REGISTERModal")
-    } else {
-      document.getElementById("btnSubmit")?.setAttribute("data-target", "")
-    }
-  }
-
 }

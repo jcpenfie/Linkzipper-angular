@@ -13,7 +13,7 @@
 
     </div>
 
-    <form [formGroup]="profileForm" (ngSubmit)="submit()" class="gridForm cardInput m-2">
+    <form [formGroup]="profileForm" (ngSubmit)="submit()" class="gridForm cardInput m-2" id="profileForm">
 
         <div class="infoButtons d-flex align-items-center justify-content-between mt-5">
 
@@ -41,8 +41,8 @@
             <div class="row d-flex">
                 <div class="form-group col-xxl-6 col-xl-6 col-lg-6 col-md-12">
                     <label for="displayName">Display Username:</label>
-                    <input type="text" formControlName="displayName" class="form-control" id="displayName"
-                        aria-describedby="username input" placeholder="{{user.showName}}">
+                    <input type="text" formControlName="displayName" class="form-control" value="" id="displayName"
+                        aria-describedby="username input" placeholder="{{user.showName}}" >
                     <small *ngIf="this.profileForm.get('displayName')?.errors?.['required']" class="text-danger">
                         Display Name must not be empty
                     </small>
