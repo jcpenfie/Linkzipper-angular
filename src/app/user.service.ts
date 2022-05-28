@@ -66,4 +66,27 @@ export class UserService {
 
    return this.http.get(`${this.url}/explore`, options)
   }
+
+  //likes/dislikes
+
+  like(id:any){
+    let body = new URLSearchParams();
+    body.set('id', id);
+
+    let options = {
+      headers: this.headers
+    };
+
+    return this.http.post(`${this.url}/like`, body.toString(), options)
+  }
+  dislike(id:any){
+    let body = new URLSearchParams();
+    body.set('id', id);
+
+    let options = {
+      headers: this.headers
+    };
+
+    return this.http.post(`${this.url}/dislike`, body.toString(), options)
+  }
 }

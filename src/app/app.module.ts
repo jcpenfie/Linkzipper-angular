@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     PanelLinksComponent,
     PanelProfileComponent,
     UserLikesComponent,
+
   ],
   imports: [
     BrowserModule,

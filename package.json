@@ -22,8 +22,10 @@
     "ng-http-interceptor": "^4.0.0",
     "ng-recaptcha": "^9.0.0",
     "ngx-infinite-scroll": "^13.0.2",
+    "ngx-toastr": "^14.3.0",
     "rxjs": "~7.5.0",
     "rxjs-observable": "^0.0.7",
+    "sweetalert2": "^11.4.17",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
