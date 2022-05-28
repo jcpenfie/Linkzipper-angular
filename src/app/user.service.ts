@@ -26,7 +26,7 @@ export class UserService {
       headers: this.headers
     };
 
-   return this.http.post(`${this.url}/register`, body.toString(), options)
+    return this.http.post(`${this.url}/register`, body.toString(), options)
   }
   login(data: any) { //genera el token  si el usuario existe
     let body = new URLSearchParams();
@@ -59,17 +59,41 @@ export class UserService {
 
   // explore
 
-  explore(){
+  explore() {
     let options = {
       headers: this.headers
     };
 
-   return this.http.get(`${this.url}/explore`, options)
+    return this.http.get(`${this.url}/explore`, options)
   }
+
+  // search
+
+  searchName(user: any) {
+    let body = new URLSearchParams();
+    body.set('userName', user);
+
+    let options = {
+      headers: this.headers
+    };
+
+    return this.http.post(`${this.url}/searchName`, body.toString(), options)
+  }
+  search(user: any) {
+    let body = new URLSearchParams();
+    body.set('userName', user);
+
+    let options = {
+      headers: this.headers
+    };
+
+    return this.http.post(`${this.url}/search`, body.toString(), options)
+  }
+
 
   //likes/dislikes
 
-  like(id:any){
+  like(id: any) {
     let body = new URLSearchParams();
     body.set('id', id);
 
@@ -79,7 +103,7 @@ export class UserService {
 
     return this.http.post(`${this.url}/like`, body.toString(), options)
   }
-  dislike(id:any){
+  dislike(id: any) {
     let body = new URLSearchParams();
     body.set('id', id);
 

@@ -1,4 +1,5 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'boot-nav',
@@ -7,14 +8,18 @@ import { Component, OnInit, Input} from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor(){}
+  usernameSearch: any
+
+  dataList: Array<String> = []
+
+  constructor(private userService: UserService) { }
   login = false
 
   ngOnInit(): void {
 
-    if(localStorage.getItem("token") == null){
+    if (localStorage.getItem("token") == null) {
       this.login = true
-    }else{
+    } else {
       this.login = false
     }
   }
@@ -22,5 +27,30 @@ export class NavComponent implements OnInit {
   logout() {
     localStorage.removeItem("token")
     location.reload()
+  }
+
+  searchName() {
+    this.dataList = []
+    this.userService.searchName(this.usernameSearch).subscribe(res => {
+      let data = res
+      if (this.usernameSearch != "" && this.dataList.length < 5) {
+        Object.entries(data).forEach(entry => {
+          const [key, value] = entry;
+          this.dataList.push(value.userName)
+        });
+      }
+
+    })
+
+  }
+
+  search(){
+    this.userService.search(this.usernameSearch).subscribe(res => {
+      let data = res
+      if (this.usernameSearch != "") {
+        console.log(res);//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      }
+
+    })
   }
 }

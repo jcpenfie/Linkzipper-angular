@@ -20,7 +20,7 @@ import { PanelProfileComponent } from './panel-profile/panel-profile.component';
 import { UserLikesComponent } from './user-likes/user-likes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -46,6 +46,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot([{
       matcher: (url) => {
         if (url.length === 1 && url[0].path.match(/^@[\w]+$/gm)) {
