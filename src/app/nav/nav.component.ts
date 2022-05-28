@@ -1,5 +1,4 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { Router } from "@angular/router"
 
 @Component({
   selector: 'boot-nav',
@@ -8,7 +7,7 @@ import { Router } from "@angular/router"
 })
 export class NavComponent implements OnInit {
 
-  constructor(private router: Router){}
+  constructor(){}
   login = false
 
   ngOnInit(): void {

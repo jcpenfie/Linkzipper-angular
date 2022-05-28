@@ -31,16 +31,16 @@ export class CardProfileComponent implements OnInit {
 
     if (like?.getAttribute("class") == "heart fa-regular fa-heart") {
       like?.setAttribute("class", "heart fa fa-heart text-danger");
-      let count = this.user.likes + 1;
-      this.user.likes = count
+      let count = parseInt(this.user.totalLikes) + 1;
+      this.user.totalLikes = count
 
       likeCount!.textContent = count.toString()
 
     } else {
 
       like?.setAttribute("class", "heart fa-regular fa-heart");
-      let count = this.user.likes - 1;
-      this.user.likes = count
+      let count = parseInt(this.user.totalLikes) - 1;
+      this.user.totalLikes = count
       likeCount!.textContent = count.toString()
     }
   }
@@ -51,16 +51,16 @@ export class CardProfileComponent implements OnInit {
 
     if ((like?.getAttribute("class") == "heart fa-regular fa-heart")) {
       like?.setAttribute("class", "heart fa fa-heart text-danger");
-      let count = this.user.likes + 1;
-      this.user.likes = count
+      let count = parseInt(this.user.totalLikes) + 1;
+      this.user.totalLikes = count
 
       likeCount!.textContent = count.toString()
 
     } else {
 
       like?.setAttribute("class", "heart fa-regular fa-heart");
-      let count = this.user.likes - 1;
-      this.user.likes = count
+      let count = parseInt(this.user.totalLikes) - 1;
+      this.user.totalLikes = count
       likeCount!.textContent = count.toString()
       this.disLikeEmit.emit(this.user);
     }

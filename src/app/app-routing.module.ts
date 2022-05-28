@@ -52,7 +52,7 @@ const routes: Routes = [
   {
     path: 'help',
     component: TermsComponent
-  }
+  },
 ];
 
 @NgModule({

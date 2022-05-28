@@ -55,4 +55,15 @@ export class UserService {
 
     return this.http.get(`${this.url}/getUserLogin`, { headers: headers })
   }
+
+
+  // explore
+
+  explore(){
+    let options = {
+      headers: this.headers
+    };
+
+   return this.http.get(`${this.url}/explore`, options)
+  }
 }

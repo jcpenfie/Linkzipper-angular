@@ -19,6 +19,7 @@ import { PanelLinksComponent } from './panel-links/panel-links.component';
 import { PanelProfileComponent } from './panel-profile/panel-profile.component';
 import { UserLikesComponent } from './user-likes/user-likes.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
     CardProfileComponent,
     PanelLinksComponent,
     PanelProfileComponent,
-    UserLikesComponent,  
+    UserLikesComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +59,7 @@ import { HttpClientModule } from '@angular/common/http';
       },
       component: ProfileComponent
     }]),
+    InfiniteScrollModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

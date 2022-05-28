@@ -21,6 +21,7 @@
     "bootstrap4-toggle": "^3.6.1",
     "ng-http-interceptor": "^4.0.0",
     "ng-recaptcha": "^9.0.0",
+    "ngx-infinite-scroll": "^13.0.2",
     "rxjs": "~7.5.0",
     "rxjs-observable": "^0.0.7",
     "tslib": "^2.3.0",
