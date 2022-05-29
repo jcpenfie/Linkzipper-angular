@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../app.component';
-
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,31 +9,26 @@ import { AppComponent } from '../app.component';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  constructor(private actRoute: ActivatedRoute) { }
+  constructor(private actRoute: ActivatedRoute, private userService: UserService) { }
 
-  userInput = AppComponent.userLogin
-
-
-    username = this.actRoute.snapshot.paramMap.get('username'); //recibir datos de la api
-
-  ngOnInit(): void { }
-
-  heigth = this.username? "height: 100vh;"
-  : "height: 100vh;"
+  // userInput = AppComponent.userLogin
 
 
+  username = this.actRoute.snapshot.paramMap.get('username'); //recibir datos de la api
 
-  user = this.username? {
-    id: 1,
-    user: this.username? this.username:this.userInput,
-    descr: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam",
-    likes: 23,
-    theme: "white",
-    img: "profile.png",
-    bgImg: "bgimg.jpg",
-    public: true,
-    links: [[1,"Instagram", "https://linkedin.es", "i.png"], [2,"Whatsapp", "https://linkedin.es", "w.png"], [3,"Youtube", "https://linkedin.es", "yt.png"], [4,"GitHub", "https://linkedin.es", "o.png"], [5,"Linkedin", "https://linkedin.es", "l.png"]]
-  }: this.userInput
-    
+  user:any = { }
+
+  ngOnInit(): void {
+    this.userService.search(this.username).subscribe(res => {
+      this.user = res
+      this.user = this.user[0]
+    })
+
+    //TODO: Recoger los links según la id del usuario y hacerle un push al array this.user
+  }
+
+  heigth = this.username ? "height: 100vh;"
+    : "height: 100vh;"
+
 
 }

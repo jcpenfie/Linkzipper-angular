@@ -34,7 +34,6 @@ export class ModalRegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       this.userService.register(this.registerForm.value).subscribe(res => {
         this.error = res
-        console.log(this.error.message);
 
         if (this.error.message != 'Good') { // si el mensaje que devuelve no es 'Good' salta el error de validación
           
@@ -42,11 +41,9 @@ export class ModalRegisterComponent implements OnInit {
             document.getElementById("alertReg")?.setAttribute("class", "visible alert alert-danger mx-3")
           document.getElementById("btnSubmitRegister")?.setAttribute("data-target", "")
           this.resultado = "The user name or email has already been taken";
-          console.log("adfadsfsadfafasfasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
           }
 
         } else {
-          console.log("adfadsfsadfafasfas");
           document.getElementById("alertReg")?.setAttribute("class", "invisible alert alert-danger mx-3")
           document.getElementById("btnSubmitRegister")?.setAttribute("data-target", "#REGISTERModal")
           document.getElementById("btnSubmitRegister")?.click()
@@ -57,7 +54,6 @@ export class ModalRegisterComponent implements OnInit {
       })//registra al usuario
     } else {
       document.getElementById("alertReg")?.setAttribute("class", "visible alert alert-danger mx-3")
-      console.log(document.getElementById("alert"));
 
       this.resultado = "There is invalid data in the form";
     }

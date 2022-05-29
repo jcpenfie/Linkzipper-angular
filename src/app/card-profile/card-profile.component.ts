@@ -40,7 +40,6 @@ export class CardProfileComponent implements OnInit {
         likeCount!.textContent = count.toString()
 
         this.userService.like(id).subscribe(res => {
-          console.log(res);
 
         })
       } else {
@@ -50,7 +49,6 @@ export class CardProfileComponent implements OnInit {
         this.user.totalLikes = count
         likeCount!.textContent = count.toString()
         this.userService.dislike(id).subscribe(res => {
-          console.log(res);
 
         })
       }

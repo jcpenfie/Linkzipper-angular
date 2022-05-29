@@ -1,8 +1,8 @@
 <div class="cont pt-5"
-    style="background-image: url('assets/img/{{user.bgImg}}'); {{heigth}}">
+    style="background-image: url('assets/img/{{user.backgroundImg}}'); {{heigth}}">
     <div class="d-flex justify-content-center flex-column align-items-center mt-auto">
         <app-card-profile [user]="user" color="white" btn="false" [liked]="true"></app-card-profile>
-    <div *ngFor="let link of user.links;let i=index">
+    <!-- <div *ngFor="let link of user.links;let i=index">
         <a href="{{link[2]}}" style="color: black;">
             <div class="linkCard card d-flex flex-row align-items-center m-2 " style="max-width: 550px;">
                 <img class="card-img-left m-2" src="assets/img/logos/{{link[3]}}" alt="{{link[1]}} logo" width="10%">
@@ -11,7 +11,7 @@
                 </div>
             </div>
         </a>
-    </div>
+    </div> -->
     </div>
     <a class="linkZipper display-5 p-2 d-flex" routerLink="/index"><span class="fw-800">Link</span>Zipper</a>
 </div>

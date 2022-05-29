@@ -34,9 +34,7 @@ export class PanelLinksComponent implements OnInit {
 
   submit() {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
       this.user.links.push([this.user.links.length+1,this.loginForm.value.title,this.loginForm.value.link, this.loginForm.value.logo])
-      console.log(this.user.links);
       this.loginForm.reset()
     } else {
       this.resultado = "There is invalid data in the form";

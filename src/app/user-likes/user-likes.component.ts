@@ -70,9 +70,7 @@ export class UserLikesComponent implements OnInit {
     }
   ]
 
-  disLike(user:any){
-    console.log(user);
-    
+  disLike(user:any){    
     var indexOfUser = this.users.indexOf(user);
     this.users.splice(indexOfUser,1)
   }

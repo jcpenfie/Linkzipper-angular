@@ -11,7 +11,6 @@ export class NavLoginComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    console.log(localStorage.getItem("token"));
 
     if(localStorage.getItem("token") == null){      
       this.router.navigate(['/'])

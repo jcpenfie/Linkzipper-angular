@@ -13,10 +13,12 @@
 
     </div>
 
+
+    <!-- Formualario -->
     <form [formGroup]="profileForm" (ngSubmit)="submit()" class="gridForm cardInput m-2" id="profileForm">
 
+        <!-- Nombre, likes, see likes y switch -->
         <div class="infoButtons d-flex align-items-center justify-content-between mt-5">
-
             <div class="d-flex">
                 <p class="text-fluid">@{{user.userName}} <i class="fa fa-heart" style="color: red;" aria-hidden="true"></i>
                     {{user.totalLikes}}</p>
@@ -27,16 +29,17 @@
                 <input type="checkbox" id="toggle-switch" (click)="checkSwitch()">
                 <label for="toggle-switch"></label>
             </div>
-
         </div>
 
-
+        <!-- Profile input image -->
         <div class="profileImg p-2 ">
-            <label for="formFile" class="form-label">Profile Imagen:</label>
+            <label for="formFile" class="form-label">Profile Image:</label>
             <div class="fileStyle">
-                <input class="form-control file" type="file" id="formFilePro" style="height: 90%;">
+                <input class="form-control file" type="file" id="formFilePro" style="height: 90%;" >
             </div>
         </div>
+
+        <!-- Inputs de display UserName, password, email y theme -->
         <div class="data">
             <div class="row d-flex">
                 <div class="form-group col-xxl-6 col-xl-6 col-lg-6 col-md-12">
@@ -89,19 +92,22 @@
             </div>
         </div>
 
+        <!-- Input de bg img -->
         <div class="bgImg p-2 ">
-            <label for="formFile" class="form-label">Background Imagen:</label>
+            <label for="formFile" class="form-label">Background Image:</label>
             <div class="fileStyle">
-                <input class="form-control file" type="file" id="formFileBg" style="height: 90%;">
+                <input class="form-control file" type="file" id="formFileBg" style="height: 90%;" >
             </div>
         </div>
 
+        <!-- Intput de la descripción -->
         <div class="desc m-2">
             <label for="desc" class="form-label">Description:</label>
             <textarea class="form-control rounded" name="desc" id="desc" placeholder="{{user.description}}"
                 style="height: 100px; background-color: #E9E6E1;" maxlength="200"></textarea>
         </div>
 
+        <!-- Botones de guardar o resetear cambios -->
         <div class="buttons m-2 d-flex flex-column justify-content-end">
             <button type="submit" class="btn negro text-light w-100 my-2 rounded">Save</button>
             <button type="reset" class="btn bg-light text-dark w-100 my-2 rounded">Reset</button>

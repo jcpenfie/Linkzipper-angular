@@ -20,7 +20,6 @@ export class UserService {
     body.set('userName', data.userName);
     body.set('email', data.email);
     body.set('password', data.pass);
-    console.log(body);
 
     let options = {
       headers: this.headers
@@ -43,7 +42,6 @@ export class UserService {
   token(token: any) { //recoge el token
 
     let headers = new HttpHeaders().set('Authorization', `${token.token_type} ${token.access_token}`);
-    console.log(headers);
 
     return this.http.get(`${this.url}/getUserLogin`, { headers: headers })
   }
@@ -51,7 +49,6 @@ export class UserService {
   getUser(token: any) { //Recoge los datos del usuario según el token
 
     let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    console.log(headers);
 
     return this.http.get(`${this.url}/getUserLogin`, { headers: headers })
   }

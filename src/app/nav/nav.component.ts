@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class NavComponent implements OnInit {
 
   dataList: Array<String> = []
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
   login = false
 
   ngOnInit(): void {
@@ -44,13 +45,7 @@ export class NavComponent implements OnInit {
 
   }
 
-  search(){
-    this.userService.search(this.usernameSearch).subscribe(res => {
-      let data = res
-      if (this.usernameSearch != "") {
-        console.log(res);//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-      }
-
-    })
+  sendName(){
+    this.router.navigate(['/@'+ this.usernameSearch])
   }
 }

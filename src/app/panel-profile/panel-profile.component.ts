@@ -43,7 +43,7 @@ export class PanelProfileComponent implements OnInit {
     displayName: ['', [Validators.required, Validators.maxLength(12)]],
     pass: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    theme: ['', [Validators.required]]
+    theme: ['', [Validators.required]],
   });
 
   submit() {
@@ -61,8 +61,6 @@ export class PanelProfileComponent implements OnInit {
   }
 
   checkSwitch() {
-    console.log(this.user.public);
-
     let icono = document.getElementById("inconoSwitch")
     let check = document.getElementById("toggle-switch")
     if (this.user.public) {
