@@ -8,7 +8,8 @@
                 <div *ngIf="liked;then likes else explore">
                 </div>
 
-                <p class="card-text">"{{user.description}}"</p>
+                <p class="card-text" *ngIf="user.description.length > 1">"{{user.description}}"</p>
+                <p class="card-text" *ngIf="user.description.length < 1"></p>
                 <a routerLink="/@{{user.userName}}" class="btn negro text-light w-100" id="btn">View profile</a>
             </div>
         </div>

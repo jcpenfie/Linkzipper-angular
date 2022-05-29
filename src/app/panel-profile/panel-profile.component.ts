@@ -44,11 +44,46 @@ export class PanelProfileComponent implements OnInit {
     pass: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     theme: ['', [Validators.required]],
+    description: [''],
+    profileImg: [''],
+    backgroundImg: [''],
   });
 
   submit() {
     if (this.profileForm.valid) {
-      //Redirect
+      let data = {
+        userName: this.user.userName,
+        showName: this.profileForm.value.displayName,
+        email: this.profileForm.value.email,
+        pass: this.profileForm.value.pass,
+        theme: this.profileForm.value.theme,
+        publicAccount: this.user.publicAccount,
+        description: this.profileForm.value.description,
+        profileImg: '',
+        backgroundImg: '',
+      }
+
+      if (this.profileForm.value.profileImg != '') {
+        data.profileImg = `/img/profile/${this.profileForm.value.profileImg}`
+      } else {
+        data.profileImg = `/img/profile/${this.user.profileImg}`
+      }
+      if (this.profileForm.value.backgroundImg != '') {
+        data.backgroundImg = `/img/profile/${this.profileForm.value.backgroundImg}`
+      } else {
+        data.backgroundImg = `/img/profile/${this.user.backgroundImg}`
+      }
+      if (this.profileForm.value.backgroundImg != '') {
+        data.description = this.profileForm.value.description
+      } else {
+        data.description = this.user.description
+      }
+
+      this.userService.panel(data).subscribe(res => {
+        if (res.message == 'Good, user updated') {
+          location.reload()
+        }
+      })
     } else {
       this.resultado = "There is invalid data in the form";
     }

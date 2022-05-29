@@ -110,4 +110,26 @@ export class UserService {
 
     return this.http.post(`${this.url}/dislike`, body.toString(), options)
   }
+
+
+  //formulario panel profile
+
+  panel(data: any) { //Actualiza los datos del usuario
+    let body = new URLSearchParams();
+    body.set('userName', data.userName);
+    body.set('showName', data.showName);
+    body.set('email', data.email);
+    body.set('password', data.pass);
+    body.set('theme', data.theme);
+    body.set('publicAccount', data.publicAccount);
+    body.set('description', data.description);
+    body.set('profileImg', data.profileImg);
+    body.set('backgroundImg', data.backgroundImg);
+
+    let options = {
+      headers: this.headers
+    };
+
+    return this.http.put<any>(`${this.url}/panel`, body.toString(), options)
+  }
 }
