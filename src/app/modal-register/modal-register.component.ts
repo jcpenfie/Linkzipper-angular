@@ -23,8 +23,7 @@ export class ModalRegisterComponent implements OnInit {
 
   registerForm = this.fb.group({
     userName: ['', [Validators.required, Validators.maxLength(12)]],
-    // pass: ['', [Validators.required, ValidacionesPropias.passwordValid]],
-    pass: ['', [Validators.required]],
+    pass: ['', [Validators.required, ValidacionesPropias.passwordValid]],
     passConfirm: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     emailConfirm: ['', [Validators.required, Validators.email]],

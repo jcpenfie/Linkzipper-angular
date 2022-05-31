@@ -15,12 +15,15 @@
 
 
     <!-- Formualario -->
+
+    <div class="invisible" role="alert" id="alertReg">{{resultado}}</div>
     <form [formGroup]="profileForm" (ngSubmit)="submit()" class="gridForm cardInput m-2" id="profileForm">
 
         <!-- Nombre, likes, see likes y switch -->
         <div class="infoButtons d-flex align-items-center justify-content-between mt-5">
             <div class="d-flex">
-                <p class="text-fluid">@{{user.userName}} <i class="fa fa-heart" style="color: red;" aria-hidden="true"></i>
+                <p class="text-fluid">@{{user.userName}} <i class="fa fa-heart" style="color: red;"
+                        aria-hidden="true"></i>
                     {{user.totalLikes}}</p>
             </div>
             <p routerLink="likes" class="see text-fluid m-2">See Likes</p>
@@ -34,41 +37,31 @@
         <!-- Profile input image -->
         <div class="profileImg p-2 ">
             <label for="formFile" class="form-label">Profile Image:</label>
-            <div class="fileStyle">
-                <input class="form-control file" formControlName="profileImg" type="file" id="formFilePro" style="height: 90%;" >
+            <div class="fileStyleProfile" id="fileStyleProfile">
+                <input class="form-control file" formControlName="profileImg" type="file" id="formFilePro"
+                    style="height: 90%;" (change)="captureFile($event)" accept=".png, .jpg, .jpeg, .gif">
             </div>
         </div>
 
         <!-- Inputs de display UserName, password, email y theme -->
         <div class="data">
             <div class="row d-flex">
-                <div class="form-group col-xxl-6 col-xl-6 col-lg-6 col-md-12">
+                <div class="form-group col-xxl-12 col-xl-12 col-lg-12 col-md-12">
                     <label for="displayName">Display Username:</label>
                     <input type="text" formControlName="displayName" class="form-control" value="" id="displayName"
-                        aria-describedby="username input" placeholder="{{user.showName}}" >
+                        aria-describedby="username input" placeholder="{{user.showName}}">
                     <small *ngIf="this.profileForm.get('displayName')?.errors?.['required']" class="text-danger">
                         Display Name must not be empty
-                    </small>
-                </div>
-                <div class="form-group col-xxl-6 col-xl-6 col-lg-6 col-md-12">
-                    <label for="email">Email:</label>
-                    <input type="email" formControlName="email" class="form-control" id="email"
-                        aria-describedby="email input" placeholder="{{user.email}}">
-                    <small *ngIf="this.profileForm.get('email')?.errors?.['required']" class="text-danger">
-                        Email must not be empty
-                    </small>
-                    <small *ngIf="this.profileForm.get('email')?.errors?.['email']" class="text-danger">
-                        Format no valid
                     </small>
                 </div>
             </div>
             <div class="row d-flex">
                 <div class="form-group col-xxl-6 col-xl-6 col-lg-6 col-md-12">
-                    <label for="password">Password:</label>
+                    <label for="password">Password or new password:</label>
                     <input type="password" formControlName="pass" class="form-control" id="password"
                         aria-describedby="password input" placeholder="Password">
                     <small *ngIf="this.profileForm.get('pass')?.errors?.['required']" class="text-danger">
-                        Display Name must not be empty
+                        Password must not be empty
                     </small>
                     <small *ngIf="this.profileForm.get('pass')?.errors?.['passwordValid']" class="text-danger">
                         Minimum eight characters, at least one uppercase letter, one lowercase letter and one number
@@ -78,7 +71,6 @@
                     <label for="theme">Theme:</label>
                     <select formControlName="theme" class="form-select form-select-sm" aria-describedby="theme select"
                         aria-label=".form-select-sm example">
-                        <option value=""></option>
                         <option value="white">White</option>
                         <option value="dark">Dark</option>
                         <option value="red">Red</option>
@@ -95,16 +87,18 @@
         <!-- Input de bg img -->
         <div class="bgImg p-2 ">
             <label for="formFile" class="form-label">Background Image:</label>
-            <div class="fileStyle">
-                <input class="form-control file" type="file" formControlName="backgroundImg" id="formFileBg" style="height: 90%;">
+            <div class="fileStyleBg" id="fileStyleBg">
+                <input class="form-control file" type="file" formControlName="backgroundImg" id="formFileBg"
+                    style="height: 90%;">
             </div>
         </div>
 
         <!-- Intput de la descripción -->
         <div class="desc m-2">
             <label for="desc" class="form-label">Description:</label>
-            <textarea class="form-control rounded" formControlName="description" name="desc" id="desc" value="{{user.description}}"
-                style="height: 100px; background-color: #E9E6E1;" maxlength="200"></textarea>
+            <textarea class="form-control rounded" formControlName="description" name="desc" id="desc"
+                value="{{user.description}}" style="height: 100px; background-color: #E9E6E1;"
+                maxlength="200"></textarea>
         </div>
 
         <!-- Botones de guardar o resetear cambios -->
@@ -113,5 +107,4 @@
             <button type="reset" class="btn gris text-dark w-100 my-2 rounded">Reset</button>
         </div>
     </form>
-    <div class="text-danger">{{resultado}}</div>
 </div>

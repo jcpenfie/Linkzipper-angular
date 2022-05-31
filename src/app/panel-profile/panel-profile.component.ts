@@ -1,8 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { AppComponent } from '../app.component';
 import { UserService } from '../user.service';
+import { ValidacionesPropias } from '../validaciones-propias';
 
 @Component({
   selector: 'app-panel-profile',
@@ -29,9 +30,11 @@ export class PanelProfileComponent implements OnInit {
     userName: "",
   }
 
-  constructor(private fb: FormBuilder, private router: ActivatedRoute, private userService: UserService) { }
+  constructor(private fb: FormBuilder, private router: ActivatedRoute, private userService: UserService, private http: HttpClient) { }
 
   ngOnInit(): void {
+    document.getElementById("fileStyleProfile")!.style.backgroundImage = 'url(' + this.urlProfile + ')';
+    document.getElementById("fileStyleBg")!.style.backgroundImage = 'url(' + this.urlBg + ')';
     if (localStorage.getItem("token") != null) {
       this.userService.getUser(localStorage.getItem("token")).subscribe(res => {
         this.setUser(res)
@@ -41,8 +44,7 @@ export class PanelProfileComponent implements OnInit {
 
   profileForm = this.fb.group({
     displayName: ['', [Validators.required, Validators.maxLength(12)]],
-    pass: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.email]],
+    pass: ['', [Validators.required, ValidacionesPropias.passwordValid]],
     theme: ['', [Validators.required]],
     description: [''],
     profileImg: [''],
@@ -50,11 +52,16 @@ export class PanelProfileComponent implements OnInit {
   });
 
   submit() {
+    console.log(this.profileForm.value.profileImg);
+    console.log(this.profileForm.value.backgroundImg);
+
+    document.getElementById("alertReg")?.setAttribute("class", "invisible alert alert-danger mx-3")
+
     if (this.profileForm.valid) {
+      console.log(this.profileForm.value.description);
       let data = {
         userName: this.user.userName,
         showName: this.profileForm.value.displayName,
-        email: this.profileForm.value.email,
         pass: this.profileForm.value.pass,
         theme: this.profileForm.value.theme,
         publicAccount: this.user.publicAccount,
@@ -64,27 +71,31 @@ export class PanelProfileComponent implements OnInit {
       }
 
       if (this.profileForm.value.profileImg != '') {
-        data.profileImg = `/img/profile/${this.profileForm.value.profileImg}`
+        data.profileImg = this.urlProfile
       } else {
-        data.profileImg = `/img/profile/${this.user.profileImg}`
+        data.profileImg = `${this.user.profileImg}`
       }
       if (this.profileForm.value.backgroundImg != '') {
-        data.backgroundImg = `/img/profile/${this.profileForm.value.backgroundImg}`
+        data.backgroundImg = this.urlBg
       } else {
-        data.backgroundImg = `/img/profile/${this.user.backgroundImg}`
+        data.backgroundImg = `${this.user.backgroundImg}`
       }
-      if (this.profileForm.value.backgroundImg != '') {
+      if (this.profileForm.value.description != '') {
         data.description = this.profileForm.value.description
       } else {
         data.description = this.user.description
       }
+      console.log(data);
 
       this.userService.panel(data).subscribe(res => {
+        console.log(res);
+
         if (res.message == 'Good, user updated') {
           location.reload()
         }
       })
     } else {
+      document.getElementById("alertReg")?.setAttribute("class", "visible alert alert-danger mx-3")
       this.resultado = "There is invalid data in the form";
     }
   }
@@ -98,16 +109,17 @@ export class PanelProfileComponent implements OnInit {
   checkSwitch() {
     let icono = document.getElementById("inconoSwitch")
     let check = document.getElementById("toggle-switch")
-    if (this.user.public) {
+    if (this.user.publicAccount) {
       icono?.setAttribute("class", "switchIconDes fa-solid fa-earth-americas mx-2")
       check?.setAttribute("checked", "checked")
-      this.user.public = false
+      this.user.publicAccount = 0
     } else {
       icono?.setAttribute("class", "fa-solid fa-earth-americas mx-2")
       check?.removeAttribute("checked")
-      this.user.public = true
-
+      this.user.publicAccount = 1
     }
+    console.log(this.user.publicAccount);
+
   }
 
   setUser(data: any) {
@@ -125,5 +137,22 @@ export class PanelProfileComponent implements OnInit {
       check?.removeAttribute("checked")
     }
   }
+
+  urlProfile = this.user.profileImg
+  urlBg = this.user.backgroundImage
+
+  captureFile(event: any): any {
+    if(event.target.files){
+      var reader = new FileReader()
+      reader.readAsDataURL(event.target.files[0])
+      reader.onload = (e:any)=>{
+        this.urlProfile = e.target.result;
+        document.getElementById("fileStyleProfile")!.style.backgroundImage = 'url(' + this.urlProfile + ')';
+        console.log(this.urlProfile);
+        
+      }
+    }
+  }
+
 
 }
