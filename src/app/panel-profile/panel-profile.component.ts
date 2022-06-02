@@ -91,7 +91,7 @@ export class PanelProfileComponent implements OnInit {
         console.log(res);
 
         if (res.message == 'Good, user updated') {
-          location.reload()
+          // location.reload()
         }
       })
     } else {

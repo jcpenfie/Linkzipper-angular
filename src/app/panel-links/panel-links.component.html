@@ -1,19 +1,20 @@
 <div class="pt-5">
-    <a class="btn negro text-light m-3 px-5 py-2 " id="profile" data-toggle="modal" data-target="#AddLinkModal">Add
+    <a class="btn negro text-light m-3 px-5 py-2 " id="profile" data-toggle="modal" data-target="#AddLinkModal" (click)="setEditTrue()">Add
         Link</a>
     <div class="container">
         <div class="d-flex align-items-center card-group justify-content-around">
-            <div *ngFor="let link of user.links;let i=index">
+            <div *ngFor="let link of links;let i=index">
                 <div class="p-2" style="color: black;">
                     <div class="card linkCard d-flex flex-row align-items-center round "
                         style="max-width: 550px;">
-                        <i class="fa-solid fa-xmark m-2" id="{{link[0]}}" (click)="delete(link)"></i>
+                        <i class="fa-solid fa-xmark m-2" id="{{link.id}}" (click)="delete(link)"></i>
+                        <i class="fa-solid fa-pen m-2" id="{{link.id}}" (click)="edit(link)" data-toggle="modal" data-target="#AddLinkModal"></i>
     
-                        <img class="card-img-left m-2" src="assets/img/logos/{{link[3]}}" alt="{{link[1]}} logo"
+                        <img class="card-img-left m-2" src="assets/img/logos/{{link.logo}}" alt="{{link.logo}} logo"
                             width="10%">
                         <div class="card-body">
-                            <h2>{{link[1]}}</h2>
-                            <p>{{link[2]}}</p>
+                            <h2>{{link.title}}</h2>
+                            <p>{{link.link}}</p>
                         </div>
                         <div class="card-body">
                         </div>
@@ -40,23 +41,23 @@
                         class="fw-800">Link</span>Zipper</div>
     
                 <div class="modal-body">
-                    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+                    <form [formGroup]="linkForm" (ngSubmit)="submit()">
                         <div class="form-group">
                             <label for="title">Title:</label>
                             <input type="text" formControlName="title" class="form-control" id="title"
                                 aria-describedby="title input" placeholder="Title" (ngModelChange)="handleChange()">
-                            <small *ngIf="this.loginForm.get('title')?.errors?.['required']" class="text-danger">
+                            <small *ngIf="this.linkForm.get('title')?.errors?.['required']" class="text-danger">
                                 Title must not be empty
                             </small>
                         </div>
                         <div class="form-group">
                             <label for="link">Link:</label>
                             <input type="text" formControlName="link" class="form-control" id="link"
-                                aria-describedby="link input" placeholder="Link.com" (ngModelChange)="handleChange()">
-                            <small *ngIf="this.loginForm.get('link')?.errors?.['required']" class="text-danger">
+                                aria-describedby="link input" placeholder="www.Link.com" (ngModelChange)="handleChange()">
+                            <small *ngIf="this.linkForm.get('link')?.errors?.['required']" class="text-danger">
                                 Link must not be empty
                             </small>
-                            <small *ngIf="this.loginForm.get('link')?.errors?.['linkValid']" class="text-danger">
+                            <small *ngIf="this.linkForm.get('link')?.errors?.['linkValid']" class="text-danger">
                                 Link must be valid
                             </small>
                         </div>
@@ -75,12 +76,14 @@
                                 <option value="p.png">Pinterest</option>
                                 <option value="o.png">Other</option>
                             </select>
-                            <small *ngIf="this.loginForm.get('logo')?.errors?.['required']" class="text-danger">
+                            <small *ngIf="this.linkForm.get('logo')?.errors?.['required']" class="text-danger">
                                 Logo must not be empty
                             </small>
                         </div>
-                        <button id="btnSubmit" type="submit" aria-label="Close" data-toggle="modal"
+                        <button *ngIf="!linkForm.value.edit" id="btnSubmit" type="submit" aria-label="Close" data-toggle="modal"
                             class="btn bg-black text-light w-100 my-2 rounded">Add</button>
+                        <button *ngIf="linkForm.value.edit" id="btnSubmit" type="submit" aria-label="Close" data-toggle="modal"
+                            class="btn bg-black text-light w-100 my-2 rounded">Edit</button>
                     </form>
                     <div class="text-danger">{{resultado}}</div>
                 </div>

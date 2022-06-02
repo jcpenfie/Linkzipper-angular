@@ -14,7 +14,7 @@ export class ModalRegisterComponent implements OnInit {
 
   error!: any
 
-  status!:boolean
+  status:boolean = true
 
   constructor(private fb: FormBuilder, private userService: UserService) { }
 
@@ -32,6 +32,7 @@ export class ModalRegisterComponent implements OnInit {
   submit() {
     if (this.registerForm.valid) {
       this.userService.register(this.registerForm.value).subscribe(res => {
+        
         this.error = res
 
         if (this.error.message != 'Good') { // si el mensaje que devuelve no es 'Good' salta el error de validación
@@ -42,13 +43,16 @@ export class ModalRegisterComponent implements OnInit {
           this.resultado = "The user name or email has already been taken";
           }
 
-        } else {
+        } 
+        else {
           document.getElementById("alertReg")?.setAttribute("class", "invisible alert alert-danger mx-3")
           document.getElementById("btnSubmitRegister")?.setAttribute("data-target", "#REGISTERModal")
           document.getElementById("btnSubmitRegister")?.click()
           this.registerForm.reset()
           this.resultado =""
           this.status = false
+          localStorage.setItem('token', this.error.access_token)
+          location.reload()
         }
       })//registra al usuario
     } else {
