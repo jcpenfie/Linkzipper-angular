@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../user.service';
 import Swal from 'sweetalert2'
+import { LikesService } from '../likes.service';
 
 @Component({
   selector: 'app-card-profile',
@@ -14,10 +15,31 @@ export class CardProfileComponent implements OnInit {
   @Input() btn!: string;
   @Input() liked!: boolean;
   @Output() disLikeEmit = new EventEmitter<string>();
-  constructor(private userService: UserService) { }
+
+  idUser!: any;
+
+  constructor(private userService: UserService, private likeService:LikesService) { }
 
   ngOnInit(): void {
-    
+
+    if(localStorage.getItem("token") != null){
+      this.userService.getUser(localStorage.getItem("token")).subscribe(res => {
+        this.setUser(res)
+      })
+    }
+
+    //check likes
+
+
+
+
+
+
+
+
+
+
+
     let boton = document.getElementById("btn");
 
     if (this.btn === "false") {
@@ -29,6 +51,9 @@ export class CardProfileComponent implements OnInit {
 
   like(id: any) {
     if (localStorage.getItem("token") != null) {
+
+      let data = { idUser: this.idUser, idUserLiked: id };
+
       let like = document.getElementById(id + "like");
       let likeCount = document.getElementById(id + "likeCount");
 
@@ -38,8 +63,10 @@ export class CardProfileComponent implements OnInit {
         this.user.totalLikes = count
 
         likeCount!.textContent = count.toString()
+        console.log(id);
 
-        this.userService.like(id).subscribe(res => {
+        this.likeService.like(data).subscribe(res => {
+          console.log(res);
 
         })
       } else {
@@ -48,11 +75,11 @@ export class CardProfileComponent implements OnInit {
         let count = parseInt(this.user.totalLikes) - 1;
         this.user.totalLikes = count
         likeCount!.textContent = count.toString()
-        this.userService.dislike(id).subscribe(res => {
+        this.likeService.dislike(data).subscribe(res => {
 
         })
       }
-    }else{
+    } else {
       document.getElementById("notification")?.click();
     }
   }
@@ -67,7 +94,7 @@ export class CardProfileComponent implements OnInit {
       like?.setAttribute("class", "heart fa fa-heart text-danger");
       let count = parseInt(this.user.totalLikes) + 1;
       this.user.totalLikes = count
-      
+
       likeCount!.textContent = count.toString()
     } else {
 
@@ -79,7 +106,7 @@ export class CardProfileComponent implements OnInit {
     }
   }
 
-  notification(){
+  notification() {
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
@@ -93,9 +120,16 @@ export class CardProfileComponent implements OnInit {
         toast.addEventListener('mouseleave', Swal.resumeTimer)
       }
     })
-    
+
     Toast.fire({
       title: 'You need a account to do this!'
     })
+  }
+
+
+
+
+  setUser(data: any) {
+    this.idUser = data.id;
   }
 }

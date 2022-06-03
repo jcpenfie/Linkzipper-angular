@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LikesService } from '../likes.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-likes',
@@ -7,71 +9,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLikesComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private userService: UserService, private likeService: LikesService) { }
+  idUser!: any;
+  likes!:any
   ngOnInit(): void {
-  }
-  users = [
-    {
-      id: 1,
-      user: "user1",
-      descr: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam",
-      likes: 23,
-      img: "profile.png"
-    },
-    {
-      id: 2,
-      user: "user2",
-      descr: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam",
-      likes: 23,
-      img: "profile.png"
-    },
-    {
-      id: 3,
-      user: "user3",
-      descr: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam",
-      likes: 23,
-      img: "profile.png"
-    },
-    {
-      id: 4,
-      user: "user4",
-      descr: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam",
-      likes: 23,
-      img: "profile.png"
-    },
-    {
-      id: 5,
-      user: "user5",
-      descr: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam",
-      likes: 23,
-      img: "profile.png"
-    },
-    {
-      id: 6,
-      user: "user6",
-      descr: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam",
-      likes: 23,
-      img: "profile.png"
-    },
-    {
-      id: 7,
-      user: "user7",
-      descr: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam",
-      likes: 23,
-      img: "profile.png"
-    },
-    {
-      id: 8,
-      user: "user8",
-      descr: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam",
-      likes: 23,
-      img: "profile.png"
+    if (localStorage.getItem("token") != null) {
+      this.userService.getUser(localStorage.getItem("token")).subscribe(res => {
+        this.setUser(res)
+      })
     }
-  ]
+  }
+  users!: any;
 
-  disLike(user:any){    
+  disLike(user: any) {
     var indexOfUser = this.users.indexOf(user);
-    this.users.splice(indexOfUser,1)
+    this.users.splice(indexOfUser, 1)
+  }
+
+  setUser(data: any) {
+    this.idUser = data.id;
+
+    this.likeService.show(this.idUser).subscribe(res =>{
+      console.log(res);
+
+      this.likes = res
+
+      console.log(this.likes.likes);
+      
+      this.users = this.likes.likes
+
+      
+    })
   }
 }

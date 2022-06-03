@@ -88,30 +88,6 @@ export class UserService {
   }
 
 
-  //likes/dislikes
-
-  like(id: any) {
-    let body = new URLSearchParams();
-    body.set('id', id);
-
-    let options = {
-      headers: this.headers
-    };
-
-    return this.http.post(`${this.url}/like`, body.toString(), options)
-  }
-  dislike(id: any) {
-    let body = new URLSearchParams();
-    body.set('id', id);
-
-    let options = {
-      headers: this.headers
-    };
-
-    return this.http.post(`${this.url}/dislike`, body.toString(), options)
-  }
-
-
   //formulario panel profile
 
   panel(data: any) { //Actualiza los datos del usuario

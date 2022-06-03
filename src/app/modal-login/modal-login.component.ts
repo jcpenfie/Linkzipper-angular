@@ -54,7 +54,7 @@ export class ModalLoginComponent implements OnInit {
   setToken(token: any) { //guarda el token en el localStorage
     localStorage.setItem('token', token.access_token)
     if (localStorage.getItem("token") != null) {
-      this.router.navigate(['/panel'])
+      this.router.navigate(['/panel/profile'])
     }
   }
 }

@@ -26,10 +26,6 @@ const routes: Routes = [
     component: ExplorerComponent
   },
   {
-    path: 'panel',
-    component: PanelProfileComponent
-  },
-  {
     path: 'panel/profile',
     component: PanelProfileComponent
   },
