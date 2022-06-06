@@ -11,7 +11,11 @@ export class UserLikesComponent implements OnInit {
 
   constructor(private userService: UserService, private likeService: LikesService) { }
   idUser!: any;
-  likes!:any
+  likes!: any
+
+
+  status!: boolean
+
   ngOnInit(): void {
     if (localStorage.getItem("token") != null) {
       this.userService.getUser(localStorage.getItem("token")).subscribe(res => {
@@ -28,17 +32,14 @@ export class UserLikesComponent implements OnInit {
 
   setUser(data: any) {
     this.idUser = data.id;
-
-    this.likeService.show(this.idUser).subscribe(res =>{
-      console.log(res);
-
+    this.likeService.show(this.idUser).subscribe(res => {
       this.likes = res
-
-      console.log(this.likes.likes);
-      
+      console.log(this.likes.likes)
       this.users = this.likes.likes
-
-      
+      this.status = this.users.length == 0
     })
+
+
+
   }
 }

@@ -21,6 +21,7 @@ export class PanelLinksComponent implements OnInit {
 
   user!: any;
   links!: any;
+  status!: boolean
 
   setUser(data: any) { //le meto por parametros el usuario para obtener sus links
     this.user = data;
@@ -29,11 +30,13 @@ export class PanelLinksComponent implements OnInit {
     this.linkService.show(this.user.id).subscribe(res => {
       this.links = res
       this.links = this.links.links
+      if (this.links.length == 0) {
+        this.status = true
+      }
     })
-
   }
 
-  deleteNotification(link:any){
+  deleteNotification(link: any) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success m-2',
@@ -41,7 +44,7 @@ export class PanelLinksComponent implements OnInit {
       },
       buttonsStyling: false
     })
-    
+
     swalWithBootstrapButtons.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -77,9 +80,13 @@ export class PanelLinksComponent implements OnInit {
     this.links.splice(indexOfId, 1)
     this.linkService.delete(id.id).subscribe(res => {
     })
+
+    if (this.links.length == 0) {
+      this.status = true
+    }
   }
   edit(link: any) {
-    this.linkForm.setValue({ title: link.title, link: link.link, logo: '', edit: true, idLink: link.id})
+    this.linkForm.setValue({ title: link.title, link: link.link, logo: '', edit: true, idLink: link.id })
   }
 
 
@@ -97,17 +104,18 @@ export class PanelLinksComponent implements OnInit {
 
 
   submit() {
+    this.status = false
     if (this.linkForm.valid) {
-      if(this.linkForm.value.edit){
+      if (this.linkForm.value.edit) {
 
-        let objIndex = this.links.findIndex(((linkObj:any) => linkObj.id == this.linkForm.value.idLink));
-        
+        let objIndex = this.links.findIndex(((linkObj: any) => linkObj.id == this.linkForm.value.idLink));
+
 
         this.links[objIndex].title = this.linkForm.value.title
-        this.links[objIndex].link = this.linkForm.value.link
+        this.links[objIndex].link = `https://${this.linkForm.value.link}`
         this.links[objIndex].logo = this.linkForm.value.logo
-        
-        
+
+
 
         let data = {
           title: this.linkForm.value.title,
@@ -116,26 +124,26 @@ export class PanelLinksComponent implements OnInit {
           idLink: this.linkForm.value.idLink
         }
         console.log(data);
-  
+
         this.linkService.update(data).subscribe(res => {
           console.log(res);
-  
+
         })
-      }else{
+      } else {
         this.links.push({ id: this.links.length + 1, title: this.linkForm.value.title, link: `https://${this.linkForm.value.link}`, logo: this.linkForm.value.logo })
 
-      let data = {
-        title: this.linkForm.value.title,
-        link: this.linkForm.value.link,
-        logo: this.linkForm.value.logo,
-        idUser: this.user.id
-      }
-      console.log(data);
+        let data = {
+          title: this.linkForm.value.title,
+          link: `https://${this.linkForm.value.link}`,
+          logo: this.linkForm.value.logo,
+          idUser: this.user.id
+        }
+        console.log(data);
 
-      this.linkService.create(data).subscribe(res => {
-        console.log(res);
+        this.linkService.create(data).subscribe(res => {
+          console.log(res);
 
-      })
+        })
       }
       this.linkForm.reset()
     } else {
@@ -151,8 +159,8 @@ export class PanelLinksComponent implements OnInit {
     }
   }
 
-  setEditTrue(){
-    this.linkForm.setValue({edit: false})
+  setEditTrue() {
+    this.linkForm.setValue({ edit: false })
   }
 
 }
