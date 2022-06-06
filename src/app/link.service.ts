@@ -15,7 +15,7 @@ export class LinkService {
   );
   constructor(private http: HttpClient) { }
 
-  create(data: any) { //genera el token  si el usuario existe
+  create(data: any) {
     let body = new URLSearchParams();
     body.set('title', data.title);
     body.set('link', data.link);
@@ -28,7 +28,7 @@ export class LinkService {
 
     return this.http.put(`${this.url}/link/create`, body.toString(), options)
   }
-  show(id:any) { //genera el token  si el usuario existe
+  show(id:any) {
     let body = new URLSearchParams();
     body.set('idUser', id);
 
@@ -38,7 +38,7 @@ export class LinkService {
 
     return this.http.post(`${this.url}/link/show`, body.toString(), options)
   }
-  update(data: any) { //genera el token  si el usuario existe
+  update(data: any) {
     let body = new URLSearchParams();
     body.set('title', data.title);
     body.set('link', data.link);
@@ -51,7 +51,7 @@ export class LinkService {
 
     return this.http.put(`${this.url}/link/update`, body.toString(), options)
   }
-  delete(id: any) { //genera el token  si el usuario existe
+  delete(id: any) {
     let options = {
       headers: this.headers
     };

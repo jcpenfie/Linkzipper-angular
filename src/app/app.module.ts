@@ -21,6 +21,7 @@ import { UserLikesComponent } from './user-likes/user-likes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { FormsModule } from '@angular/forms';
+import { DescripcionPipe } from './descripcion.pipe';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { FormsModule } from '@angular/forms';
     PanelLinksComponent,
     PanelProfileComponent,
     UserLikesComponent,
+    DescripcionPipe,
 
   ],
   imports: [

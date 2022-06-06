@@ -8,8 +8,7 @@
                 <div *ngIf="liked;then likes else explore">
                 </div>
 
-                <p class="card-text" *ngIf="user.description.length > 1">"{{user.description}}"</p>
-                <p class="card-text" *ngIf="user.description.length < 1"></p>
+                <p class="card-text">{{user.description | descripcion:userDescriptionLength}}</p>
                 <a routerLink="/@{{user.userName}}" class="btn negro text-light w-100" id="btn">View profile</a>
             </div>
         </div>
@@ -19,8 +18,8 @@
 <ng-template #likes>
     <div class="d-flex justify-content-between align-items-end">
         <h5 class="card-title">{{user.showName}}</h5>
-        <h5 class="card-title"><i class="heart fa fa-heart text-danger" id="{{user.id}}like" (click)="disLike(user.id)"></i><br><span
-                id="{{user.id}}likeCount">{{user.totalLikes}}</span></h5>
+        <h5 class="card-title"><i class="heart fa fa-heart text-danger" id="{{user.id}}like"
+                (click)="disLike(user.id)"></i><br><span id="{{user.id}}likeCount">{{user.totalLikes}}</span></h5>
     </div>
 </ng-template>
 <ng-template #explore>
@@ -32,4 +31,4 @@
     </div>
 </ng-template>
 <!-- Para activar la notificacion si no ha iniciado sesion -->
-<button class="invisible d-none" (click)="notification()" id="notification"></button> 
+<button class="invisible d-none" (click)="notification()" id="notification"></button>

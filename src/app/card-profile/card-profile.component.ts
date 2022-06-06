@@ -17,27 +17,19 @@ export class CardProfileComponent implements OnInit {
   @Output() disLikeEmit = new EventEmitter<string>();
 
   idUser!: any;
+  userDescriptionLength!: any
 
-  constructor(private userService: UserService, private likeService:LikesService) { }
+  constructor(private userService: UserService, private likeService: LikesService) { }
 
   ngOnInit(): void {
-
-    if(localStorage.getItem("token") != null){
+    this.userDescriptionLength = this.user.description.length
+    if (localStorage.getItem("token") != null) {
       this.userService.getUser(localStorage.getItem("token")).subscribe(res => {
         this.setUser(res)
       })
     }
 
-    //check likes
-
-
-
-
-
-
-
-
-
+    //todo:check likes
 
 
     let boton = document.getElementById("btn");
@@ -125,9 +117,6 @@ export class CardProfileComponent implements OnInit {
       title: 'You need a account to do this!'
     })
   }
-
-
-
 
   setUser(data: any) {
     this.idUser = data.id;

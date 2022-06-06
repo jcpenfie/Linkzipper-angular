@@ -79,12 +79,6 @@ export class PanelLinksComponent implements OnInit {
     })
   }
   edit(link: any) {
-    let data = {
-      title: link.title,
-      link: link.link,
-      logo: link.logo,
-      idLink: link.id
-    }
     this.linkForm.setValue({ title: link.title, link: link.link, logo: '', edit: true, idLink: link.id})
   }
 
@@ -117,7 +111,7 @@ export class PanelLinksComponent implements OnInit {
 
         let data = {
           title: this.linkForm.value.title,
-          link: this.linkForm.value.link,
+          link: `https://${this.linkForm.value.link}`,
           logo: this.linkForm.value.logo,
           idLink: this.linkForm.value.idLink
         }
@@ -128,7 +122,7 @@ export class PanelLinksComponent implements OnInit {
   
         })
       }else{
-        this.links.push({ id: this.links.length + 1, title: this.linkForm.value.title, link: this.linkForm.value.link, logo: this.linkForm.value.logo })
+        this.links.push({ id: this.links.length + 1, title: this.linkForm.value.title, link: `https://${this.linkForm.value.link}`, logo: this.linkForm.value.logo })
 
       let data = {
         title: this.linkForm.value.title,

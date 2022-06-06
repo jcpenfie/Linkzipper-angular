@@ -1,15 +1,16 @@
 <div class="pt-5">
-    <a class="btn negro text-light m-3 px-5 py-2 " id="profile" data-toggle="modal" data-target="#AddLinkModal" (click)="setEditTrue()">Add
+    <a class="btn negro text-light m-3 px-5 py-2 " id="profile" data-toggle="modal" data-target="#AddLinkModal"
+        (click)="setEditTrue()">Add
         Link</a>
     <div class="container">
         <div class="d-flex align-items-center card-group justify-content-around">
             <div *ngFor="let link of links;let i=index">
                 <div class="p-2" style="color: black;">
-                    <div class="card linkCard d-flex flex-row align-items-center round "
-                        style="max-width: 550px;">
+                    <div class="card linkCard d-flex flex-row align-items-center round " style="max-width: 550px;">
                         <i class="fa-solid fa-xmark m-2" id="{{link.id}}" (click)="deleteNotification(link)"></i>
-                        <i class="fa-solid fa-pen m-2" id="{{link.id}}" (click)="edit(link)" data-toggle="modal" data-target="#AddLinkModal"></i>
-    
+                        <i class="fa-solid fa-pen m-2" id="{{link.id}}" (click)="edit(link)" data-toggle="modal"
+                            data-target="#AddLinkModal"></i>
+
                         <img class="card-img-left m-2" src="assets/img/logos/{{link.logo}}" alt="{{link.logo}} logo"
                             width="10%">
                         <div class="card-body">
@@ -23,9 +24,9 @@
             </div>
         </div>
     </div>
-    
-    
-    
+
+
+
     <!-- Add Link Modal -->
     <div class="modal fade" id="AddLinkModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
         aria-labelledby="Login Form" aria-hidden="true">
@@ -39,7 +40,7 @@
                 </div>
                 <div class="navbar-brand p-2 text-black align-center d-flex justify-content-center"><span
                         class="fw-800">Link</span>Zipper</div>
-    
+
                 <div class="modal-body">
                     <form [formGroup]="linkForm" (ngSubmit)="submit()">
                         <div class="form-group">
@@ -52,8 +53,12 @@
                         </div>
                         <div class="form-group">
                             <label for="link">Link:</label>
-                            <input type="text" formControlName="link" class="form-control" id="link"
-                                aria-describedby="link input" placeholder="www.Link.com" (ngModelChange)="handleChange()">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">https://</span>
+                                <input type="text" formControlName="link" class="form-control" id="link"
+                                    aria-describedby="link input" placeholder="www.Link.com"
+                                    (ngModelChange)="handleChange()">
+                            </div>
                             <small *ngIf="this.linkForm.get('link')?.errors?.['required']" class="text-danger">
                                 Link must not be empty
                             </small>
@@ -61,11 +66,12 @@
                                 Link must be valid
                             </small>
                         </div>
-    
+
                         <div class="form-group">
                             <label for="logo">Logo:</label>
-                            <select formControlName="logo" class="form-select form-select-sm" aria-describedby="logo select"
-                                aria-label=".form-select-sm example" (ngModelChange)="handleChange()">
+                            <select formControlName="logo" class="form-select form-select-sm"
+                                aria-describedby="logo select" aria-label=".form-select-sm example"
+                                (ngModelChange)="handleChange()">
                                 <option value="w.png">Whatsapp</option>
                                 <option value="yt.png">Youtube</option>
                                 <option value="f.png">Facebook</option>
@@ -80,10 +86,10 @@
                                 Logo must not be empty
                             </small>
                         </div>
-                        <button *ngIf="!linkForm.value.edit" id="btnSubmit" type="submit" aria-label="Close" data-toggle="modal"
-                            class="btn bg-black text-light w-100 my-2 rounded">Add</button>
-                        <button *ngIf="linkForm.value.edit" id="btnSubmit" type="submit" aria-label="Close" data-toggle="modal"
-                            class="btn bg-black text-light w-100 my-2 rounded">Edit</button>
+                        <button *ngIf="!linkForm.value.edit" id="btnSubmit" type="submit" aria-label="Close"
+                            data-toggle="modal" class="btn bg-black text-light w-100 my-2 rounded">Add</button>
+                        <button *ngIf="linkForm.value.edit" id="btnSubmit" type="submit" aria-label="Close"
+                            data-toggle="modal" class="btn bg-black text-light w-100 my-2 rounded">Edit</button>
                     </form>
                     <div class="text-danger">{{resultado}}</div>
                 </div>
