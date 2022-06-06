@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchService } from '../search.service';
+import { fromEvent } from 'rxjs';
+import { debounceTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'boot-nav',
@@ -23,6 +25,18 @@ export class NavComponent implements OnInit {
     } else {
       this.login = false
     }
+
+    const search: any = document.getElementById("searchInput");
+    const keyup = fromEvent(search, 'keyup')
+
+    keyup.pipe(
+      map((e: any) => e.currentTarget.value),
+      debounceTime(500)
+    ).subscribe(res => {
+      this.usernameSearch = res
+      this.searchName()
+    });
+
   }
 
   logout() {
@@ -33,6 +47,8 @@ export class NavComponent implements OnInit {
   searchName() {
     this.dataList = []
     this.searchService.searchName(this.usernameSearch).subscribe(res => {
+      console.log(res);
+      
       let data = res
       if (this.usernameSearch != "" && this.dataList.length < 5) {
         Object.entries(data).forEach(entry => {
@@ -45,7 +61,7 @@ export class NavComponent implements OnInit {
 
   }
 
-  sendName(){
-    this.router.navigate(['/@'+ this.usernameSearch])
+  sendName() {
+    this.router.navigate(['/@' + this.usernameSearch])
   }
 }

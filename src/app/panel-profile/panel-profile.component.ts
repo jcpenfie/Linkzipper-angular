@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PanelService } from '../panel.service';
 import { UserService } from '../user.service';
 import { ValidacionesPropias } from '../validaciones-propias';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-panel-profile',
@@ -105,6 +106,7 @@ export class PanelProfileComponent implements OnInit {
     let url: any = document.getElementById("url");
     window.getSelection()!.selectAllChildren(url);
     document.execCommand("Copy")
+    this.notification()
   }
 
   checkSwitch() {
@@ -155,5 +157,23 @@ export class PanelProfileComponent implements OnInit {
     }
   }
 
+  notification() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 2000,
+      background: "#28a745",
+      color: "#ffff",
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
 
+    Toast.fire({
+      title: 'Link copied successfully :)'
+    })
+  }
 }

@@ -10,7 +10,7 @@
         <ul class="search">
             <div class="input-box input-group rounded">
                 <input class="form-control search" placeholder="Search" aria-label="Search" list="userOptions"
-                    aria-describedby="search-addon" id="searchInput" name="search" [(ngModel)]="usernameSearch" (ngModelChange)="searchName()"/>
+                    aria-describedby="search-addon" id="searchInput" name="search" [(ngModel)]="usernameSearch"/>
 
                     <datalist id="userOptions" >
                         <option value="{{option}}" *ngFor="let option of dataList;let i=index"></option>
