@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from '../app.component';
 import { Validators, FormBuilder } from '@angular/forms';
 import { ValidacionesPropias } from '../validaciones-propias';
 import { LinkService } from '../link.service';
 import { UserService } from '../user.service';
-import { title } from 'process';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-panel-links',
@@ -32,6 +31,44 @@ export class PanelLinksComponent implements OnInit {
       this.links = this.links.links
     })
 
+  }
+
+  deleteNotification(link:any){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success m-2',
+        cancelButton: 'btn btn-danger m-2'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.delete(link)
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your link has been deleted.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your link is safe :)',
+          'error'
+        )
+      }
+    })
   }
 
 

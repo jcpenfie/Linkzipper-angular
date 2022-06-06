@@ -7,7 +7,7 @@
                 <div class="p-2" style="color: black;">
                     <div class="card linkCard d-flex flex-row align-items-center round "
                         style="max-width: 550px;">
-                        <i class="fa-solid fa-xmark m-2" id="{{link.id}}" (click)="delete(link)"></i>
+                        <i class="fa-solid fa-xmark m-2" id="{{link.id}}" (click)="deleteNotification(link)"></i>
                         <i class="fa-solid fa-pen m-2" id="{{link.id}}" (click)="edit(link)" data-toggle="modal" data-target="#AddLinkModal"></i>
     
                         <img class="card-img-left m-2" src="assets/img/logos/{{link.logo}}" alt="{{link.logo}} logo"
