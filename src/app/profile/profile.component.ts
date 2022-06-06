@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AppComponent } from '../app.component';
-import { UserService } from '../user.service';
+import { SearchService } from '../search.service';
+
 
 @Component({
   selector: 'app-profile',
@@ -9,7 +9,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  constructor(private actRoute: ActivatedRoute, private userService: UserService) { }
+  constructor(private actRoute: ActivatedRoute, private searchService: SearchService) { }
 
   // userInput = AppComponent.userLogin
 
@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   user:any = { }
 
   ngOnInit(): void {
-    this.userService.search(this.username).subscribe(res => {
+    this.searchService.search(this.username).subscribe(res => {
       this.user = res
       this.user = this.user[0]
     })

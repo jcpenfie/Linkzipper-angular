@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { UserService } from '../user.service';
+import { ExploreService } from '../explore.service';
 
 @Component({
   selector: 'app-explorer',
@@ -18,13 +18,13 @@ export class ExplorerComponent implements OnInit {
   showScrollHeight = 400; //Indica cuando se muestra el botón para ir arriba según el alto de la pantalla
   hideScrollHeight = 200; //Indica cuando se oculta el botón para ir arriba según el alto de la pantalla
 
-  constructor(private userService: UserService) {
+  constructor(private exploreService: ExploreService) {
     this.actualPage = 1;
     this.showGoUpButton = false;
   }
 
   ngOnInit(): void {
-    this.userService.explore().subscribe(res => {
+    this.exploreService.explore().subscribe(res => {
       this.users = res
       this.usersToShow = new Array<string>();
       this.addUsers();

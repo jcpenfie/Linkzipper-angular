@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'boot-nav',
@@ -13,7 +13,7 @@ export class NavComponent implements OnInit {
 
   dataList: Array<String> = []
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private router: Router, private searchService: SearchService) { }
   login = false
 
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class NavComponent implements OnInit {
 
   searchName() {
     this.dataList = []
-    this.userService.searchName(this.usernameSearch).subscribe(res => {
+    this.searchService.searchName(this.usernameSearch).subscribe(res => {
       let data = res
       if (this.usernameSearch != "" && this.dataList.length < 5) {
         Object.entries(data).forEach(entry => {

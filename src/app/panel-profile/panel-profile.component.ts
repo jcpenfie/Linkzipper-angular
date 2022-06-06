@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { PanelService } from '../panel.service';
 import { UserService } from '../user.service';
 import { ValidacionesPropias } from '../validaciones-propias';
 
@@ -30,7 +31,7 @@ export class PanelProfileComponent implements OnInit {
     userName: "",
   }
 
-  constructor(private fb: FormBuilder, private router: ActivatedRoute, private userService: UserService, private http: HttpClient) { }
+  constructor(private fb: FormBuilder, private router: ActivatedRoute, private userService: UserService, private panelService: PanelService) { }
 
   ngOnInit(): void {
     document.getElementById("fileStyleProfile")!.style.backgroundImage = 'url(' + this.urlProfile + ')';
@@ -87,7 +88,7 @@ export class PanelProfileComponent implements OnInit {
       }
       console.log(data);
 
-      this.userService.panel(data).subscribe(res => {
+      this.panelService.panel(data).subscribe(res => {
         console.log(res);
 
         if (res.message == 'Good, user updated') {
