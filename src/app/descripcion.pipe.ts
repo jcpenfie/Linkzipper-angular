@@ -6,14 +6,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class DescripcionPipe implements PipeTransform {
 
   transform(value: unknown, ...args: unknown[]): unknown {
-    console.log(args[0]);
 
     let logintud:any = args[0]
-    
-    if (logintud > 1){
+    if (logintud > 0){
       return '"'+value+'"'
     }else{
-      return value
+      return "\u00a0"
     }
   }
 

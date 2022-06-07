@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { FormsModule } from '@angular/forms';
 import { DescripcionPipe } from './descripcion.pipe';
+import { UnidadesLikesPipe } from './unidades-likes.pipe';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { DescripcionPipe } from './descripcion.pipe';
     PanelProfileComponent,
     UserLikesComponent,
     DescripcionPipe,
+    UnidadesLikesPipe,
 
   ],
   imports: [
