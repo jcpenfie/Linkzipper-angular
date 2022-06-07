@@ -1,6 +1,6 @@
 <div class="card-group justify-content-evenly pt-5" infiniteScroll [infiniteScrollDistance]="2" (scrolled)="onScroll()">
     <div *ngFor="let user of usersToShow;let i=index">
-        <app-card-profile [user]="user" [liked]=false></app-card-profile>
+        <app-card-profile [user]="user" [liked]="false" [btn]="true"></app-card-profile>
     </div>
 </div>
 

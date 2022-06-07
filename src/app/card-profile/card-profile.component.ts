@@ -12,7 +12,7 @@ export class CardProfileComponent implements OnInit {
 
   @Input() user!: any;
   @Input() color!: string;
-  @Input() btn!: string;
+  @Input() btn!: boolean;
   @Input() liked!: boolean;
   @Output() disLikeEmit = new EventEmitter<string>();
 
@@ -22,7 +22,11 @@ export class CardProfileComponent implements OnInit {
   constructor(private userService: UserService, private likeService: LikesService) { }
 
   ngOnInit(): void {
-    this.userDescriptionLength = this.user.description.length
+    if (this.user.description == "") {
+      this.userDescriptionLength = this.user.description.length
+    }else{
+      this.userDescriptionLength = 0
+    }
     if (localStorage.getItem("token") != null) {
       this.userService.getUser(localStorage.getItem("token")).subscribe(res => {
         this.setUser(res)
@@ -34,10 +38,11 @@ export class CardProfileComponent implements OnInit {
 
     let boton = document.getElementById("btn");
 
-    if (this.btn === "false") {
-      boton?.setAttribute("class", "invisible btn negro text-light w-100")
-    } else {
+    console.log(this.btn);
+    if (this.btn) {
       boton?.setAttribute("class", "visible btn negro text-light w-100")
+    } else {
+      boton?.setAttribute("class", "invisible btn negro text-light w-100")
     }
   }
 
