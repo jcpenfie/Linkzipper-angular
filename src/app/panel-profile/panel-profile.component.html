@@ -49,7 +49,7 @@
                 <div class="form-group col-xxl-12 col-xl-12 col-lg-12 col-md-12">
                     <label for="displayName">Display Username:</label>
                     <input type="text" formControlName="displayName" class="form-control" value="" id="displayName"
-                        aria-describedby="username input" placeholder="{{user.showName}}">
+                        aria-describedby="username input" value="{{user.showName}}">
                     <small *ngIf="this.profileForm.get('displayName')?.errors?.['required']" class="text-danger">
                         Display Name must not be empty
                     </small>
@@ -61,7 +61,7 @@
                     <input type="password" formControlName="pass" class="form-control" id="password"
                         aria-describedby="password input" placeholder="Password">
                     <small *ngIf="this.profileForm.get('pass')?.errors?.['required']" class="text-danger">
-                        Password must not be empty
+                        Password must not be empty.
                     </small>
                     <small *ngIf="this.profileForm.get('pass')?.errors?.['passwordValid']" class="text-danger">
                         Minimum eight characters, at least one uppercase letter, one lowercase letter and one number
