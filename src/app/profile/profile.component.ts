@@ -43,7 +43,6 @@ export class ProfileComponent implements OnInit {
       this.searchService.search(this.username).subscribe(res => {
         this.user = res
         this.user = this.user[0]
-        console.log(this.user);
         this.getLinks(this.user.id)
       })
     }
@@ -53,6 +52,7 @@ export class ProfileComponent implements OnInit {
     this.linkService.show(id).subscribe(res => {
       let links: any = res
       this.user.links = links.links
+      this.user.liked = true
     })
   }
 }

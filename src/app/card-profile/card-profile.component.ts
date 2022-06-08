@@ -47,27 +47,24 @@ export class CardProfileComponent implements OnInit {
       this.userService.getUser(localStorage.getItem("token")).subscribe(res => {
         this.setUser(res)
       })
-      
+
       let data = { idUser: this.idUser, idUserLiked: id };
 
       let like = document.getElementById(id + "like");
       let likeCount = document.getElementById(id + "likeCount");
 
       if (like?.getAttribute("class") == "fa-heart fa-regular heart") {
-        console.log("if like");
+
         like?.setAttribute("class", "heart fa fa-heart text-danger");
         if (parseInt(this.user.totalLikes) < 999) {
           let count = parseInt(this.user.totalLikes) + 1;
           this.user.totalLikes = count
           likeCount!.textContent = count.toString()
         }
-        console.log(data);
 
         this.likeService.like(data).subscribe(res => {
-          console.log(res);
         })
       } else {
-        console.log("else like");
 
         like?.setAttribute("class", "fa-heart fa-regular heart");
         if (parseInt(this.user.totalLikes) < 999) {
@@ -75,10 +72,8 @@ export class CardProfileComponent implements OnInit {
           this.user.totalLikes = count
           likeCount!.textContent = count.toString()
         }
-        console.log(data);
 
         this.likeService.dislike(data).subscribe(res => {
-          console.log(res);
 
         })
       }
@@ -90,39 +85,30 @@ export class CardProfileComponent implements OnInit {
 
   disLike(id: any) {
     if (localStorage.getItem("token") != null) {
-
       let data = { idUser: this.idUser, idUserLiked: id };
-
       let like = document.getElementById(id + "like");
       let likeCount = document.getElementById(id + "likeCount");
 
       if (like?.getAttribute("class") == "heart fa fa-heart text-danger") {
-        console.log("if dislike");
         like?.setAttribute("class", "fa-heart fa-regular heart");
         if (parseInt(this.user.totalLikes) < 999) {
           let count = parseInt(this.user.totalLikes) - 1;
           this.user.totalLikes = count
           likeCount!.textContent = count.toString()
         }
-        console.log(data);
-        
+
         this.likeService.dislike(data).subscribe(res => {
-          console.log(res);
+
         })
       } else {
-        console.log("else dislike");
-
         like?.setAttribute("class", "fa-heart fa-regular heart");
         if (parseInt(this.user.totalLikes) < 999) {
           let count = parseInt(this.user.totalLikes) - 1;
           this.user.totalLikes = count
           likeCount!.textContent = count.toString()
         }
-        console.log(data);
-        
-        this.likeService.dislike(data).subscribe(res => {
-          console.log(res);
 
+        this.likeService.dislike(data).subscribe(res => {
         })
       }
     } else {
@@ -156,7 +142,6 @@ export class CardProfileComponent implements OnInit {
 
   heartControl(id: any) {
     let like = document.getElementById(id + "like");
-    console.log(like?.getAttribute("class") == "fa-heart fa-regular heart");
 
     if (like?.getAttribute("class") == "fa-heart fa-regular heart") {
       this.like(id)

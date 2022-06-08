@@ -123,11 +123,7 @@ export class PanelLinksComponent implements OnInit {
           logo: this.linkForm.value.logo,
           idLink: this.linkForm.value.idLink
         }
-        console.log(data);
-
         this.linkService.update(data).subscribe(res => {
-          console.log(res);
-
         })
       } else {
         this.links.push({ id: this.links.length + 1, title: this.linkForm.value.title, link: `https://${this.linkForm.value.link}`, logo: this.linkForm.value.logo })
@@ -138,11 +134,7 @@ export class PanelLinksComponent implements OnInit {
           logo: this.linkForm.value.logo,
           idUser: this.user.id
         }
-        console.log(data);
-
         this.linkService.create(data).subscribe(res => {
-          console.log(res);
-
         })
       }
       this.linkForm.reset()

@@ -47,8 +47,6 @@ export class NavComponent implements OnInit {
   searchName() {
     this.dataList = []
     this.searchService.searchName(this.usernameSearch).subscribe(res => {
-      console.log(res);
-      
       let data = res
       if (this.usernameSearch != "" && this.dataList.length < 5) {
         Object.entries(data).forEach(entry => {

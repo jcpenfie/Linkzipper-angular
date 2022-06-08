@@ -54,13 +54,9 @@ export class PanelProfileComponent implements OnInit {
   });
 
   submit() {
-    console.log(this.profileForm.value.profileImg);
-    console.log(this.profileForm.value.backgroundImg);
-
     document.getElementById("alertReg")?.setAttribute("class", "invisible alert alert-danger mx-3")
 
     if (this.profileForm.valid) {
-      console.log(this.profileForm.value.description);
       let data = {
         userName: this.user.userName,
         showName: this.profileForm.value.displayName,
@@ -87,11 +83,8 @@ export class PanelProfileComponent implements OnInit {
       } else {
         data.description = this.user.description
       }
-      console.log(data);
 
       this.panelService.panel(data).subscribe(res => {
-        console.log(res);
-
         if (res.message == 'Good, user updated') {
           // location.reload()
         }
@@ -121,8 +114,6 @@ export class PanelProfileComponent implements OnInit {
       check?.removeAttribute("checked")
       this.user.publicAccount = 1
     }
-    console.log(this.user.publicAccount);
-
   }
 
   setUser(data: any) {
@@ -151,8 +142,6 @@ export class PanelProfileComponent implements OnInit {
       reader.onload = (e:any)=>{
         this.urlProfile = e.target.result;
         document.getElementById("fileStyleProfile")!.style.backgroundImage = 'url(' + this.urlProfile + ')';
-        console.log(this.urlProfile);
-        
       }
     }
   }

@@ -110,8 +110,6 @@ export class ExplorerComponent implements OnInit {
 
   //añade a los usuarios correspondientes si tiene el like o no
   setLiked() {
-    console.log(this.likes);
-
     for (let i = 0; i < this.likes.length; i++) {
       for (let j = 0; j < this.users.length; j++) {        
         if(this.likes[i] == this.users[j].id){
@@ -119,8 +117,6 @@ export class ExplorerComponent implements OnInit {
         }
       }
     }
-    console.log(this.users);
-    
     this.addUsers();
     
   }
