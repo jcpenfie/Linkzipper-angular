@@ -23,20 +23,20 @@ export class UserLikesComponent implements OnInit {
       })
     }
   }
-  users!: any;
-
-  disLike(user: any) {
-    var indexOfUser = this.users.indexOf(user);
-    this.users.splice(indexOfUser, 1)
-  }
+  users: Array<any> = [];
 
   setUser(data: any) {
     this.idUser = data.id;
     this.likeService.show(this.idUser).subscribe(res => {
       this.likes = res
-      console.log(this.likes.likes)
-      this.users = this.likes.likes
-      this.status = this.users.length == 0
+      // this.users = this.likes.likes
+      for (let i = 0; i < this.likes.likes.length; i++) {
+        this.users[i] = this.likes.likes[i][0]
+        this.users[i].liked = true
+        
+      }
+      
+      this.status = this.users.length == 0 || this.users.length == undefined
     })
 
 

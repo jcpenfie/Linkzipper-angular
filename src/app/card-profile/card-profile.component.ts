@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../user.service';
 import Swal from 'sweetalert2'
 import { LikesService } from '../likes.service';
@@ -14,7 +14,6 @@ export class CardProfileComponent implements OnInit {
   @Input() color!: string;
   @Input() btn!: boolean;
   @Input() liked!: boolean;
-  @Output() disLikeEmit = new EventEmitter<string>();
 
   idUser!: any;
   userDescriptionLength!: any
@@ -24,7 +23,7 @@ export class CardProfileComponent implements OnInit {
   ngOnInit(): void {
     if (this.user.description == "") {
       this.userDescriptionLength = this.user.description.length
-    }else{
+    } else {
       this.userDescriptionLength = 0
     }
     if (localStorage.getItem("token") != null) {
@@ -33,12 +32,8 @@ export class CardProfileComponent implements OnInit {
       })
     }
 
-    //todo:check likes
-
 
     let boton = document.getElementById("btn");
-
-    console.log(this.btn);
     if (this.btn) {
       boton?.setAttribute("class", "visible btn negro text-light w-100")
     } else {
@@ -47,32 +42,43 @@ export class CardProfileComponent implements OnInit {
   }
 
   like(id: any) {
-    if (localStorage.getItem("token") != null) {
 
+    if (localStorage.getItem("token") != null) {
+      this.userService.getUser(localStorage.getItem("token")).subscribe(res => {
+        this.setUser(res)
+      })
+      
       let data = { idUser: this.idUser, idUserLiked: id };
 
       let like = document.getElementById(id + "like");
       let likeCount = document.getElementById(id + "likeCount");
 
-      if (like?.getAttribute("class") == "heart fa-regular fa-heart") {
+      if (like?.getAttribute("class") == "fa-heart fa-regular heart") {
+        console.log("if like");
         like?.setAttribute("class", "heart fa fa-heart text-danger");
-        let count = parseInt(this.user.totalLikes) + 1;
-        this.user.totalLikes = count
-
-        likeCount!.textContent = count.toString()
-        console.log(id);
+        if (parseInt(this.user.totalLikes) < 999) {
+          let count = parseInt(this.user.totalLikes) + 1;
+          this.user.totalLikes = count
+          likeCount!.textContent = count.toString()
+        }
+        console.log(data);
 
         this.likeService.like(data).subscribe(res => {
           console.log(res);
-
         })
       } else {
+        console.log("else like");
 
-        like?.setAttribute("class", "heart fa-regular fa-heart");
-        let count = parseInt(this.user.totalLikes) - 1;
-        this.user.totalLikes = count
-        likeCount!.textContent = count.toString()
+        like?.setAttribute("class", "fa-heart fa-regular heart");
+        if (parseInt(this.user.totalLikes) < 999) {
+          let count = parseInt(this.user.totalLikes) - 1;
+          this.user.totalLikes = count
+          likeCount!.textContent = count.toString()
+        }
+        console.log(data);
+
         this.likeService.dislike(data).subscribe(res => {
+          console.log(res);
 
         })
       }
@@ -83,23 +89,44 @@ export class CardProfileComponent implements OnInit {
 
 
   disLike(id: any) {
-    let like = document.getElementById(id + "like");
-    let likeCount = document.getElementById(id + "likeCount");
+    if (localStorage.getItem("token") != null) {
 
+      let data = { idUser: this.idUser, idUserLiked: id };
 
-    if ((like?.getAttribute("class") == "heart fa-regular fa-heart")) {
-      like?.setAttribute("class", "heart fa fa-heart text-danger");
-      let count = parseInt(this.user.totalLikes) + 1;
-      this.user.totalLikes = count
+      let like = document.getElementById(id + "like");
+      let likeCount = document.getElementById(id + "likeCount");
 
-      likeCount!.textContent = count.toString()
+      if (like?.getAttribute("class") == "heart fa fa-heart text-danger") {
+        console.log("if dislike");
+        like?.setAttribute("class", "fa-heart fa-regular heart");
+        if (parseInt(this.user.totalLikes) < 999) {
+          let count = parseInt(this.user.totalLikes) - 1;
+          this.user.totalLikes = count
+          likeCount!.textContent = count.toString()
+        }
+        console.log(data);
+        
+        this.likeService.dislike(data).subscribe(res => {
+          console.log(res);
+        })
+      } else {
+        console.log("else dislike");
+
+        like?.setAttribute("class", "fa-heart fa-regular heart");
+        if (parseInt(this.user.totalLikes) < 999) {
+          let count = parseInt(this.user.totalLikes) - 1;
+          this.user.totalLikes = count
+          likeCount!.textContent = count.toString()
+        }
+        console.log(data);
+        
+        this.likeService.dislike(data).subscribe(res => {
+          console.log(res);
+
+        })
+      }
     } else {
-
-      like?.setAttribute("class", "heart fa-regular fa-heart");
-      let count = parseInt(this.user.totalLikes) - 1;
-      this.user.totalLikes = count
-      likeCount!.textContent = count.toString()
-      this.disLikeEmit.emit(this.user);
+      document.getElementById("notification")?.click();
     }
   }
 
@@ -125,5 +152,16 @@ export class CardProfileComponent implements OnInit {
 
   setUser(data: any) {
     this.idUser = data.id;
+  }
+
+  heartControl(id: any) {
+    let like = document.getElementById(id + "like");
+    console.log(like?.getAttribute("class") == "fa-heart fa-regular heart");
+
+    if (like?.getAttribute("class") == "fa-heart fa-regular heart") {
+      this.like(id)
+    } else {
+      this.disLike(id)
+    }
   }
 }

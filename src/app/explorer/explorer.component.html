@@ -1,7 +1,8 @@
 <div class="card-group justify-content-evenly pt-5" infiniteScroll [infiniteScrollDistance]="2" (scrolled)="onScroll()">
     <div *ngFor="let user of usersToShow;let i=index">
-        <app-card-profile [user]="user" [liked]="false" [btn]="true"></app-card-profile>
+        <app-card-profile [user]="user" [btn]="true"></app-card-profile>
     </div>
 </div>
 
-<button *ngIf="showGoUpButton" class="animation btn negro text-light no-hidden" (click)="scrollTop()"><i class="fa-solid fa-angle-up"></i></button>
+<button *ngIf="showGoUpButton" class="animation btn negro text-light no-hidden" (click)="scrollTop()"><i
+        class="fa-solid fa-angle-up"></i></button>

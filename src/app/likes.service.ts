@@ -42,7 +42,7 @@ export class LikesService {
   dislike(data: any) {
     let body = new URLSearchParams();
     body.set('idUser', data.idUser);
-    body.set('idLike', data.idUserLiked);
+    body.set('idUserLiked', data.idUserLiked);
 
     let options = {
       headers: this.headers
