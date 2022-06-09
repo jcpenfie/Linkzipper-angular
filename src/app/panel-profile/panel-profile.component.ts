@@ -45,7 +45,7 @@ export class PanelProfileComponent implements OnInit {
   }
 
   profileForm = this.fb.group({
-    displayName: ['', [Validators.required, Validators.maxLength(12)]],
+    displayName: [' ', [Validators.required, Validators.maxLength(12)]],
     pass: ['', [Validators.required, ValidacionesPropias.passwordValid]],
     theme: ['', [Validators.required]],
     description: [''],
@@ -55,11 +55,10 @@ export class PanelProfileComponent implements OnInit {
 
   submit() {
     document.getElementById("alertReg")?.setAttribute("class", "invisible alert alert-danger mx-3")
-
     if (this.profileForm.valid) {
       let data = {
         userName: this.user.userName,
-        showName: this.profileForm.value.displayName,
+        showName: '',
         pass: this.profileForm.value.pass,
         theme: this.profileForm.value.theme,
         publicAccount: this.user.publicAccount,
@@ -69,12 +68,12 @@ export class PanelProfileComponent implements OnInit {
       }
 
       if (this.profileForm.value.profileImg != '') {
-        data.profileImg = this.urlProfile
+        data.profileImg = this.profileImg
       } else {
         data.profileImg = `${this.user.profileImg}`
       }
       if (this.profileForm.value.backgroundImg != '') {
-        data.backgroundImg = this.urlBg
+        data.backgroundImg = this.backgroundImg
       } else {
         data.backgroundImg = `${this.user.backgroundImg}`
       }
@@ -84,7 +83,17 @@ export class PanelProfileComponent implements OnInit {
         data.description = this.user.description
       }
 
+      if(this.profileForm.value.displayName != ' '){
+        data.showName = this.profileForm.value.displayName;
+      }else{
+        data.showName = this.user.showName;
+      }
+      console.log(data);
+      
+
       this.panelService.panel(data).subscribe(res => {
+        console.log(res);
+        
         if (res.message == 'Good, user updated') {
           // location.reload()
         }
@@ -133,17 +142,35 @@ export class PanelProfileComponent implements OnInit {
   }
 
   urlProfile = this.user.profileImg
-  urlBg = this.user.backgroundImage
+  
 
-  captureFile(event: any): any {
+  profileImg!:string;
+
+  captureFileProfile(event: any): any {
     if(event.target.files){
+      this.profileImg = event.target.files[0]
       var reader = new FileReader()
       reader.readAsDataURL(event.target.files[0])
       reader.onload = (e:any)=>{
         this.urlProfile = e.target.result;
         document.getElementById("fileStyleProfile")!.style.backgroundImage = 'url(' + this.urlProfile + ')';
       }
-    }
+    }    
+  }
+
+  urlBg = this.user.backgroundImage
+  backgroundImg!:string;
+
+  captureFilebackground(event: any): any {
+    if(event.target.files){
+      this.backgroundImg = event.target.files[0]
+      var reader = new FileReader()
+      reader.readAsDataURL(event.target.files[0])
+      reader.onload = (e:any)=>{
+        this.urlBg = e.target.result;
+        document.getElementById("fileStyleBg")!.style.backgroundImage = 'url(' + this.urlBg + ')';
+      }
+    }    
   }
 
   notification() {

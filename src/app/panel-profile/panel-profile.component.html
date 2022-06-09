@@ -17,7 +17,7 @@
     <!-- Formualario -->
 
     <div class="invisible" role="alert" id="alertReg">{{resultado}}</div>
-    <form [formGroup]="profileForm" (ngSubmit)="submit()" class="gridForm cardInput m-2" id="profileForm">
+    <form [formGroup]="profileForm" (ngSubmit)="submit()" class="gridForm cardInput m-2" id="profileForm"  enctype="multipart/form-data">
 
         <!-- Nombre, likes, see likes y switch -->
         <div class="infoButtons d-flex align-items-center justify-content-between mt-5">
@@ -39,7 +39,7 @@
             <label for="formFile" class="form-label">Profile Image:</label>
             <div class="fileStyleProfile" id="fileStyleProfile">
                 <input class="form-control file" formControlName="profileImg" type="file" id="formFilePro"
-                    style="height: 90%;" (change)="captureFile($event)" accept=".png, .jpg, .jpeg, .gif">
+                    style="height: 90%;" (change)="captureFileProfile($event)" accept=".png, .jpg, .jpeg, .gif">
             </div>
         </div>
 
@@ -89,7 +89,7 @@
             <label for="formFile" class="form-label">Background Image:</label>
             <div class="fileStyleBg" id="fileStyleBg">
                 <input class="form-control file" type="file" formControlName="backgroundImg" id="formFileBg"
-                    style="height: 90%;">
+                    style="height: 90%;" (change)="captureFilebackground($event)" accept=".png, .jpg, .jpeg, .gif">
             </div>
         </div>
 
