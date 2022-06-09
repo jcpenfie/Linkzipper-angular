@@ -112,18 +112,19 @@ export class PanelLinksComponent implements OnInit {
 
 
         this.links[objIndex].title = this.linkForm.value.title
-        this.links[objIndex].link = `https://${this.linkForm.value.link}`
+        this.links[objIndex].link = this.linkForm.value.link.startsWith("https://")?`${this.linkForm.value.link}`:`https://${this.linkForm.value.link}`
         this.links[objIndex].logo = this.linkForm.value.logo
 
 
 
         let data = {
           title: this.linkForm.value.title,
-          link: `https://${this.linkForm.value.link}`,
+          link: this.linkForm.value.link.startsWith("https://")?`${this.linkForm.value.link}`:`https://${this.linkForm.value.link}`,
           logo: this.linkForm.value.logo,
           idLink: this.linkForm.value.idLink
         }
         this.linkService.update(data).subscribe(res => {
+          this.editLinkNotification()
         })
       } else {
         this.links.push({ id: this.links.length + 1, title: this.linkForm.value.title, link: `https://${this.linkForm.value.link}`, logo: this.linkForm.value.logo })
@@ -135,9 +136,11 @@ export class PanelLinksComponent implements OnInit {
           idUser: this.user.id
         }
         this.linkService.create(data).subscribe(res => {
+          this.addLinkNotification()
         })
       }
       this.linkForm.reset()
+      console.log("añadido");
     } else {
       this.resultado = "There is invalid data in the form";
     }
@@ -155,4 +158,46 @@ export class PanelLinksComponent implements OnInit {
     this.linkForm.setValue({ edit: false })
   }
 
+
+  //Notifications
+
+  addLinkNotification() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 2000,
+      background: "#28a745",
+      color: "#ffff",
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+
+    Toast.fire({
+      title: 'Link added successfully'
+    })
+  }
+
+  editLinkNotification() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 2000,
+      background: "#f0ad4e",
+      color: "#ffff",
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+
+    Toast.fire({
+      title: 'Link edited successfully'
+    })
+  }
 }

@@ -63,6 +63,7 @@ export class CardProfileComponent implements OnInit {
         }
 
         this.likeService.like(data).subscribe(res => {
+          this.likeNotification()
         })
       } else {
 
@@ -74,7 +75,7 @@ export class CardProfileComponent implements OnInit {
         }
 
         this.likeService.dislike(data).subscribe(res => {
-
+          this.disLikeNotification()
         })
       }
     } else {
@@ -98,7 +99,7 @@ export class CardProfileComponent implements OnInit {
         }
 
         this.likeService.dislike(data).subscribe(res => {
-
+          this.disLikeNotification()
         })
       } else {
         like?.setAttribute("class", "fa-heart fa-regular heart");
@@ -109,6 +110,7 @@ export class CardProfileComponent implements OnInit {
         }
 
         this.likeService.dislike(data).subscribe(res => {
+          this.disLikeNotification()
         })
       }
     } else {
@@ -116,7 +118,23 @@ export class CardProfileComponent implements OnInit {
     }
   }
 
-  notification() {
+  setUser(data: any) {
+    this.idUser = data.id;
+  }
+
+  heartControl(id: any) {
+    let like = document.getElementById(id + "like");
+
+    if (like?.getAttribute("class") == "fa-heart fa-regular heart") {
+      this.like(id)
+    } else {
+      this.disLike(id)
+    }
+  }
+
+  //notifications
+
+  loginNotification() {
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
@@ -136,17 +154,43 @@ export class CardProfileComponent implements OnInit {
     })
   }
 
-  setUser(data: any) {
-    this.idUser = data.id;
+
+  likeNotification() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1000,
+      background: "#28a745",
+      color: "#ffff",
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+
+    Toast.fire({
+      title: 'Liked'
+    })
   }
+  disLikeNotification() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1000,
+      background: "#dc3545",
+      color: "#ffff",
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
 
-  heartControl(id: any) {
-    let like = document.getElementById(id + "like");
-
-    if (like?.getAttribute("class") == "fa-heart fa-regular heart") {
-      this.like(id)
-    } else {
-      this.disLike(id)
-    }
+    Toast.fire({
+      title: 'DisLiked'
+    })
   }
 }
