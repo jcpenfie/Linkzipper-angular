@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class LikesService {
 
   
-  url = "http://127.0.0.1:8000/api"
+  url = "https://linkzipper-api.herokuapp.com/api"
 
   private headers = new HttpHeaders(
     {
