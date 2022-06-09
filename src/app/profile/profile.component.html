@@ -1,10 +1,10 @@
-<div class="cont pt-5"
+<div class="cont pt-5 {{user.theme}}ThemeBg"
     style="background-image: url('http://127.0.0.1:8000/api/user/img/bg/{{user.backgroundImg}}'); {{heigth}}">
     <div class="d-flex justify-content-center flex-column align-items-center mt-auto">
-        <app-card-profile [user]="user" color="white" [btn]="false" [liked]="false"></app-card-profile>
+        <app-card-profile [user]="user" [btn]="false" [liked]="false"></app-card-profile>
     <div *ngFor="let link of user.links;let i=index">
-        <a href="{{link.link}}" style="color: black;" target="_blank">
-            <div class="linkCard card d-flex flex-row align-items-center m-2 " style="max-width: 550px;">
+        <a href="{{link.link}}" target="_blank">
+            <div class="linkCard card d-flex flex-row align-items-center m-2 {{user.theme}}Theme" style="max-width: 550px;">
                 <img class="card-img-left m-2" src="assets/img/logos/{{link.logo}}" alt="{{link.logo}} logo" width="10%">
                 <div class="card-body">
                     <h5 class="card-title display-6">{{link.title}}</h5>

@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -7,27 +7,77 @@
     letter-spacing: 0.5pt;
 }
 
-.fw-800{
+.fw-800 {
     font-weight: 800;
 }
 
-body{
+body {
     background-color: #E9E6E1;
 }
 
 
-a{
+a {
     text-decoration: none;
 }
 
-.gris{
+.gris {
     background-color: #E9E6E1;
 }
 
-.blanco{
+.blanco {
     background-color: #FFFFFB;
 }
 
-.negro{
+.negro {
     background-color: #3D3D3D;
+}
+
+/* TEMAS */
+.whiteThemeBg {
+    background-color: #FFFFFB;
+    color: black;
+}
+
+.darkThemeBg {
+    background-color: #3D3D3D;
+    color: #FFFFFB;
+}
+
+.redThemeBg {
+    background-color: #d9534f;
+    color: black;
+}
+
+.greenThemeBg {
+    background-color: #5cb85c;
+    color: black;
+}
+
+.blueThemeBg {
+    background-color: #0275d8;
+    color: black;
+}
+.darkTheme {
+    background-color: #929292;
+    color: #FFFFFB;
+}
+
+.whiteTheme {
+    background-color: #ffffff;
+    color: black;
+}
+
+.redTheme {
+    background-color: #ff8985;
+    color: black;
+}
+
+.greenTheme {
+    background-color: #80e180;
+    color: black;
+}
+
+.blueTheme {
+    background-color: #5ab2ff;
+    color: black;
 }
