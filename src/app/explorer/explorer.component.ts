@@ -31,15 +31,19 @@ export class ExplorerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.exploreService.explore().subscribe(res => {
+    this.exploreService.explore().subscribe(res => {      
       this.users = res
       this.usersToShow = new Array<string>();
+      if(localStorage.getItem("token") == null){
+        this.addUsers();
+      }
     })
-
 
     //recogida del usuario logueado
     if (localStorage.getItem("token") != null) {
       this.userService.getUser(localStorage.getItem("token")).subscribe(res => {
+        console.log(res);
+        
         this.setUser(res)
       })
     }

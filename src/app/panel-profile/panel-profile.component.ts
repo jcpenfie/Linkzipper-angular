@@ -141,7 +141,7 @@ export class PanelProfileComponent implements OnInit {
     }
   }
 
-  urlProfile = this.user.profileImg
+  urlProfile = "http://127.0.0.1:8000/api/user/img/logo/profileInput.png"
   
 
   profileImg!:string;
@@ -158,7 +158,7 @@ export class PanelProfileComponent implements OnInit {
     }    
   }
 
-  urlBg = this.user.backgroundImage
+  urlBg = "http://127.0.0.1:8000/api/user/img/bg/bgInput.png"
   backgroundImg!:string;
 
   captureFilebackground(event: any): any {

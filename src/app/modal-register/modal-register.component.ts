@@ -32,6 +32,7 @@ export class ModalRegisterComponent implements OnInit {
   submit() {
     if (this.registerForm.valid) {
       this.userService.register(this.registerForm.value).subscribe(res => {
+        console.log(res);
         
         this.error = res
 
