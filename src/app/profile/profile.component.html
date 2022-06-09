@@ -1,17 +1,27 @@
 <div class="cont pt-5 {{user.theme}}ThemeBg"
     style="background-image: url('http://127.0.0.1:8000/api/user/img/bg/{{user.backgroundImg}}'); {{heigth}}">
-    <div class="d-flex justify-content-center flex-column align-items-center mt-auto">
-        <app-card-profile [user]="user" [btn]="false" [liked]="false"></app-card-profile>
-    <div *ngFor="let link of user.links;let i=index">
-        <a href="{{link.link}}" target="_blank">
-            <div class="linkCard card d-flex flex-row align-items-center m-2 {{user.theme}}Theme" style="max-width: 550px;">
-                <img class="card-img-left m-2" src="assets/img/logos/{{link.logo}}" alt="{{link.logo}} logo" width="10%">
-                <div class="card-body">
-                    <h5 class="card-title display-6">{{link.title}}</h5>
-                </div>
-            </div>
-        </a>
+
+    <!-- carga -->
+    <div class="d-flex justify-content-center pt-5" *ngIf="!completed">
+        <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
     </div>
+
+    <div class="d-flex justify-content-center flex-column align-items-center mt-auto" *ngIf="completed">
+        <app-card-profile [user]="user" [btn]="false"></app-card-profile>
+        <div *ngFor="let link of user.links;let i=index">
+            <a href="{{link.link}}" target="_blank">
+                <div class="linkCard card d-flex flex-row align-items-center m-2 {{user.theme}}Theme"
+                    style="max-width: 550px;">
+                    <img class="card-img-left m-2" src="assets/img/logos/{{link.logo}}" alt="{{link.logo}} logo"
+                        width="10%">
+                    <div class="card-body">
+                        <h5 class="card-title display-6">{{link.title}}</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
     <a class="linkZipper display-5 p-2 d-flex" routerLink="/index"><span class="fw-800">Link</span>Zipper</a>
 </div>

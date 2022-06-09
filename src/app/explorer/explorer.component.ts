@@ -11,6 +11,7 @@ import { UserService } from '../user.service';
 })
 export class ExplorerComponent implements OnInit {
 
+  completed:boolean = false //estado de la carga
 
 
   users: any; //almaceno todos los usarios traidos de la api
@@ -59,6 +60,7 @@ export class ExplorerComponent implements OnInit {
       }
       lineCounter++;
     }
+    this.completed = true
   }
 
   //metodo que se ejecuta cuando se hace scroll según si está al final de la página

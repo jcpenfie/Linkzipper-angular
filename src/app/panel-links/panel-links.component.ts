@@ -23,6 +23,8 @@ export class PanelLinksComponent implements OnInit {
   links!: any;
   status!: boolean
 
+  completed: boolean = false
+
   setUser(data: any) { //le meto por parametros el usuario para obtener sus links
     this.user = data;
     //getLinks
@@ -33,6 +35,7 @@ export class PanelLinksComponent implements OnInit {
       if (this.links.length == 0) {
         this.status = true
       }
+      this.completed = true
     })
   }
 
@@ -112,14 +115,14 @@ export class PanelLinksComponent implements OnInit {
 
 
         this.links[objIndex].title = this.linkForm.value.title
-        this.links[objIndex].link = this.linkForm.value.link.startsWith("https://")?`${this.linkForm.value.link}`:`https://${this.linkForm.value.link}`
+        this.links[objIndex].link = this.linkForm.value.link.startsWith("https://") ? `${this.linkForm.value.link}` : `https://${this.linkForm.value.link}`
         this.links[objIndex].logo = this.linkForm.value.logo
 
 
 
         let data = {
           title: this.linkForm.value.title,
-          link: this.linkForm.value.link.startsWith("https://")?`${this.linkForm.value.link}`:`https://${this.linkForm.value.link}`,
+          link: this.linkForm.value.link.startsWith("https://") ? `${this.linkForm.value.link}` : `https://${this.linkForm.value.link}`,
           logo: this.linkForm.value.logo,
           idLink: this.linkForm.value.idLink
         }

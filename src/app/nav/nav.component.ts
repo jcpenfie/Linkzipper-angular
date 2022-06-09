@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { SearchService } from '../search.service';
 import { fromEvent } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'boot-nav',
@@ -60,6 +61,32 @@ export class NavComponent implements OnInit {
   }
 
   sendName() {
-    this.router.navigate(['/@' + this.usernameSearch])
+    if(this.dataList.length != 0){
+      this.router.navigate(['/@' + this.usernameSearch])
+    }else{
+      this.emptyNotification()
+    }
+  }
+
+  //Notifications
+
+  emptyNotification() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1000,
+      background: "#dc3545",
+      color: "#ffff",
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+
+    Toast.fire({
+      title: 'There is no a user with that name'
+    })
   }
 }

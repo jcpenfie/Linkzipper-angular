@@ -16,6 +16,9 @@ export class ProfileComponent implements OnInit {
 
   user: any = {}
 
+  completed:boolean = false //estado de la carga
+
+
   ngOnInit(): void {
 
 
@@ -54,5 +57,6 @@ export class ProfileComponent implements OnInit {
       this.user.links = links.links
       this.user.liked = true
     })
+    this.completed = true
   }
 }

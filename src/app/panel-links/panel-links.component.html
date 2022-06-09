@@ -1,4 +1,4 @@
-<div class="pt-5">
+<div class="pt-5" *ngIf="completed">
     <a class="btn negro text-light m-3 px-5 py-2 " id="profile" data-toggle="modal" data-target="#AddLinkModal"
         (click)="setEditTrue()">Add
         Link</a>
@@ -9,7 +9,7 @@
                     <div class="card linkCard d-flex flex-row align-items-center round " style="max-width: 550px;">
                         <i class="fa-solid fa-xmark m-2" id="{{link.id}}" (click)="deleteNotification(link)"></i>
                         <i class="fa-solid fa-pen m-2" id="{{link.id}}" (click)="edit(link)" data-toggle="modal"
-                        data-target="#AddLinkModal"></i>
+                            data-target="#AddLinkModal"></i>
                         <a href="{{link.link}}" class="fa-solid fa-location-arrow" target="_blank"></a>
 
                         <img class="card-img-left m-2" src="assets/img/logos/{{link.logo}}" alt="{{link.logo}} logo"
@@ -101,6 +101,14 @@
 
 
     <div *ngIf="status" class="alert alert-light h2 rounded-full d-flex justify-content-center m-5">
-        <p class="p-2">You haven't <span class="text-danger cursor-pointer" data-toggle="modal" data-target="#AddLinkModal">add</span> any links yet</p>
+        <p class="p-2">You haven't <span class="text-danger cursor-pointer" data-toggle="modal"
+                data-target="#AddLinkModal">add</span> any links yet</p>
     </div>
 </div>
+
+    <!-- carga -->
+    <div class="d-flex justify-content-center pt-5" *ngIf="!completed">
+        <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
