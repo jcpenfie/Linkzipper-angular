@@ -6,13 +6,15 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="linksNav collapse navbar-collapse justify-content-between" id="navbarTogglerLogin">
-        <a class="navbar-brand p-2" routerLink="/index"></a>
+    <div class=" collapse navbar-collapse justify-content-between" id="navbarTogglerLogin">
+        <div class="linksNav">
+            <a class="navbar-brand p-2" routerLink="/index"></a>
         <ul class="navbar-nav p-2 display-6">
             <a class="nav-link" id="preview" routerLink="panel/preview">PREVIEW</a>
             <a class="nav-link" id="links" routerLink="panel/links">LINKS</a>
             <a class="nav-link" id="profile" routerLink="panel/profile">PROFILE</a>
         </ul>
         <a class="btn negro text-light" id="profile" (click)="logout()">LOGOUT</a>
+        </div>
     </div>
 </nav>
