@@ -141,7 +141,7 @@ export class PanelProfileComponent implements OnInit {
     }
   }
 
-  urlProfile = "http://linkzipper-api.herokuapp.com//api/user/img/logo/profileInput.png"
+  urlProfile = "http://linkzipper-api.herokuapp.com/api/user/img/logo/profileInput.png"
   
 
   profileImg!:string;
@@ -158,7 +158,7 @@ export class PanelProfileComponent implements OnInit {
     }    
   }
 
-  urlBg = "http://linkzipper-api.herokuapp.com//api/user/img/bg/bgInput.png"
+  urlBg = "http://linkzipper-api.herokuapp.com/api/user/img/bg/bgInput.png"
   backgroundImg!:string;
 
   captureFilebackground(event: any): any {
