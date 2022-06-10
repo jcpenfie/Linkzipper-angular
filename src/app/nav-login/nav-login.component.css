@@ -13,7 +13,8 @@
     }
 
     .linksNav {
-        display: flex;
+        /* display: flex; */
+        padding-left: 40%;
         align-items: center;
         justify-content: center;
         flex-direction: column;
