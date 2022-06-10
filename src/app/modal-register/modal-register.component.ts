@@ -75,4 +75,15 @@ export class ModalRegisterComponent implements OnInit {
       ojo?.setAttribute("class", "fa-solid fa-eye")
     }
   }
+  showPasswordConfirm() {
+    let input = document.getElementById("passwordConfirm")
+    let ojo = document.getElementById("eyeConfirm")
+    if (input?.getAttribute('type') == "password") {
+      input?.setAttribute('type', "text")
+      ojo?.setAttribute("class", "fa-solid fa-eye-slash")
+    } else {
+      input?.setAttribute('type', "password")
+      ojo?.setAttribute("class", "fa-solid fa-eye")
+    }
+  }
 }

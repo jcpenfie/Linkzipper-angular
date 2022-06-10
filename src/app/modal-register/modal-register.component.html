@@ -43,7 +43,8 @@
                             <input type="password" formControlName="pass" class="form-control" id="passwordRegister"
                                 aria-describedby="password input" placeholder="Password">
                             <div class="input-group-prepstart">
-                                <div class="input-group-text pointer" (click)="showPassword()">&nbsp;<i class="fa-solid fa-eye" id="eye"></i>&nbsp;</div>
+                                <div class="input-group-text pointer" (click)="showPassword()">&nbsp;<i
+                                        class="fa-solid fa-eye" id="eye"></i>&nbsp;</div>
                             </div>
                         </div>
                         <small *ngIf="this.registerForm.get('pass')?.errors?.['passwordValid']" class="text-danger">
@@ -52,8 +53,15 @@
                     </div>
                     <div class="form-group">
                         <label for="passwordConfirm">Confirm Password:</label>
-                        <input type="password" formControlName="passConfirm" class="form-control" id="passwordConfirm"
-                            aria-describedby="confirm password input" placeholder="Confirm Password">
+                        <div class="input-group">
+                            <input type="password" formControlName="passConfirm" class="form-control"
+                                id="passwordConfirm" aria-describedby="confirm password input"
+                                placeholder="Confirm Password">
+                            <div class="input-group-prepstart">
+                                <div class="input-group-text pointer" (click)="showPasswordConfirm()">&nbsp;<i
+                                        class="fa-solid fa-eye" id="eyeConfirm"></i>&nbsp;</div>
+                            </div>
+                        </div>
                         <small *ngIf="this.registerForm.errors?.['noMatchPass']" class="text-danger">
                             Passwords must match
                         </small>
