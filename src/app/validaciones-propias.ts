@@ -21,9 +21,9 @@ export class ValidacionesPropias {
         const password = control.get("pass")!.value;
         const confirmPass = control.get("passConfirm")!.value;
         if (password != confirmPass) { return { 'noMatchPass': true } }
-        const email = control.get("email")!.value;
-        const confirmEmail = control.get("emailConfirm")!.value;
-        if (email != confirmEmail) { return { 'noMatchEmail': true } }
+        // const email = control.get("email")!.value;
+        // const confirmEmail = control.get("emailConfirm")!.value;
+        // if (email != confirmEmail) { return { 'noMatchEmail': true } }
         return null
     }
 }

@@ -14,7 +14,7 @@ export class ModalRegisterComponent implements OnInit {
 
   error!: any
 
-  status:boolean = true
+  status: boolean = true
 
   constructor(private fb: FormBuilder, private userService: UserService) { }
 
@@ -26,31 +26,31 @@ export class ModalRegisterComponent implements OnInit {
     pass: ['', [Validators.required, ValidacionesPropias.passwordValid]],
     passConfirm: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    emailConfirm: ['', [Validators.required, Validators.email]],
+    // emailConfirm: ['', [Validators.required, Validators.email]],
   }, { validator: ValidacionesPropias.match });
 
   submit() {
     if (this.registerForm.valid) {
       this.userService.register(this.registerForm.value).subscribe(res => {
         console.log(res);
-        
+
         this.error = res
 
         if (this.error.message != 'Good') { // si el mensaje que devuelve no es 'Good' salta el error de validación
-          
+
           if (this.status) {
             document.getElementById("alertReg")?.setAttribute("class", "visible alert alert-danger mx-3")
-          document.getElementById("btnSubmitRegister")?.setAttribute("data-target", "")
-          this.resultado = "The user name or email has already been taken";
+            document.getElementById("btnSubmitRegister")?.setAttribute("data-target", "")
+            this.resultado = "The user name or email has already been taken";
           }
 
-        } 
+        }
         else {
           document.getElementById("alertReg")?.setAttribute("class", "invisible alert alert-danger mx-3")
           document.getElementById("btnSubmitRegister")?.setAttribute("data-target", "#REGISTERModal")
           document.getElementById("btnSubmitRegister")?.click()
           this.registerForm.reset()
-          this.resultado =""
+          this.resultado = ""
           this.status = false
           localStorage.setItem('token', this.error.access_token)
           location.reload()
@@ -62,5 +62,17 @@ export class ModalRegisterComponent implements OnInit {
       this.resultado = "There is invalid data in the form";
     }
 
+  }
+
+  showPassword() {
+    let input = document.getElementById("passwordRegister")
+    let ojo = document.getElementById("eye")
+    if (input?.getAttribute('type') == "password") {
+      input?.setAttribute('type', "text")
+      ojo?.setAttribute("class", "fa-solid fa-eye-slash")
+    } else {
+      input?.setAttribute('type', "password")
+      ojo?.setAttribute("class", "fa-solid fa-eye")
+    }
   }
 }
