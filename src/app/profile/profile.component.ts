@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
 
   completed:boolean = false //estado de la carga
 
+  bgurl:string = "http://linkzipper-api.herokuapp.com/api/user/img/bg/emptyBg.png"
 
   ngOnInit(): void {
 
@@ -37,10 +38,6 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  heigth = this.username ? "height: 100vh;"
-    : "height: 100vh;"
-
-
   setUser() {
     if (this.username != undefined) {
       this.searchService.search(this.username).subscribe(res => {
@@ -57,6 +54,8 @@ export class ProfileComponent implements OnInit {
       this.user.links = links.links
       this.user.liked = true
     })
+    document.getElementById("bg")?.setAttribute("style", `background-image: url('http://linkzipper-api.herokuapp.com/api/user/img/bg/${this.user.backgroundImg}'); height: 100vh;`)
     this.completed = true
+
   }
 }
