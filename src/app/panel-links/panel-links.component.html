@@ -35,7 +35,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Add Link</h5>
-                    <button type="button" class="btn" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="btn" data-dismiss="modal" aria-label="Close" (click)="reset()">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
@@ -58,7 +58,7 @@
                                 <span class="input-group-text" id="basic-addon3">https://</span>
                                 <input type="text" formControlName="link" class="form-control" id="link"
                                     aria-describedby="link input" placeholder="www.Link.com"
-                                    (ngModelChange)="handleChange()">
+                                    (ngModelChange)="handleChangeLink($event)">
                             </div>
                             <small *ngIf="this.linkForm.get('link')?.errors?.['required']" class="text-danger">
                                 Link must not be empty
@@ -72,16 +72,15 @@
                             <label for="logo">Logo:</label>
                             <select formControlName="logo" class="form-select form-select-sm"
                                 aria-describedby="logo select" aria-label=".form-select-sm example"
-                                (ngModelChange)="handleChange()">
-                                <option value="w.png">Whatsapp</option>
-                                <option value="yt.png">Youtube</option>
-                                <option value="f.png">Facebook</option>
-                                <option value="i.png">Instagram</option>
-                                <option value="t.png">Twitter</option>
-                                <option value="fm.png">Facebook Messenger</option>
-                                <option value="l.png">LinkedIn</option>
-                                <option value="p.png">Pinterest</option>
-                                <option value="o.png">Other</option>
+                                (ngModelChange)="handleChange()" id="logoSelect">
+                                <option value="w.png" id="whatsapp">Whatsapp</option>
+                                <option value="yt.png" id="youtube">Youtube</option>
+                                <option value="f.png" id="facebook">Facebook</option>
+                                <option value="i.png" id="instagram">Instagram</option>
+                                <option value="t.png" id="twitter">Twitter</option>
+                                <option value="l.png" id="linkedin">LinkedIn</option>
+                                <option value="p.png" id="pinterest">Pinterest</option>
+                                <option value="o.png" id="other">Other</option>
                             </select>
                             <small *ngIf="this.linkForm.get('logo')?.errors?.['required']" class="text-danger">
                                 Logo must not be empty
@@ -106,9 +105,9 @@
     </div>
 </div>
 
-    <!-- carga -->
-    <div class="d-flex justify-content-center pt-5" *ngIf="!completed">
-        <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
+<!-- carga -->
+<div class="d-flex justify-content-center pt-5" *ngIf="!completed">
+    <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
     </div>
+</div>

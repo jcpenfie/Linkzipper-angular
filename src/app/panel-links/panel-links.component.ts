@@ -23,6 +23,9 @@ export class PanelLinksComponent implements OnInit {
   links!: any;
   status!: boolean
 
+
+  logoSelected!: string
+
   completed: boolean = false
 
   setUser(data: any) { //le meto por parametros el usuario para obtener sus links
@@ -30,6 +33,7 @@ export class PanelLinksComponent implements OnInit {
     //getLinks
 
     this.linkService.show(this.user.id).subscribe(res => {
+
       this.links = res
       this.links = this.links.links
       if (this.links.length == 0) {
@@ -38,45 +42,6 @@ export class PanelLinksComponent implements OnInit {
       this.completed = true
     })
   }
-
-  deleteNotification(link: any) {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success m-2',
-        cancelButton: 'btn btn-danger m-2'
-      },
-      buttonsStyling: false
-    })
-
-    swalWithBootstrapButtons.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel!',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.delete(link)
-        swalWithBootstrapButtons.fire(
-          'Deleted!',
-          'Your link has been deleted.',
-          'success'
-        )
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          'Cancelled',
-          'Your link is safe :)',
-          'error'
-        )
-      }
-    })
-  }
-
 
   delete(id: any) {
     var indexOfId = this.links.indexOf(id);
@@ -100,7 +65,7 @@ export class PanelLinksComponent implements OnInit {
   linkForm = this.fb.group({
     title: ['', [Validators.required]],
     link: ['', [Validators.required, ValidacionesPropias.linkValid]],
-    logo: ['', [Validators.required]],
+    logo: ['o.png', [Validators.required]],
     edit: [false],
     idLink: ['']
   }, {});
@@ -116,26 +81,28 @@ export class PanelLinksComponent implements OnInit {
 
         this.links[objIndex].title = this.linkForm.value.title
         this.links[objIndex].link = this.linkForm.value.link.startsWith("https://") ? `${this.linkForm.value.link}` : `https://${this.linkForm.value.link}`
-        this.links[objIndex].logo = this.linkForm.value.logo
+        this.links[objIndex].logo = this.logoSelected == this.linkForm.value.logo ? this.logoSelected : this.linkForm.value.logo == this.linkForm.value.logo ? this.logoSelected == this.linkForm.value.logo ? this.logoSelected : this.linkForm.value.logo : this.linkForm.value.logo
 
 
 
         let data = {
           title: this.linkForm.value.title,
           link: this.linkForm.value.link.startsWith("https://") ? `${this.linkForm.value.link}` : `https://${this.linkForm.value.link}`,
-          logo: this.linkForm.value.logo,
+          logo: this.logoSelected == this.linkForm.value.logo ? this.logoSelected : this.linkForm.value.logo,
           idLink: this.linkForm.value.idLink
         }
         this.linkService.update(data).subscribe(res => {
           this.editLinkNotification()
         })
+        this.linkForm.reset()
+
       } else {
-        this.links.push({ id: this.links.length + 1, title: this.linkForm.value.title, link: `https://${this.linkForm.value.link}`, logo: this.linkForm.value.logo })
+        this.links.push({ id: this.links.length + 1, title: this.linkForm.value.title, link: `https://${this.linkForm.value.link}`, logo: this.logoSelected == this.linkForm.value.logo ? this.logoSelected : this.linkForm.value.logo })
 
         let data = {
           title: this.linkForm.value.title,
           link: `https://${this.linkForm.value.link}`,
-          logo: this.linkForm.value.logo,
+          logo: this.logoSelected == this.linkForm.value.logo ? this.logoSelected : this.linkForm.value.logo,
           idUser: this.user.id
         }
         this.linkService.create(data).subscribe(res => {
@@ -157,8 +124,56 @@ export class PanelLinksComponent implements OnInit {
     }
   }
 
+  handleChangeLink(event: any) {
+    this.handleChange()
+
+    // let select = document.getElementsByName("logoSelect")
+    console.log(event);
+
+    if (event.includes("whatsapp")) {
+      document.getElementById("whatsapp")?.setAttribute("selected", "")
+      this.logoSelected = "w.png"
+    }
+    else if (event.includes("youtube")) {
+      document.getElementById("youtube")?.setAttribute("selected", "")
+      this.logoSelected = "yt.png"
+    }
+    else if (event.includes("facebook")) {
+      document.getElementById("facebook")?.setAttribute("selected", "")
+      this.logoSelected = "f.png"
+    }
+    else if (event.includes("instagram")) {
+      document.getElementById("instagram")?.setAttribute("selected", "")
+      this.logoSelected = "i.png"
+    }
+    else if (event.includes("twitter")) {
+      document.getElementById("twitter")?.setAttribute("selected", "")
+      this.logoSelected = "t.png"
+    }
+    else if (event.includes("linkedin")) {
+      document.getElementById("linkedin")?.setAttribute("selected", "")
+      this.logoSelected = "l.png"
+    }
+    else if (event.includes("pinterest")) {
+      document.getElementById("pinterest")?.setAttribute("selected", "")
+      this.logoSelected = "p.png"
+    } else {
+      document.getElementById("other")?.setAttribute("selected", "")
+      this.logoSelected = "o.png"
+    }
+
+    console.log(this.logoSelected);
+
+
+  }
+
   setEditTrue() {
     this.linkForm.setValue({ edit: false })
+  }
+
+  reset() {
+    this.linkForm.reset()
+    this.linkForm.setControl('logo', this.fb.control('o.png', Validators.required))
   }
 
 
@@ -201,6 +216,45 @@ export class PanelLinksComponent implements OnInit {
 
     Toast.fire({
       title: 'Link edited successfully'
+    })
+  }
+
+
+  deleteNotification(link: any) {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success m-2',
+        cancelButton: 'btn btn-danger m-2'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.delete(link)
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your link has been deleted.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your link is safe :)',
+          'error'
+        )
+      }
     })
   }
 }
