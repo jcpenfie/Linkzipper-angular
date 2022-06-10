@@ -103,7 +103,7 @@
 
         <!-- Botones de guardar o resetear cambios -->
         <div class="buttons m-2 d-flex flex-column justify-content-end">
-            <button type="submit" class="btn negro text-light w-100 my-2 rounded">Save</button>
+            <button type="submit" class="btn negro text-light w-100 my-2 rounded">Save <span *ngIf="completed" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span></button>
             <button type="reset" class="btn gris text-dark w-100 my-2 rounded">Reset</button>
         </div>
     </form>

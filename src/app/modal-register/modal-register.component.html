@@ -70,7 +70,7 @@
                         class="link text-primary py-3">Already Account?</a>
 
                     <button id="btnSubmitRegister" type="submit" aria-label="Close" data-toggle="modal"
-                        class="btn bg-black text-light w-100 my-2 rounded">Confirm</button>
+                        class="btn bg-black text-light w-100 my-2 rounded">Confirm <span *ngIf="completed" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span></button>
                 </form>
             </div>
         </div>

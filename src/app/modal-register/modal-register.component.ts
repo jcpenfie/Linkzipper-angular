@@ -15,6 +15,7 @@ export class ModalRegisterComponent implements OnInit {
   error!: any
 
   status: boolean = true
+  completed: boolean = false
 
   constructor(private fb: FormBuilder, private userService: UserService) { }
 
@@ -30,6 +31,7 @@ export class ModalRegisterComponent implements OnInit {
   }, { validator: ValidacionesPropias.match });
 
   submit() {
+    this.completed = true;
     if (this.registerForm.valid) {
       this.userService.register(this.registerForm.value).subscribe(res => {
         console.log(res);
@@ -54,6 +56,7 @@ export class ModalRegisterComponent implements OnInit {
           this.status = false
           localStorage.setItem('token', this.error.access_token)
           location.reload()
+          this.completed = false;
         }
       })//registra al usuario
     } else {

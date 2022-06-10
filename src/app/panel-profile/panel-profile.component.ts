@@ -32,6 +32,9 @@ export class PanelProfileComponent implements OnInit {
     userName: "",
   }
 
+  completed: boolean = false
+
+
   constructor(private fb: FormBuilder, private router: ActivatedRoute, private userService: UserService, private panelService: PanelService) { }
 
   ngOnInit(): void {
@@ -54,6 +57,7 @@ export class PanelProfileComponent implements OnInit {
   });
 
   submit() {
+    this.completed = true;
     document.getElementById("alertReg")?.setAttribute("class", "invisible alert alert-danger mx-3")
     if (this.profileForm.valid) {
       let data = {
@@ -95,7 +99,8 @@ export class PanelProfileComponent implements OnInit {
         console.log(res);
         
         if (res.message == 'Good, user updated') {
-          // location.reload()
+          location.reload()
+          this.completed = false
         }
       })
     } else {

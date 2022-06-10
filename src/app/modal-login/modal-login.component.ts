@@ -18,6 +18,7 @@ export class ModalLoginComponent implements OnInit {
 
   error!: any
 
+  completed: boolean = false
 
   constructor(private fb: FormBuilder, private router: Router, private userService: UserService) { }
 
@@ -28,6 +29,7 @@ export class ModalLoginComponent implements OnInit {
 
 
   submit() {
+    this.completed = true
     if (this.loginForm.valid) {
       this.userService.login(this.loginForm.value).subscribe(res => { //recoge el token de usuario
         this.error = res
@@ -55,6 +57,7 @@ export class ModalLoginComponent implements OnInit {
     localStorage.setItem('token', token.access_token)
     if (localStorage.getItem("token") != null) {
       this.router.navigate(['/panel/profile'])
+      this.completed = false
     }
   }
 }
