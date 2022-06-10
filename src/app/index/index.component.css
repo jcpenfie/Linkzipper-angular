@@ -101,11 +101,11 @@ header {
 
 @media screen and (max-width: 991px) {
     .info>p {
-        font-size: 20px;
+        font-size: 2rem;
     }
 
     .info {
-        font-size: 70px;
+        font-size: 9rem;
     }
 
     .secInfo {
