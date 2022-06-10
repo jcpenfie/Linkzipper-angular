@@ -26,22 +26,6 @@
                         </small>
                     </div>
                     <div class="form-group">
-                        <label for="passwordRegister">Password:</label>
-                        <input type="password" formControlName="pass" class="form-control" id="passwordRegister"
-                            aria-describedby="password input" placeholder="Password">
-                        <small *ngIf="this.registerForm.get('pass')?.errors?.['passwordValid']" class="text-danger">
-                            Minimum eight characters, at least one uppercase letter, one lowercase letter and one number
-                        </small>
-                    </div>
-                    <div class="form-group">
-                        <label for="passwordConfirm">Confirm Password:</label>
-                        <input type="password" formControlName="passConfirm" class="form-control" id="passwordConfirm"
-                            aria-describedby="confirm password input" placeholder="Confirm Password">
-                        <small *ngIf="this.registerForm.errors?.['noMatchPass']" class="text-danger">
-                            Passwords must match
-                        </small>
-                    </div>
-                    <div class="form-group">
                         <label for="emailRegister">Email:</label>
                         <input type="email" formControlName="email" class="form-control" id="emailRegister"
                             aria-describedby="email input" placeholder="Email">
@@ -58,6 +42,22 @@
                             aria-describedby="confirm email input" placeholder="Confirm Email">
                         <small *ngIf="this.registerForm.errors?.['noMatchEmail']" class="text-danger">
                             Email must match
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordRegister">Password:</label>
+                        <input type="password" formControlName="pass" class="form-control" id="passwordRegister"
+                            aria-describedby="password input" placeholder="Password">
+                        <small *ngIf="this.registerForm.get('pass')?.errors?.['passwordValid']" class="text-danger">
+                            Minimum eight characters, at least one uppercase letter, one lowercase letter and one number
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordConfirm">Confirm Password:</label>
+                        <input type="password" formControlName="passConfirm" class="form-control" id="passwordConfirm"
+                            aria-describedby="confirm password input" placeholder="Confirm Password">
+                        <small *ngIf="this.registerForm.errors?.['noMatchPass']" class="text-danger">
+                            Passwords must match
                         </small>
                     </div>
                     <a href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#LOGINModal" class="link text-primary py-3">Already Account?</a>
