@@ -57,9 +57,9 @@ export class PanelProfileComponent implements OnInit {
   });
 
   submit() {
-    this.completed = true;
     document.getElementById("alertReg")?.setAttribute("class", "invisible alert alert-danger mx-3")
     if (this.profileForm.valid) {
+      this.completed = true;
       let data = {
         userName: this.user.userName,
         showName: '',
@@ -87,17 +87,17 @@ export class PanelProfileComponent implements OnInit {
         data.description = this.user.description
       }
 
-      if(this.profileForm.value.displayName != ' '){
+      if (this.profileForm.value.displayName != ' ') {
         data.showName = this.profileForm.value.displayName;
-      }else{
+      } else {
         data.showName = this.user.showName;
       }
       console.log(data);
-      
+
 
       this.panelService.panel(data).subscribe(res => {
         console.log(res);
-        
+
         if (res.message == 'Good, user updated') {
           location.reload()
           this.completed = false
@@ -132,6 +132,17 @@ export class PanelProfileComponent implements OnInit {
 
   setUser(data: any) {
     this.user = data;
+
+    this.urlProfile = this.user.profileImg == "profileInput.png" ? "http://linkzipper-api.herokuapp.com/api/user/img/logo/profileInput.png" : `http://linkzipper-api.herokuapp.com/api/user/img/logo/${this.user.profileImg}`
+    document.getElementById("fileStyleProfile")!.style.backgroundImage = 'url(' + this.urlProfile + ')';
+    
+    console.log(this.user.backgroundImg);
+    console.log(`http://linkzipper-api.herokuapp.com/api/user/img/bg/${this.user.backgroundImg}`);
+    
+    
+    this.urlBg = this.user.backgroundImg == "emptyBg.png" ? "http://linkzipper-api.herokuapp.com/api/user/img/bg/bgInput.png" : `http://linkzipper-api.herokuapp.com/api/user/img/bg/${this.user.backgroundImg}`
+    document.getElementById("fileStyleBg")!.style.backgroundImage = 'url(' + this.urlBg + ')';
+
     let url: any = document.getElementById("url");
     url.innerHTML = `${window.location.origin}/@${this.user.userName}`;
 
@@ -147,35 +158,35 @@ export class PanelProfileComponent implements OnInit {
   }
 
   urlProfile = "http://linkzipper-api.herokuapp.com/api/user/img/logo/profileInput.png"
-  
 
-  profileImg!:string;
+
+  profileImg!: string;
 
   captureFileProfile(event: any): any {
-    if(event.target.files){
+    if (event.target.files) {
       this.profileImg = event.target.files[0]
       var reader = new FileReader()
       reader.readAsDataURL(event.target.files[0])
-      reader.onload = (e:any)=>{
+      reader.onload = (e: any) => {
         this.urlProfile = e.target.result;
         document.getElementById("fileStyleProfile")!.style.backgroundImage = 'url(' + this.urlProfile + ')';
       }
-    }    
+    }
   }
 
   urlBg = "http://linkzipper-api.herokuapp.com/api/user/img/bg/bgInput.png"
-  backgroundImg!:string;
+  backgroundImg!: string;
 
   captureFilebackground(event: any): any {
-    if(event.target.files){
+    if (event.target.files) {
       this.backgroundImg = event.target.files[0]
       var reader = new FileReader()
       reader.readAsDataURL(event.target.files[0])
-      reader.onload = (e:any)=>{
+      reader.onload = (e: any) => {
         this.urlBg = e.target.result;
         document.getElementById("fileStyleBg")!.style.backgroundImage = 'url(' + this.urlBg + ')';
       }
-    }    
+    }
   }
 
   notification() {
