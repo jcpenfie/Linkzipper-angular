@@ -60,4 +60,15 @@ export class ModalLoginComponent implements OnInit {
       this.completed = false
     }
   }
+  showPassword() {
+    let input = document.getElementById("password")
+    let ojo = document.getElementById("eye")
+    if (input?.getAttribute('type') == "password") {
+      input?.setAttribute('type', "text")
+      ojo?.setAttribute("class", "fa-solid fa-eye-slash")
+    } else {
+      input?.setAttribute('type', "password")
+      ojo?.setAttribute("class", "fa-solid fa-eye")
+    }
+  }
 }

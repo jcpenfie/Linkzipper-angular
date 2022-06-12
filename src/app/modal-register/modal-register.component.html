@@ -67,8 +67,14 @@
                         </small>
                     </div>
                     <a href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#LOGINModal"
-                        class="link text-primary py-3">Already Account?</a>
+                    class="link text-primary py-3">Already Account?</a>
 
+                    <p class="pt-3">By creating an accout you agree to our s
+                        <a routerLink="/terms" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#REGISTERModal"
+                        class="link text-primary py-3">Terms of Service</a>.
+                    </p>
+                        
+                        
                     <button id="btnSubmitRegister" type="submit" aria-label="Close" data-toggle="modal"
                         class="btn bg-black text-light w-100 my-2 rounded">Confirm <span *ngIf="completed" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span></button>
                 </form>
