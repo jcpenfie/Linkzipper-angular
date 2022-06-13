@@ -133,14 +133,14 @@ export class PanelProfileComponent implements OnInit {
   setUser(data: any) {
     this.user = data;
 
-    this.urlProfile = this.user.profileImg == "profileInput.png" ? "http://linkzipper-api.herokuapp.com/api/user/img/logo/profileInput.png" : `http://linkzipper-api.herokuapp.com/api/user/img/logo/${this.user.profileImg}`
+    this.urlProfile = this.user.profileImg == "profileInput.png" ? "https://linkzipper-api.herokuapp.com/api/user/img/logo/profileInput.png" : `https://linkzipper-api.herokuapp.com/api/user/img/logo/${this.user.profileImg}`
     document.getElementById("fileStyleProfile")!.style.backgroundImage = 'url(' + this.urlProfile + ')';
     
     console.log(this.user.backgroundImg);
-    console.log(`http://linkzipper-api.herokuapp.com/api/user/img/bg/${this.user.backgroundImg}`);
+    console.log(`https://linkzipper-api.herokuapp.com/api/user/img/bg/${this.user.backgroundImg}`);
     
     
-    this.urlBg = this.user.backgroundImg == "emptyBg.png" ? "http://linkzipper-api.herokuapp.com/api/user/img/bg/bgInput.png" : `http://linkzipper-api.herokuapp.com/api/user/img/bg/${this.user.backgroundImg}`
+    this.urlBg = this.user.backgroundImg == "emptyBg.png" ? "https://linkzipper-api.herokuapp.com/api/user/img/bg/bgInput.png" : `https://linkzipper-api.herokuapp.com/api/user/img/bg/${this.user.backgroundImg}`
     document.getElementById("fileStyleBg")!.style.backgroundImage = 'url(' + this.urlBg + ')';
 
     let url: any = document.getElementById("url");
@@ -157,7 +157,7 @@ export class PanelProfileComponent implements OnInit {
     }
   }
 
-  urlProfile = "http://linkzipper-api.herokuapp.com/api/user/img/logo/profileInput.png"
+  urlProfile = "https://linkzipper-api.herokuapp.com/api/user/img/logo/profileInput.png"
 
 
   profileImg!: string;
@@ -174,7 +174,7 @@ export class PanelProfileComponent implements OnInit {
     }
   }
 
-  urlBg = "http://linkzipper-api.herokuapp.com/api/user/img/bg/bgInput.png"
+  urlBg = "https://linkzipper-api.herokuapp.com/api/user/img/bg/bgInput.png"
   backgroundImg!: string;
 
   captureFilebackground(event: any): any {

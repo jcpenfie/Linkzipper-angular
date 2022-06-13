@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class SearchService {
 
-  url = "http://linkzipper-api.heroku.com/api"
+  url = "http://linkzipper-api.herokuapp.com/api"
 
   private headers = new HttpHeaders(
     {
