@@ -23,6 +23,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { FormsModule } from '@angular/forms';
 import { DescripcionPipe } from './descripcion.pipe';
 import { UnidadesLikesPipe } from './unidades-likes.pipe';
+import { HelpComponent } from './help/help.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { UnidadesLikesPipe } from './unidades-likes.pipe';
     UserLikesComponent,
     DescripcionPipe,
     UnidadesLikesPipe,
+    HelpComponent,
 
   ],
   imports: [

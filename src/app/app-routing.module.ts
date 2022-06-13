@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ExplorerComponent } from './explorer/explorer.component';
+import { HelpComponent } from './help/help.component';
 import { IndexComponent } from './index/index.component';
 import { PanelLinksComponent } from './panel-links/panel-links.component';
 import { PanelProfileComponent } from './panel-profile/panel-profile.component';
@@ -47,7 +48,7 @@ const routes: Routes = [
   },
   {
     path: 'help',
-    component: TermsComponent
+    component: HelpComponent
   },
 ];
 
