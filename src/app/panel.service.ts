@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class PanelService {
 
-  url = "http://app-65923f03-3292-4553-a3bd-88214cf326e1.cleverapps.io/api"
+  url = "http://linkzipper-api.heroku.com/api"
   constructor(private http: HttpClient) { }
 
   panel(data: any) { //Actualiza los datos del usuario
