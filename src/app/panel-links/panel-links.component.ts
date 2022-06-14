@@ -110,7 +110,6 @@ export class PanelLinksComponent implements OnInit {
         })
       }
       this.linkForm.reset()
-      console.log("añadido");
     } else {
       this.resultado = "There is invalid data in the form";
     }
@@ -126,9 +125,6 @@ export class PanelLinksComponent implements OnInit {
 
   handleChangeLink(event: any) {
     this.handleChange()
-
-    // let select = document.getElementsByName("logoSelect")
-    console.log(event);
 
     if (event.includes("whatsapp")) {
       document.getElementById("whatsapp")?.setAttribute("selected", "")
@@ -161,10 +157,6 @@ export class PanelLinksComponent implements OnInit {
       document.getElementById("other")?.setAttribute("selected", "")
       this.logoSelected = "o.png"
     }
-
-    console.log(this.logoSelected);
-
-
   }
 
   setEditTrue() {

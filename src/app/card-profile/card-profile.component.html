@@ -8,7 +8,7 @@
                 <div class="d-flex justify-content-between align-items-end">
                     <h5 class="card-title">{{user.showName}}</h5>
                     <h5 class="card-title d-flex align-items-center justify-content-end"><i
-                            [class]="user.liked != null? 'fa fa-heart text-danger heart': 'fa-heart fa-regular heart'"
+                            [class]="user.liked != null && liked != false? 'fa fa-heart text-danger heart': 'fa-heart fa-regular heart'"
                             id="{{user.id}}like" (click)="heartControl(user.id)"></i><br><span
                             id="{{user.id}}likeCount" class="m-2">{{user.totalLikes |
                             unidadesLikes:user.totalLikes}}</span>

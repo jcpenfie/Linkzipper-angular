@@ -7,7 +7,7 @@
     </div>
 
     <div class="d-flex justify-content-center flex-column align-items-center mt-auto" *ngIf="completed">
-        <app-card-profile [user]="user" [btn]="false"></app-card-profile>
+        <app-card-profile [user]="user" [btn]="false" [liked]="this.user.liked"></app-card-profile>
         <div *ngFor="let link of user.links;let i=index">
             <a href="{{link.link}}" target="_blank">
                 <div class="linkCard card d-flex flex-row align-items-center m-2 {{user.theme}}Theme"

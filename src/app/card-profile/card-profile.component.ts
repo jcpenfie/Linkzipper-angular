@@ -21,6 +21,7 @@ export class CardProfileComponent implements OnInit {
   constructor(private userService: UserService, private likeService: LikesService) { }
 
   ngOnInit(): void {
+    
     if (this.user.description == "") {
       this.userDescriptionLength = this.user.description.length
     } else {
@@ -31,8 +32,8 @@ export class CardProfileComponent implements OnInit {
         this.setUser(res)
       })
     }
-
-
+    
+    
     let boton = document.getElementById("btn");
     if (this.btn) {
       boton?.setAttribute("class", "visible btn negro text-light w-100")
@@ -40,14 +41,14 @@ export class CardProfileComponent implements OnInit {
       boton?.setAttribute("class", "invisible btn negro text-light w-100")
     }
   }
-
+  
   like(id: any) {
-
+    
     if (localStorage.getItem("token") != null) {
       this.userService.getUser(localStorage.getItem("token")).subscribe(res => {
         this.setUser(res)
       })
-
+      
       let data = { idUser: this.idUser, idUserLiked: id };
 
       let like = document.getElementById(id + "like");

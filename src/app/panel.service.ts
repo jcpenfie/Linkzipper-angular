@@ -20,7 +20,6 @@ export class PanelService {
     body.append('profileImg', data.profileImg);
     body.set('backgroundImg', data.backgroundImg);
 
-    console.log(data);
 
     const httpOptions = {
       headers: new HttpHeaders({

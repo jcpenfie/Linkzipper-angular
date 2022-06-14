@@ -92,12 +92,8 @@ export class PanelProfileComponent implements OnInit {
       } else {
         data.showName = this.user.showName;
       }
-      console.log(data);
-
 
       this.panelService.panel(data).subscribe(res => {
-        console.log(res);
-
         if (res.message == 'Good, user updated') {
           location.reload()
           this.completed = false
@@ -134,11 +130,7 @@ export class PanelProfileComponent implements OnInit {
     this.user = data;
 
     this.urlProfile = this.user.profileImg == "profileInput.png" ? "http://linkzipper-api.herokuapp.com/api/user/img/logo/profileInput.png" : `https://linkzipper-api.herokuapp.com/api/user/img/logo/${this.user.profileImg}`
-    document.getElementById("fileStyleProfile")!.style.backgroundImage = 'url(' + this.urlProfile + ')';
-    
-    console.log(this.user.backgroundImg);
-    console.log(`http://linkzipper-api.herokuapp.com/api/user/img/bg/${this.user.backgroundImg}`);
-    
+    document.getElementById("fileStyleProfile")!.style.backgroundImage = 'url(' + this.urlProfile + ')';    
     
     this.urlBg = this.user.backgroundImg == "emptyBg.png" ? "http://linkzipper-api.herokuapp.com/api/user/img/bg/bgInput.png" : `http://linkzipper-api.herokuapp.com/api/user/img/bg/${this.user.backgroundImg}`
     document.getElementById("fileStyleBg")!.style.backgroundImage = 'url(' + this.urlBg + ')';

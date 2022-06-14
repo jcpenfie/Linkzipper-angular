@@ -42,9 +42,7 @@ export class ExplorerComponent implements OnInit {
 
     //recogida del usuario logueado
     if (localStorage.getItem("token") != null) {
-      this.userService.getUser(localStorage.getItem("token")).subscribe(res => {
-        console.log(res);
-        
+      this.userService.getUser(localStorage.getItem("token")).subscribe(res => {        
         this.setUser(res)
       })
     }
