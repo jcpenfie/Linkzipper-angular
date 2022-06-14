@@ -27,7 +27,7 @@
                         aria-hidden="true"></i>
                     {{user.totalLikes}}</p>
             </div>
-            <p routerLink="likes" class="see text-fluid m-2">See Likes</p>
+            <p routerLink="likes" class="see text-fluid m-2"><span class="negro text-light w-100 my-2 rounded p-2"> See Likes </span></p>
             <div class="toggle-switch d-flex">
                 <i class="fa-solid fa-earth-americas mx-2" id="inconoSwitch"></i>
                 <input type="checkbox" id="toggle-switch" (click)="checkSwitch()">
@@ -37,7 +37,7 @@
 
         <!-- Profile input image -->
         <div class="profileImg p-2 ">
-            <label for="formFile" class="form-label negro">Profile Image:</label>
+            <label for="formFile" class="form-label">Profile Image:</label>
             <div class="fileStyleProfile" id="fileStyleProfile">
                 <input class="form-control file" formControlName="profileImg" type="file" id="formFilePro"
                     style="height: 90%;" (change)="captureFileProfile($event)" accept=".png, .jpg, .jpeg, .gif">

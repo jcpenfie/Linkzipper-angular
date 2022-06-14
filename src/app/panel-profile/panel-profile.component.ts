@@ -93,9 +93,6 @@ export class PanelProfileComponent implements OnInit {
       } else {
         data.showName = this.user.showName;
       }
-
-      console.log(data);
-      
       this.panelService.panel(data).subscribe(res => {
         if (res.message == 'Good, user updated') {
           location.reload()
