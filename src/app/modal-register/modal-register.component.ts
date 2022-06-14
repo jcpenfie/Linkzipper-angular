@@ -67,7 +67,7 @@ export class ModalRegisterComponent implements OnInit {
 
   showPassword() {
     let input = document.getElementById("passwordRegister")
-    let ojo = document.getElementById("eye")
+    let ojo = document.getElementById("eyeRegister")
     if (input?.getAttribute('type') == "password") {
       input?.setAttribute('type', "text")
       ojo?.setAttribute("class", "fa-solid fa-eye-slash")

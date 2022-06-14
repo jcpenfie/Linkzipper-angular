@@ -50,13 +50,14 @@ export class PanelProfileComponent implements OnInit {
   profileForm = this.fb.group({
     displayName: [' ', [Validators.required, Validators.maxLength(12)]],
     pass: ['', [Validators.required, ValidacionesPropias.passwordValid]],
-    theme: ['', [Validators.required]],
-    description: [''],
+    theme: ['white', [Validators.required]],
+    description: [' ', [Validators.required]],
     profileImg: [''],
     backgroundImg: [''],
   });
 
   submit() {
+    
     document.getElementById("alertReg")?.setAttribute("class", "invisible alert alert-danger mx-3")
     if (this.profileForm.valid) {
       this.completed = true;
@@ -81,7 +82,7 @@ export class PanelProfileComponent implements OnInit {
       } else {
         data.backgroundImg = `${this.user.backgroundImg}`
       }
-      if (this.profileForm.value.description != '') {
+      if (this.profileForm.value.description != ' ') {
         data.description = this.profileForm.value.description
       } else {
         data.description = this.user.description
@@ -93,6 +94,8 @@ export class PanelProfileComponent implements OnInit {
         data.showName = this.user.showName;
       }
 
+      console.log(data);
+      
       this.panelService.panel(data).subscribe(res => {
         if (res.message == 'Good, user updated') {
           location.reload()
@@ -180,6 +183,19 @@ export class PanelProfileComponent implements OnInit {
       }
     }
   }
+
+  showPassword() {
+    let input = document.getElementById("password")
+    let ojo = document.getElementById("eye")
+    if (input?.getAttribute('type') == "password") {
+      input?.setAttribute('type', "text")
+      ojo?.setAttribute("class", "fa-solid fa-eye-slash")
+    } else {
+      input?.setAttribute('type', "password")
+      ojo?.setAttribute("class", "fa-solid fa-eye")
+    }
+  }
+  //Notifications
 
   notification() {
     const Toast = Swal.mixin({

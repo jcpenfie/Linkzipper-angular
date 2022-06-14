@@ -16,7 +16,8 @@
 }
 
 
-.fileStyleProfile, .fileStyleBg {
+.fileStyleProfile,
+.fileStyleBg {
   border: 2px solid black;
   height: 90%;
   border-radius: 27px;
@@ -73,6 +74,22 @@
 
 .text-fluid {
   font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.pointer {
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
 @media screen and (max-width: 1024px) {

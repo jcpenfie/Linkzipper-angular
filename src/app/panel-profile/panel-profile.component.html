@@ -17,7 +17,8 @@
     <!-- Formualario -->
 
     <div class="invisible" role="alert" id="alertReg">{{resultado}}</div>
-    <form [formGroup]="profileForm" (ngSubmit)="submit()" class="gridForm cardInput m-2" id="profileForm"  enctype="multipart/form-data">
+    <form [formGroup]="profileForm" (ngSubmit)="submit()" class="gridForm cardInput m-2" id="profileForm"
+        enctype="multipart/form-data">
 
         <!-- Nombre, likes, see likes y switch -->
         <div class="infoButtons d-flex align-items-center justify-content-between mt-5">
@@ -36,7 +37,7 @@
 
         <!-- Profile input image -->
         <div class="profileImg p-2 ">
-            <label for="formFile" class="form-label">Profile Image:</label>
+            <label for="formFile" class="form-label negro">Profile Image:</label>
             <div class="fileStyleProfile" id="fileStyleProfile">
                 <input class="form-control file" formControlName="profileImg" type="file" id="formFilePro"
                     style="height: 90%;" (change)="captureFileProfile($event)" accept=".png, .jpg, .jpeg, .gif">
@@ -58,8 +59,14 @@
             <div class="row d-flex">
                 <div class="form-group col-xxl-6 col-xl-6 col-lg-6 col-md-12">
                     <label for="password">Password or new password:</label>
-                    <input type="password" formControlName="pass" class="form-control" id="password"
-                        aria-describedby="password input" placeholder="Password">
+                    <div class="input-group">
+                        <input type="password" formControlName="pass" class="form-control" id="password"
+                            aria-describedby="password input" placeholder="Password">
+                        <div class="input-group-prepstart">
+                            <div class="input-group-text pointer" (click)="showPassword()">&nbsp;<i
+                                    class="fa-solid fa-eye" id="eye"></i>&nbsp;</div>
+                        </div>
+                    </div>
                     <small *ngIf="this.profileForm.get('pass')?.errors?.['required']" class="text-danger">
                         Password must not be empty.
                     </small>
@@ -71,7 +78,7 @@
                     <label for="theme">Theme:</label>
                     <select formControlName="theme" class="form-select form-select-sm" aria-describedby="theme select"
                         aria-label=".form-select-sm example">
-                        <option value="white">White</option>
+                        <option value="white" [defaultSelected]="true">White</option>
                         <option value="dark">Dark</option>
                         <option value="red">Red</option>
                         <option value="green">Green</option>
@@ -99,11 +106,15 @@
             <textarea class="form-control rounded" formControlName="description" name="desc" id="desc"
                 value="{{user.description}}" style="height: 100px; background-color: #E9E6E1;"
                 maxlength="200"></textarea>
+            <small *ngIf="this.profileForm.get('description')?.errors?.['required']" class="text-danger">
+                Description must not be empty
+            </small>
         </div>
 
         <!-- Botones de guardar o resetear cambios -->
         <div class="buttons m-2 d-flex flex-column justify-content-end">
-            <button type="submit" class="btn negro text-light w-100 my-2 rounded">Save <span *ngIf="completed" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span></button>
+            <button type="submit" class="btn negro text-light w-100 my-2 rounded">Save <span *ngIf="completed"
+                    class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span></button>
             <button type="reset" class="btn gris text-dark w-100 my-2 rounded">Reset</button>
         </div>
     </form>
