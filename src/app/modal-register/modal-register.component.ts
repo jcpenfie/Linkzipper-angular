@@ -34,6 +34,9 @@ export class ModalRegisterComponent implements OnInit {
     this.completed = true;
     if (this.registerForm.valid) {
       this.userService.register(this.registerForm.value).subscribe(res => {
+        console.log(res);
+        console.log(this.registerForm.value);
+        
         this.error = res
 
         if (this.error.message != 'Good') { // si el mensaje que devuelve no es 'Good' salta el error de validación
@@ -54,15 +57,15 @@ export class ModalRegisterComponent implements OnInit {
           this.status = false
           localStorage.setItem('token', this.error.access_token)
           location.reload()
-          this.completed = false;
         }
       })//registra al usuario
     } else {
       document.getElementById("alertReg")?.setAttribute("class", "visible alert alert-danger mx-3")
-
+      
       this.resultado = "There is invalid data in the form";
     }
-
+    
+    this.completed = false;
   }
 
   showPassword() {
