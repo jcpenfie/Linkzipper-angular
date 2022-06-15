@@ -33,10 +33,7 @@ export class ModalRegisterComponent implements OnInit {
   submit() {
     this.completed = true;
     if (this.registerForm.valid) {
-      this.userService.register(this.registerForm.value).subscribe(res => {
-        console.log(res);
-        console.log(this.registerForm.value);
-        
+      this.userService.register(this.registerForm.value).subscribe(res => {        
         this.error = res
 
         if (this.error.message != 'Good') { // si el mensaje que devuelve no es 'Good' salta el error de validación
