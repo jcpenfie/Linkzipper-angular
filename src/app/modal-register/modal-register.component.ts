@@ -87,4 +87,10 @@ export class ModalRegisterComponent implements OnInit {
       ojo?.setAttribute("class", "fa-solid fa-eye")
     }
   }
+
+  reset(){
+    this.registerForm.reset()
+    console.log("sfdda");
+    
+  }
 }

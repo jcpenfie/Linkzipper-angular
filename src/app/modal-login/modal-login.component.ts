@@ -71,4 +71,8 @@ export class ModalLoginComponent implements OnInit {
       ojo?.setAttribute("class", "fa-solid fa-eye")
     }
   }
+
+  reset(){
+    this.loginForm.reset()
+  }
 }
