@@ -16,6 +16,8 @@ export class UserLikesComponent implements OnInit {
 
   status!: boolean
 
+  completed: boolean = false
+
   ngOnInit(): void {
     if (localStorage.getItem("token") != null) {
       this.userService.getUser(localStorage.getItem("token")).subscribe(res => {
@@ -37,6 +39,7 @@ export class UserLikesComponent implements OnInit {
       }
       
       this.status = this.users.length == 0 || this.users.length == undefined
+      this.completed = true
     })
 
 
