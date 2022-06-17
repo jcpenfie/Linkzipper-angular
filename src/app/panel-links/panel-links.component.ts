@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
-import { ValidacionesPropias } from '../validaciones-propias';
 import { LinkService } from '../link.service';
 import { UserService } from '../user.service';
 import Swal from 'sweetalert2'
@@ -54,7 +53,13 @@ export class PanelLinksComponent implements OnInit {
     }
   }
   edit(link: any) {
-    this.linkForm.setValue({ title: link.title, link: link.link, logo: '', edit: true, idLink: link.id })
+    this.linkForm.patchValue({ 
+      titleLink: link.titleLink, 
+      link: link.link, 
+      logo: '', 
+      edit: true, 
+      idLink: link.id 
+    })
   }
 
 
@@ -63,8 +68,9 @@ export class PanelLinksComponent implements OnInit {
   constructor(private fb: FormBuilder, private linkService: LinkService, private userService: UserService) { }
 
   linkForm = this.fb.group({
-    title: ['', [Validators.required]],
-    link: ['', [Validators.required, ValidacionesPropias.linkValid]],
+    titleLink: ['', [Validators.required]],
+    link: ['', [Validators.required]],
+    linkSelect: ['0', [Validators.required]],
     logo: ['o.png', [Validators.required]],
     edit: [false],
     idLink: ['']
@@ -72,6 +78,8 @@ export class PanelLinksComponent implements OnInit {
 
 
   submit() {
+    console.log(typeof(this.linkForm.value.linkSelect));
+    
     this.status = false
     if (this.linkForm.valid) {
       if (this.linkForm.value.edit) {
@@ -79,16 +87,16 @@ export class PanelLinksComponent implements OnInit {
         let objIndex = this.links.findIndex(((linkObj: any) => linkObj.id == this.linkForm.value.idLink));
 
 
-        this.links[objIndex].title = this.linkForm.value.title
-        this.links[objIndex].link = this.linkForm.value.link.startsWith("https://") ? `${this.linkForm.value.link}` : `https://${this.linkForm.value.link}`
-        this.links[objIndex].logo = this.logoSelected == this.linkForm.value.logo ? this.logoSelected : this.linkForm.value.logo == this.linkForm.value.logo ? this.logoSelected == this.linkForm.value.logo ? this.logoSelected : this.linkForm.value.logo : this.linkForm.value.logo
+        this.links[objIndex].title = this.linkForm.value.titleLink
+        this.links[objIndex].link = this.linkForm.value.linkSelect != "0"? `${this.linkForm.value.linkSelect}${this.linkForm.value.link}`: `${this.linkForm.value.link}`
+        this.links[objIndex].logo = this.linkForm.value.logo
 
 
 
         let data = {
-          title: this.linkForm.value.title,
-          link: this.linkForm.value.link.startsWith("https://") ? `${this.linkForm.value.link}` : `https://${this.linkForm.value.link}`,
-          logo: this.logoSelected == this.linkForm.value.logo ? this.logoSelected : this.linkForm.value.logo,
+          title: this.linkForm.value.titleLink,
+          link:this.linkForm.value.linkSelect != "0"? `${this.linkForm.value.linkSelect}${this.linkForm.value.link}`: `${this.linkForm.value.link}`, 
+          logo: this.linkForm.value.logo,
           idLink: this.linkForm.value.idLink
         }
         this.linkService.update(data).subscribe(res => {
@@ -97,12 +105,17 @@ export class PanelLinksComponent implements OnInit {
         this.linkForm.reset()
 
       } else {
-        this.links.push({ id: this.links.length + 1, title: this.linkForm.value.title, link: `https://${this.linkForm.value.link}`, logo: this.logoSelected == this.linkForm.value.logo ? this.logoSelected : this.linkForm.value.logo })
+        this.links.push({ 
+          id: this.links.length + 1, 
+          title: this.linkForm.value.titleLink, 
+          link: this.linkForm.value.linkSelect != "0"? `${this.linkForm.value.linkSelect}${this.linkForm.value.link}`: `${this.linkForm.value.link}`, 
+          logo: this.linkForm.value.logo 
+        })
 
         let data = {
-          title: this.linkForm.value.title,
-          link: `https://${this.linkForm.value.link}`,
-          logo: this.logoSelected == this.linkForm.value.logo ? this.logoSelected : this.linkForm.value.logo,
+          title: this.linkForm.value.titleLink,
+          link: this.linkForm.value.linkSelect != "0"? `${this.linkForm.value.linkSelect}${this.linkForm.value.link}`: `${this.linkForm.value.link}`, 
+          logo: this.linkForm.value.logo,
           idUser: this.user.id
         }
         this.linkService.create(data).subscribe(res => {
@@ -123,44 +136,8 @@ export class PanelLinksComponent implements OnInit {
     }
   }
 
-  handleChangeLink(event: any) {
-    this.handleChange()
-
-    if (event.includes("whatsapp")) {
-      document.getElementById("whatsapp")?.setAttribute("selected", "")
-      this.logoSelected = "w.png"
-    }
-    else if (event.includes("youtube")) {
-      document.getElementById("youtube")?.setAttribute("selected", "")
-      this.logoSelected = "yt.png"
-    }
-    else if (event.includes("facebook")) {
-      document.getElementById("facebook")?.setAttribute("selected", "")
-      this.logoSelected = "f.png"
-    }
-    else if (event.includes("instagram")) {
-      document.getElementById("instagram")?.setAttribute("selected", "")
-      this.logoSelected = "i.png"
-    }
-    else if (event.includes("twitter")) {
-      document.getElementById("twitter")?.setAttribute("selected", "")
-      this.logoSelected = "t.png"
-    }
-    else if (event.includes("linkedin")) {
-      document.getElementById("linkedin")?.setAttribute("selected", "")
-      this.logoSelected = "l.png"
-    }
-    else if (event.includes("pinterest")) {
-      document.getElementById("pinterest")?.setAttribute("selected", "")
-      this.logoSelected = "p.png"
-    } else {
-      document.getElementById("other")?.setAttribute("selected", "")
-      this.logoSelected = "o.png"
-    }
-  }
-
   setEditTrue() {
-    this.linkForm.setValue({ edit: false })
+    this.linkForm.patchValue({ edit: false })
   }
 
   reset() {
