@@ -51,6 +51,8 @@ export class ExplorerComponent implements OnInit {
 
   //metodo que añade los usuarios al array que se va a mostrar
   addUsers() {
+    console.log(this.usersToShow);
+    
     let lineCounter = this.usersToShow.length;
     for (let i = 0; i < 40; i++) {
       if (this.users[lineCounter] != null) {
@@ -121,7 +123,7 @@ export class ExplorerComponent implements OnInit {
         }
       }
     }
-    this.addUsers();
+    // this.addUsers();
     
   }
 }
