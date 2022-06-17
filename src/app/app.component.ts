@@ -27,13 +27,6 @@ export class AppComponent implements OnInit{
         if(!event.url.startsWith("/@")){
           this.showMenuHead = true
           this.showMenuFoot = true
-          if (event.url.startsWith("/panel")){
-            this.showMenuHead = false
-            this.showMenuFoot = true
-            this.showMenuLogin = true
-          }else{
-            this.showMenuLogin = false
-          }
         }else{
           this.showMenuHead = false
           this.showMenuFoot = false

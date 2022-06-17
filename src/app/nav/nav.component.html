@@ -7,29 +7,44 @@
     </button>
     <div class="collapse navbar-collapse justify-content-between" id="navbarTogglerRegister">
         <a class="navbar-brand p-2" routerLink="index"></a>
-        <ul class="search">
+
+        <app-carga *ngIf="login == null"></app-carga>
+        <ul class="search" *ngIf="login != null">
             <div class="input-box input-group rounded">
                 <input class="form-control search" placeholder="Search" aria-label="Search" list="userOptions"
-                    aria-describedby="search-addon" id="searchInput" name="search" [(ngModel)]="usernameSearch"/>
+                    aria-describedby="search-addon" id="searchInput" name="search" [(ngModel)]="usernameSearch" />
 
-                    <datalist id="userOptions" >
-                        <option value="{{option}}" *ngFor="let option of dataList;let i=index"></option>
-                    </datalist>
+                <datalist id="userOptions">
+                    <option value="{{option}}" *ngFor="let option of dataList;let i=index"></option>
+                </datalist>
                 <button type="submit" class="gris input-group-text border-0 btnSearch" id="search-addon">
                     <i class="fas fa-search" (click)="sendName()"></i>
                 </button>
             </div>
         </ul>
 
-
-        <ul class="navbar-nav p-2">
+        <app-carga *ngIf="login == null"></app-carga>
+        <ul class="navbar-nav p-2" *ngIf="login != null">
+            <div class="dropdown relative" *ngIf="login">
+                <button class="btn dropdown-toggle negro text-light" type="button" id="dropdownMenuButtonUser"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @{{user.userName}} <img class="rounded"
+                        src="http://linkzipper-api.herokuapp.com/api/user/img/logo/{{user.profileImg}}"
+                        alt="user profile" width="25px" height="25px">
+                </button>
+                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButtonUser">
+                    <a class="dropdown-item" routerLink="/panel/profile">PROFILE</a>
+                    <a class="dropdown-item" routerLink="/panel/links">LINKS</a>
+                    <a class="dropdown-item" routerLink="/panel/preview">PREVIEW</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="btn negro text-light" id="profileBtn" (click)="logout()">LOGOUT</a>
+                </div>
+            </div>
             <a class="nav-link" id="EXPLORE" routerLink="explore">EXPLORE</a>
-            <a class="nav-link btn negro text-light mx-2" *ngIf="login" id="REGISTER" data-toggle="modal"
+            <a class="nav-link btn negro text-light mx-2" *ngIf="!login" id="REGISTER" data-toggle="modal"
                 data-target="#REGISTERModal">REGISTER</a>
-            <a class="nav-link btn gris text-dark" *ngIf="login" id="LOGIN" data-toggle="modal" data-target="#LOGINModal">LOGIN</a>
-            <a class="nav-link" *ngIf="!login" id="panelBtn" routerLink="panel/profile">PANEL</a>
-            <a class="btn negro text-light" *ngIf="!login" id="profileBtn" (click)="logout()">LOGOUT</a>
-
+            <a class="nav-link btn gris text-dark pl-5" *ngIf="!login" id="LOGIN" data-toggle="modal"
+                data-target="#LOGINModal">LOGIN</a>
         </ul>
     </div>
 </nav>

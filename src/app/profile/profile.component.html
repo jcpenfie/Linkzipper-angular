@@ -1,10 +1,7 @@
 <div class="cont pt-5 {{user.theme}}ThemeBg" [ngStyle]="{'background-image': 'url('+bgurl+')', 'height': '100vh'}" id="bg">
 
-    <!-- carga -->
-    <div class="d-flex justify-content-center pt-5" *ngIf="!completed">
-        <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
-        </div>
-    </div>
+    <app-carga  *ngIf="!completed"></app-carga>
+
 
     <div class="d-flex justify-content-center flex-column align-items-center mt-auto" *ngIf="completed">
         <app-card-profile [user]="user" [btn]="false" [liked]="this.user.liked"></app-card-profile>

@@ -7,7 +7,6 @@ import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { IndexComponent } from './index/index.component';
 import { TermsComponent } from './terms/terms.component';
-import { NavLoginComponent } from './nav-login/nav-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { ModalRegisterComponent } from './modal-register/modal-register.component';
@@ -24,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { DescripcionPipe } from './descripcion.pipe';
 import { UnidadesLikesPipe } from './unidades-likes.pipe';
 import { HelpComponent } from './help/help.component';
+import { CargaComponent } from './carga/carga.component';
 
 
 @NgModule({
@@ -33,7 +33,6 @@ import { HelpComponent } from './help/help.component';
     FooterComponent,
     IndexComponent,
     TermsComponent,
-    NavLoginComponent,
     ModalLoginComponent,
     ModalRegisterComponent,
     ExplorerComponent,
@@ -45,6 +44,7 @@ import { HelpComponent } from './help/help.component';
     DescripcionPipe,
     UnidadesLikesPipe,
     HelpComponent,
+    CargaComponent,
 
   ],
   imports: [

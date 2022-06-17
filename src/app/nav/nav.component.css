@@ -1,8 +1,13 @@
+.search{
+    width: 50%;
+}
+
 #searchInput {
     background-color: #E9E6E1;
     border: #E9E6E1;
     width: 10em;
     text-align: center;
+    width: auto;
 }
 
 input::placeholder {
@@ -28,6 +33,7 @@ input::placeholder {
 @media screen and (max-width: 991px) {
 
     .search {
+        width: 100%;
         display: flex;
         justify-content: center;
     }

@@ -57,6 +57,7 @@ export class ModalLoginComponent implements OnInit {
     localStorage.setItem('token', token.access_token)
     if (localStorage.getItem("token") != null) {
       this.router.navigate(['/panel/profile'])
+      location.reload()
       this.completed = false
     }
   }
@@ -72,7 +73,7 @@ export class ModalLoginComponent implements OnInit {
     }
   }
 
-  reset(){
+  reset() {
     this.loginForm.reset()
   }
 }

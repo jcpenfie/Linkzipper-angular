@@ -4,6 +4,7 @@ import { SearchService } from '../search.service';
 import { fromEvent } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
 import Swal from 'sweetalert2'
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'boot-nav',
@@ -16,15 +17,22 @@ export class NavComponent implements OnInit {
 
   dataList: Array<String> = []
 
-  constructor(private router: Router, private searchService: SearchService) { }
-  login = false
+  user: any = {
+    profileImg: "",
+    userName: "",
+  }
+  constructor(private router: Router, private searchService: SearchService, private userService: UserService) { }
+  login!:boolean
 
   ngOnInit(): void {
 
     if (localStorage.getItem("token") == null) {
-      this.login = true
-    } else {
       this.login = false
+    } else {
+      this.userService.getUser(localStorage.getItem("token")).subscribe(res => {
+        this.user = res
+        this.login = true  
+      })
     }
 
     const search: any = document.getElementById("searchInput");
@@ -42,6 +50,7 @@ export class NavComponent implements OnInit {
 
   logout() {
     localStorage.removeItem("token")
+    this.router.navigate(['/'])
     location.reload()
   }
 
@@ -68,6 +77,10 @@ export class NavComponent implements OnInit {
     }
   }
 
+  setUser(data:any){
+console.log(data);
+
+  }
   //Notifications
 
   emptyNotification() {
