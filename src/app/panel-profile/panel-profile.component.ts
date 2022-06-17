@@ -10,7 +10,7 @@ import Swal from 'sweetalert2'
 @Component({
   selector: 'app-panel-profile',
   templateUrl: './panel-profile.component.html',
-  styleUrls: ['./panel-profile.component.css']
+  styleUrls: ['./panel-profile.component.css', './panel-profile.component2.css']
 })
 export class PanelProfileComponent implements OnInit {
 
