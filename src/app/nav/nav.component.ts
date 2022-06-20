@@ -22,7 +22,7 @@ export class NavComponent implements OnInit {
     userName: "",
   }
   constructor(private router: Router, private searchService: SearchService, private userService: UserService) { }
-  login!:boolean
+  login!: boolean
 
   ngOnInit(): void {
 
@@ -31,21 +31,9 @@ export class NavComponent implements OnInit {
     } else {
       this.userService.getUser(localStorage.getItem("token")).subscribe(res => {
         this.user = res
-        this.login = true  
+        this.login = true
       })
     }
-
-    const search: any = document.getElementById("searchInput");
-    const keyup = fromEvent(search, 'keyup')
-
-    keyup.pipe(
-      map((e: any) => e.currentTarget.value),
-      debounceTime(500)
-    ).subscribe(res => {
-      this.usernameSearch = res
-      this.searchName()
-    });
-
   }
 
   logout() {
@@ -70,16 +58,29 @@ export class NavComponent implements OnInit {
   }
 
   sendName() {
-    if(this.dataList.length != 0){
+    if (this.dataList.length != 0) {
       this.router.navigate(['/@' + this.usernameSearch])
-    }else{
+    } else {
       this.emptyNotification()
     }
   }
 
-  setUser(data:any){
-console.log(data);
+  setUser(data: any) {
+    console.log(data);
 
+  }
+
+  search() {
+    const search: any = document.getElementById("searchInput");
+    const keyup = fromEvent(search, 'keyup')
+
+    keyup.pipe(
+      map((e: any) => e.currentTarget.value),
+      debounceTime(500)
+    ).subscribe(res => {
+      this.usernameSearch = res
+      this.searchName()
+    });
   }
   //Notifications
 

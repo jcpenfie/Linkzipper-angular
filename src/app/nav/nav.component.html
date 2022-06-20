@@ -9,10 +9,10 @@
         <a class="navbar-brand p-2" routerLink="index"></a>
 
         <app-carga *ngIf="login == null"></app-carga>
-        <ul class="search" *ngIf="login != null">
+        <ul class="search" *ngIf="login != null" (click)="search()">
             <div class="input-box input-group rounded">
                 <input class="form-control search" placeholder="Search" aria-label="Search" list="userOptions"
-                    aria-describedby="search-addon" id="searchInput" name="search" [(ngModel)]="usernameSearch" />
+                    aria-describedby="search-addon" id="searchInput" name="search" [(ngModel)]="usernameSearch"/>
 
                 <datalist id="userOptions">
                     <option value="{{option}}" *ngFor="let option of dataList;let i=index"></option>
