@@ -44,6 +44,7 @@ export class ExplorerComponent implements OnInit {
     if (localStorage.getItem("token") != null) {
       this.userService.getUser(localStorage.getItem("token")).subscribe(res => {        
         this.setUser(res)
+        this.addUsers();
       })
     }
 
@@ -51,8 +52,6 @@ export class ExplorerComponent implements OnInit {
 
   //metodo que añade los usuarios al array que se va a mostrar
   addUsers() {
-    console.log(this.usersToShow);
-    
     let lineCounter = this.usersToShow.length;
     for (let i = 0; i < 40; i++) {
       if (this.users[lineCounter] != null) {

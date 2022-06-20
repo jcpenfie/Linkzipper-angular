@@ -90,7 +90,5 @@ export class ModalRegisterComponent implements OnInit {
 
   reset(){
     this.registerForm.reset()
-    console.log("sfdda");
-    
   }
 }

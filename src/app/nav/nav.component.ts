@@ -66,8 +66,6 @@ export class NavComponent implements OnInit {
   }
 
   setUser(data: any) {
-    console.log(data);
-
   }
 
   search() {

@@ -77,9 +77,7 @@ export class PanelLinksComponent implements OnInit {
   }, {});
 
 
-  submit() {
-    console.log(typeof(this.linkForm.value.linkSelect));
-    
+  submit() {    
     this.status = false
     if (this.linkForm.valid) {
       if (this.linkForm.value.edit) {
